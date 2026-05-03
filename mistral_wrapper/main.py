@@ -27,7 +27,7 @@ class MistralClient:
 
 
 if __name__ == "__main__":
-    API_KEY = "P2wB0QD1dzlCg01MjXxLhUtMhVyLQlot"
+    API_KEY = ""
 
     client = MistralClient(API_KEY)
     
