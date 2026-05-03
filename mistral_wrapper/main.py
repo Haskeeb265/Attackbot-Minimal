@@ -1,11 +1,10 @@
 import requests
-
 class MistralClient:
     def __init__(self, api_key):
         self.api_key = api_key
         self.base_url = "https://api.mistral.ai/v1/chat/completions"
 
-    def chat(self, message, model="devstral2"):
+    def chat(self, message, model="magistral-medium-latest"):
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
@@ -31,6 +30,10 @@ if __name__ == "__main__":
     API_KEY = "P2wB0QD1dzlCg01MjXxLhUtMhVyLQlot"
 
     client = MistralClient(API_KEY)
+    
+    # headers = {"Authorization": f"Bearer {API_KEY}"}
+    # response = requests.get("https://api.mistral.ai/v1/models", headers=headers)
+    # print(response.json())
 
     while True:
         user_input = input("You: ")
