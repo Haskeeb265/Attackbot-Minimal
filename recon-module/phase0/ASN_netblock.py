@@ -1,68 +1,64 @@
 #!/usr/bin/env python3
 """
-Amass Wrapper for Phase 0 - ASN & Netblock Discovery
------------------------------------------------------
-Requires: amass (https://github.com/owasp-amass/amass)
-Install:  sudo apt install amass   (Kali/Debian)
-          or brew install amass    (macOS)
+Amass/BGPView Wrapper - Phase 0 - ASN, Netblock, Subdomain Discovery
+---------------------------------------------------------------------
+Works on Windows, Linux, macOS.
 
-If amass is not found, the script gracefully degrades by using the BGPView API
-for prefix lookups (but cannot discover ASNs from org/domain).
+Requirements:
+  - Python packages: pip install requests
+  - (Optional) Amass CLI: https://github.com/owasp-amass/amass/releases
+    Only needed for passive subdomain enumeration.
+    This script will work even without Amass installed (uses BGPView API).
 """
 
 import subprocess
 import sys
 import json
-import socket
 import requests
 
 # ------------------------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------------------------
-AMASS_PATH = "amass"          # Assumes 'amass' is in PATH
-TIMEOUT = 120                  # seconds, some intel queries take time
+AMASS_BINARY = "amass"            # 'amass.exe' on Windows
+TIMEOUT = 120                     # seconds for amass enum
 BGPVIEW_API = "https://api.bgpview.io"
 
 # ------------------------------------------------------------------------------
-# Helpers
+# BGPView API functions (core for ASN/netblock now)
 # ------------------------------------------------------------------------------
-def _run_amass(cmd_list, description="Amass command"):
-    """Run an amass command and return stdout lines, or an error dict."""
-    try:
-        result = subprocess.run(
-            [AMASS_PATH] + cmd_list,
-            capture_output=True,
-            text=True,
-            timeout=TIMEOUT,
-            check=True
-        )
-        lines = [line.strip() for line in result.stdout.splitlines()
-                 if line.strip() and not line.startswith('//')]
-        return lines
-    except FileNotFoundError:
-        return {"error": "Amass is not installed or not in PATH"}
-    except subprocess.TimeoutExpired:
-        return {"error": f"{description} timed out after {TIMEOUT}s"}
-    except subprocess.CalledProcessError as e:
-        return {"error": f"{description} failed:\n{e.stderr}"}
-
-
-def _bgpview_asn_prefixes(asn):
-    """Fallback: get prefixes for an ASN using BGPView API."""
-    url = f"{BGPVIEW_API}/asn/{asn}/prefixes"
+def bgpview_asn_prefixes(asn: str) -> dict:
+    """
+    Get all IPv4/IPv6 prefixes announced by an ASN.
+    Accepts 'AS15169' or just '15169'.
+    """
+    clean_asn = asn.replace("AS", "").replace("as", "").strip()
+    url = f"{BGPVIEW_API}/asn/{clean_asn}/prefixes"
     try:
         resp = requests.get(url, timeout=10)
         resp.raise_for_status()
         data = resp.json()
         ipv4 = [p['prefix'] for p in data['data'].get('ipv4_prefixes', [])]
         ipv6 = [p['prefix'] for p in data['data'].get('ipv6_prefixes', [])]
-        return {"asn": asn, "ipv4_prefixes": ipv4, "ipv6_prefixes": ipv6}
+        return {"asn": f"AS{clean_asn}", "ipv4_prefixes": ipv4, "ipv6_prefixes": ipv6}
     except Exception as e:
         return {"error": f"BGPView API error: {e}"}
 
 
-def _bgpview_ip_lookup(ip):
-    """Fallback: get ASN + prefix for a single IP."""
+def bgpview_ip_lookup(ip_or_domain: str) -> dict:
+    """
+    Resolve a domain/IP to its ASN and covering prefix.
+    """
+    import socket
+    # Resolve domain if needed
+    try:
+        socket.inet_aton(ip_or_domain)
+        ip = ip_or_domain
+    except (socket.error, OSError):
+        try:
+            ip = socket.gethostbyname(ip_or_domain)
+        except socket.gaierror as e:
+            return {"error": f"DNS resolution failed: {e}"}
+
     url = f"{BGPVIEW_API}/ip/{ip}"
     try:
         resp = requests.get(url, timeout=10)
@@ -71,165 +67,117 @@ def _bgpview_ip_lookup(ip):
         if data['data']['asns']:
             asn_info = data['data']['asns'][0]
             prefix = data['data']['prefixes'][0]['prefix'] if data['data']['prefixes'] else None
-            return {
-                "ip": ip,
-                "asn": asn_info['asn'],
-                "asn_name": asn_info['name'],
-                "prefix": prefix
-            }
+            return {"ip": ip, "asn": asn_info['asn'], "asn_name": asn_info['name'], "prefix": prefix}
         else:
             return {"ip": ip, "asn": None, "error": "No ASN found"}
     except Exception as e:
         return {"error": str(e)}
 
+
+def discover_asn_from_domain(domain: str) -> list:
+    """
+    Find all unique ASNs associated with a domain by looking up
+    its resolved IP addresses and their ASNs.
+    """
+    import socket
+    try:
+        # Get all IPv4 addresses for the domain
+        ips = list(set(socket.gethostbyname_ex(domain)[2]))
+    except socket.gaierror:
+        return []
+
+    asns = set()
+    for ip in ips:
+        result = bgpview_ip_lookup(ip)
+        if "asn" in result and result["asn"]:
+            asns.add(f"AS{result['asn']}")
+    return sorted(asns)
+
+
 # ------------------------------------------------------------------------------
-# Main Amass Functions
+# Amass enum wrapper (optional, for subdomain discovery)
 # ------------------------------------------------------------------------------
-def amass_intel_org(org_name):
+def amass_enum_passive(domain: str, output_file: str = None) -> dict:
     """
-    Discover ASNs associated with an organisation name.
-    Returns a list of ASN strings.
-    """
-    raw = _run_amass(["intel", "-org", org_name], f"Intel org '{org_name}'")
-    if isinstance(raw, dict) and "error" in raw:
-        return raw
-    # Filter only lines that look like AS numbers (e.g., "AS15169")
-    asns = [line for line in raw if line.upper().startswith("AS")]
-    return {"org": org_name, "asns": asns}
+    Perform passive subdomain enumeration using amass enum.
+    Returns a dict with list of subdomains.
 
-
-def amass_intel_domain(domain):
-    """
-    Discover ASNs, IP ranges, and related domains for a given root domain.
-    Returns a dict with discovered ASNs and netblocks.
-    """
-    raw = _run_amass(["intel", "-d", domain], f"Intel domain '{domain}'")
-    if isinstance(raw, dict) and "error" in raw:
-        return raw
-
-    asns = []
-    prefixes = []
-    for line in raw:
-        if line.upper().startswith("AS"):
-            asns.append(line)
-        elif "/" in line and not line.startswith("//"):  # looks like a CIDR
-            prefixes.append(line)
-    return {"domain": domain, "asns": asns, "prefixes": prefixes}
-
-
-def amass_intel_asn(asn, use_bgpview_fallback=True):
-    """
-    Get all netblocks (IPv4/IPv6) for a given ASN.
-    If Amass fails and fallback is enabled, uses BGPView API.
-    """
-    # Remove 'AS' prefix if present, amass expects just the number
-    clean_asn = asn.replace("AS", "").strip()
-    raw = _run_amass(["intel", "-asn", clean_asn], f"Intel ASN {asn}")
-    if isinstance(raw, dict) and "error" in raw:
-        if use_bgpview_fallback:
-            print(f"[!] Amass failed for ASN {asn}, trying BGPView API...")
-            return _bgpview_asn_prefixes(clean_asn)
-        return raw
-
-    prefixes = [line for line in raw if "/" in line]
-    ipv4 = [p for p in prefixes if ":" not in p]   # no colons → IPv4
-    ipv6 = [p for p in prefixes if ":" in p]
-    return {"asn": asn, "ipv4_prefixes": ipv4, "ipv6_prefixes": ipv6}
-
-
-def amass_enum_passive(domain, output_file=None):
-    """
-    Perform passive subdomain enumeration for a domain.
-    Optionally save results to a file.
-    Returns a list of subdomains (if output not saved, reads from stdout).
+    If Amass is not installed, returns an error clearly.
     """
     cmd = ["enum", "-passive", "-d", domain]
     if output_file:
         cmd += ["-o", output_file]
 
-    raw = _run_amass(cmd, f"Enum passive '{domain}'")
-    if isinstance(raw, dict) and "error" in raw:
-        return raw
-
-    if output_file:
-        return {"status": "success", "output_file": output_file, "subdomains": raw}
-    else:
-        return {"domain": domain, "subdomains": raw}
-
-
-def amass_enum_active(domain, output_file=None):
-    """
-    Perform active subdomain enumeration for a domain.
-    (This can be noisy and more intrusive – use with permission.)
-    """
-    cmd = ["enum", "-active", "-d", domain]
-    if output_file:
-        cmd += ["-o", output_file]
-
-    raw = _run_amass(cmd, f"Enum active '{domain}'")
-    if isinstance(raw, dict) and "error" in raw:
-        return raw
-
-    if output_file:
-        return {"status": "success", "output_file": output_file, "subdomains": raw}
-    else:
-        return {"domain": domain, "subdomains": raw}
+    try:
+        result = subprocess.run(
+            [AMASS_BINARY] + cmd,
+            capture_output=True,
+            text=True,
+            timeout=TIMEOUT,
+            check=True
+        )
+        # Amass writes results to file if -o is given; otherwise to stdout?
+        # Passive results are printed to stdout as "subdomain.example.com" lines
+        lines = [line.strip() for line in result.stdout.splitlines()
+                 if line.strip() and not line.startswith('//')]
+        if output_file:
+            # If we used -o, the subdomains are in the file, not stdout.
+            # So we read them from the file instead.
+            try:
+                with open(output_file, 'r') as f:
+                    lines = [line.strip() for line in f if line.strip()]
+            except FileNotFoundError:
+                lines = []
+        return {"domain": domain, "subdomains": lines, "output_file": output_file if output_file else None}
+    except FileNotFoundError:
+        return {"error": "Amass is not installed or not in PATH"}
+    except subprocess.TimeoutExpired:
+        return {"error": f"Amass enum timed out after {TIMEOUT}s"}
+    except subprocess.CalledProcessError as e:
+        return {"error": f"Amass enum failed:\n{e.stderr}"}
 
 
 # ------------------------------------------------------------------------------
-# Integrated Reconnaissance Workflow
+# Full workflow
 # ------------------------------------------------------------------------------
-def full_asn_discovery(domain=None, org_name=None):
+def full_discovery(domain: str) -> dict:
     """
-    Given a domain or organisation name, discover ASNs and their netblocks.
-    If domain is provided, also attempts passive passive subdomain enumeration.
+    Run the complete Phase 0 ASN/netblock/subdomain discovery
+    for a given domain.
     """
-    result = {}
-    if org_name:
-        print(f"[*] Discovering ASNs for org: {org_name}")
-        asn_data = amass_intel_org(org_name)
-        result['org_asns'] = asn_data
+    result = {"domain": domain}
 
-    if domain:
-        print(f"[*] Discovering ASNs and prefixes for domain: {domain}")
-        domain_data = amass_intel_domain(domain)
-        result['domain_intel'] = domain_data
+    # 1. Discover ASNs from the domain's IP addresses
+    print(f"[*] Discovering ASNs for {domain}...")
+    asns = discover_asn_from_domain(domain)
+    result["asns"] = asns
 
-    # For every discovered ASN, get its prefixes
-    all_asns = set()
-    if 'org_asns' in result and isinstance(result['org_asns'], dict) and 'asns' in result['org_asns']:
-        all_asns.update(result['org_asns']['asns'])
-    if 'domain_intel' in result and isinstance(result['domain_intel'], dict) and 'asns' in result['domain_intel']:
-        all_asns.update(result['domain_intel']['asns'])
+    # 2. Get prefixes for each ASN
+    print(f"[*] Fetching netblocks for {len(asns)} ASNs...")
+    prefixes = {}
+    for asn in asns:
+        prefixes[asn] = bgpview_asn_prefixes(asn)
+    result["asn_prefixes"] = prefixes
 
-    asn_prefixes = {}
-    for asn in all_asns:
-        print(f"[*] Getting prefixes for {asn}")
-        prefixes = amass_intel_asn(asn)
-        asn_prefixes[asn] = prefixes
-    result['asn_prefixes'] = asn_prefixes
-
-    # Optional: passive enumeration of the domain
-    if domain:
-        print(f"[*] Passive subdomain enumeration for {domain}")
-        subs = amass_enum_passive(domain)
-        result['passive_subs'] = subs
+    # 3. Optional passive subdomain enumeration (if Amass is available)
+    print(f"[*] Attempting passive subdomain enumeration (Amass)...")
+    subs = amass_enum_passive(domain)
+    if "error" in subs and "not installed" in subs["error"].lower():
+        result["subdomains"] = {"warning": "Amass not installed; skipping subdomain enumeration"}
+    else:
+        result["subdomains"] = subs
 
     return result
 
 
 # ------------------------------------------------------------------------------
-# Command-line test
+# CLI
 # ------------------------------------------------------------------------------
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 amass_wrapper.py <domain> [org_name]")
+        print("Usage: python amass_wrapper.py <domain>")
         sys.exit(1)
 
-    target_domain = sys.argv[1]
-    target_org = sys.argv[2] if len(sys.argv) > 2 else None
-
-    # Example: Combine with the earlier WHOIS result to feed org name automatically
-    # (Assume we already have whois data, this is just a demo)
-    results = full_asn_discovery(domain=target_domain, org_name=target_org)
-    print(json.dumps(results, indent=2, default=str))
+    domain = sys.argv[1]
+    data = full_discovery(domain)
+    print(json.dumps(data, indent=2, default=str))
