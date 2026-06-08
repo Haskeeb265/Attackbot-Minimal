@@ -1,198 +1,212 @@
-# Recon Pipeline – Hierarchical Stage Design
+Reconnaissance & Attack‑Surface Mapping Pipeline – Revised Hierarchical Design
 
-This document defines the **implementation hierarchy** for a large‑scale web reconnaissance and attack‑surface mapping pipeline.  
-It follows a strict top‑down dependency model: each stage only uses data produced by earlier stages, eliminating circular dependencies and enabling incremental development.
+    Status: replaces previous linear draft
+    Key additions: passive OSINT, subdomain enumeration, full‑port scan, WAF fingerprinting, auth/IAM surface discovery, cloud asset enumeration, and feedback‑loop pivoting.
 
----
+1. Stage Overview
+Stage	Name	Purpose
+Pre‑0	Passive OSINT & Domain Reconnaissance	Build the target’s asset inventory without sending a single packet to the target network.
+0	Full‑Spectrum Service Discovery	Resolve, scan (all ports), and verify any reachable service — web, cloud, databases, CI/CD.
+1	Infrastructure & Defence Fingerprinting	Identify server stacks, WAF/CDN, cloud providers, and map internal routing.
+2	IAM & Authentication Surface Discovery	Locate OAuth, SAML, OIDC, Kerberos endpoints; harvest JWT issuers; detect AD CS.
+3	Web Crawl & Endpoint Enumeration	Deep spider, JS extraction, API path discovery.
+4	Content & Script Analysis	Secrets, source maps, backup files, postMessage, service workers.
+5	WAF Bypass & Injection Surface Probing	WAF fingerprinting → bypass rules → then all injection/exploitation probes.
+(loop)	Pivot Engine	Newly discovered hosts/domains re‑enter Pre‑0 or Stage 0.
 
-## Overview of Stages
+Every stage only consumes data from earlier stages. The pipeline is still strictly layered, but it now supports feedback for new asset discovery.
+2. Pre‑Stage 0 – Passive OSINT & Domain Reconnaissance
 
-| Stage | Name | Description |
-|-------|------|-------------|
-| **0** | Live Web Service Discovery | DNS resolution, port scanning, HTTP/HTTPS verification – outputs **live origins** (protocol://host:port). |
-| **1** | Host & Infrastructure Fingerprinting | Server identity, virtual‑host brute‑forcing, tunnel/service enumeration using only the base live origin. |
-| **2** | Header & Protocol Baseline Checks | Method/verb probing, request smuggling, CORS, COOP, CSP, and other header‑level checks without needing any crawled paths. |
-| **3** | Crawling & First‑Pass Endpoint Collection | Deep spider / static crawl to collect all HTML, JavaScript, API endpoints, and forms. |
-| **4** | Content, Script & Endpoint‑Driven Analysis | JavaScript static analysis, source maps, backup files, postMessage, service workers, telemetry harvesting – everything that requires **crawled endpoints**. |
-| **5** | Injection & Exploitation Probing | SSRF, cache poisoning, XXE, timing attacks, etc. – techniques that inject into parameters or headers identified in earlier stages. |
+Goal: Maximise the known target asset list without touching the target network. All active stages rely on the host list produced here.
 
-Each stage is **self‑contained** and produces data consumable by the next.  
-No module is built until its dependencies (earlier stages) are fully implemented.
+Depends on: nothing.
+Module	Description
+Subdomain enumeration	CT logs (crt.sh / Certstream), passive DNS (SecurityTrails, CIRCL), Markov‑based brute‑force (puredns + shuffledns).
+DNS zone transfer attempt	Optional check via AXFR; strictly passive unless authorised.
+Cloud asset discovery (passive)	Search for S3 buckets (grayhat warfare, bucket‑finder), Azure resources, GCP buckets via account ID permutations and leaked references.
+Code repository scanning	GitHub/GitLab search for organisation repos, secrets, configuration files, and internal hostnames (gitleaks, truffleHog, Shhgit).
+Job posting / LinkedIn analysis	Infer internal tools, firewalls, cloud stacks, and programming languages from employee profiles and job descriptions.
+Breach credential collection	Harvest (legally/passively) password dumps for credential stuffing later.
+Whois & ASN mapping	Map IP ranges and autonomous systems for the target organisation.
+Reverse DNS & DNS adjacency	Build IP‑to‑host mappings for owned ranges.
+Subdomain takeover detection	Compare A/CNAME records to known unclaimed endpoints (canonical takeover list).
 
----
+Output:
+A set of candidate domains, subdomains, IP ranges, cloud identifiers (bucket names, storage accounts).
+All items are fed into Stage 0 for validation and deeper probing.
+3. Stage 0 – Full‑Spectrum Service Discovery
 
-## Stage 0 – Live Web Service Discovery
+Goal: From the candidate list, resolv and scan every target IP on all ports, then classify what is reachable.
 
-**Goal:** Convert domain names / IPs into a clean list of **live HTTP/HTTPS origins** (canonical base URLs).  
+Depends on: Pre‑0 asset list.
+Module	Description
+DNS resolution (A/AAAA)	Bulk resolve all domains/subdomains from Pre‑0.
+IP range expansion & deduplication	Convert CIDRs to individual IPs, deduplicate with previous resolutions.
+Full TCP port scan	Scan all 65535 ports (or top‑10k‑by‑service) using masscan/naabu.
+UDP scan	Lightweight UDP probing for common services (DNS, NTP, SNMP).
+Service identification	Banner grab, probe with Nmap NSE service fingerprints.
+HTTP/HTTPS verification (raw IP)	Determine which IP:port pairs speak HTTP(S); handle redirects.
+Non‑HTTP service tagging	Mark databases (3306, 5432, 27017), S3 (via virtual hosting), Kubernetes (6443), Docker (2375), CI/CD (8080, 9090) with their protocols.
 
-### Modules
+Output:
+A list of live services with protocol, banner, IP, port, and domain association.
+Web services proceed to Stage 1; cloud/auth services are flagged for parallel Stage 2 and cloud enumeration.
+4. Stage 1 – Infrastructure & Defence Fingerprinting
 
-| # | Technique | Dependencies | Why |
-|---|-----------|--------------|-----|
-| — | DNS resolution (A records) | None | Starting point – all subsequent work requires an IP. |
-| — | TCP port scanning (common web ports) | DNS resolution | Need an IP before you can test ports. |
-| — | HTTP/HTTPS verification (raw IP) | Open ports | Confirms a web server actually speaks HTTP(S) on that port; produces canonical origin after redirects. |
+Goal: Understand the technology stack, WAF/CDN presence, and virtual hosting setup.
 
-**Output:**  
-A deduplicated list of origins, e.g. `http://1.2.3.4:8080`, `https://example.com`.  
-Stage 1 begins its work using exactly these origins.
+Depends on: Stage 0 live web origins (and non‑web service info for cloud).
+Module	Description
+WAF/CDN fingerprinting	Detect Cloudflare, Akamai, AWS WAF via response headers, cookie patterns, error pages, and behaviour. Map rule‑set heuristics.
+Web server stack fingerprinting via error pages	Triggers 4xx/5xx pages and analyses response patterns.
+HTTP/2 & HTTP/3 fingerprinting	SETTINGS frame analysis, QUIC transport parameters.
+Favicon hash technology mapping	Compute favicon hash, query Shodan/Censys.
+Virtual host brute‑force (SNI & Host header)	Use subdomain wordlists against each IP to uncover hidden hosts.
+Absolute URI injection for proxy mapping	Detect internal proxy/routing logic.
+HTTP Host header :port internal fingerprint	Probe back‑end services.
+Magic tunnel endpoint enumeration	Find ngrok/Cloudflare Tunnel endpoints.
+Cloud asset enumeration (active)	Bucket name permutation, Azure Blob store probing, K8s API server fingerprint, etcd port check, Docker daemon version.
+robots.txt / security.txt / humans.txt	Fetch well‑known files.
+Backup / staging / dev environment discovery	Subdomain brute‑force and pattern matching.
 
----
+Why this order:
+You need the live origins first, then you can identify what shields them and what runs behind them.
+5. Stage 2 – IAM & Authentication Surface Discovery
 
-## Stage 1 – Host & Infrastructure Fingerprinting
+Goal: Map every authentication entry point. A single SSO bypass can unlock dozens of services.
 
-**Goal:** Gather server technology, hidden virtual hosts, and infrastructure details using only the base origin (no crawled paths).  
+Depends on: Stage 0 live web origins (and some Stage 1 hostnames).
+Module	Description
+OpenID Connect discovery	Fetch /.well-known/openid-configuration from all origins.
+SAML metadata harvesting	Look for /saml/metadata, entityID in response XML.
+OAuth endpoint identification	Detect /oauth/authorize, /oauth/token from JS or well‑known.
+JWT issuer discovery	Extract JWT issuers from HTTP responses and JS.
+Kerberos SPN enumeration	Check for exposed AD CS web enrollment, LDAP, Kerberos endpoints.
+Active Directory CS	Detect certserv pages (AD CS) and enrolment interfaces.
+API gateway / management console fingerprinting	Identify Kong, Tyk, WSO2, etc.
+Credential‑stuffing surface mapping	Determine login form action, CSRF protections.
 
-All modules below depend on **Stage 0 (live origin)** – they must have a confirmed web endpoint to probe.
+Output:
+A list of auth endpoints, protocols, and technologies — used later to test bypasses before Stage 5 injection.
+6. Stage 3 – Web Crawl & Endpoint Collection
 
-| # | Technique | Depends on | Why |
-|---|-----------|------------|-----|
-| 1 | Web server stack fingerprinting via error pages | Stage 0 | Sends crafted requests that trigger 4xx/5xx pages; needs a live server. |
-| 2 | HTTP/2 SETTINGS frame fingerprint | Stage 0 | Must open an HTTP/2 connection to the origin. |
-| 3 | HTTP/3 QUIC transport parameter analysis | Stage 0 | Requires a QUIC handshake with the origin. |
-| 4 | Favicon hash technology fingerprinting | Stage 0 | Fetches `/favicon.ico` from the origin. |
-| 5 | Browser devtools debug port exposure | Stage 0 | Probes the host’s IP on ports 9222/9229 – no HTTP path needed, but needs an IP. |
-| 6 | Host Header / TLS SNI virtual host brute‑force | Stage 0 | Re‑uses the origin IP to test alternate Host names (SNI / HTTP Host). |
-| 7 | HTTP Host header `:port` internal fingerprint | Stage 0 | Mutates the Host header on the same origin; only needs a live socket. |
-| 8 | Absolute URI injection for proxy mapping | Stage 0 | Sends `GET http://internal-host/` to the origin to detect proxy behaviour. |
-| 9 | Magic tunnel endpoint enumeration | Stage 0 (domain name) | Constructs subdomains of known tunnel services; needs the target’s base domain. |
-| 44 | Backup, staging, dev, UAT environment discovery | Stage 0 (domain name) | Brute‑forces subdomains like `staging.`, `dev.`; only needs DNS. |
-| 25 | robots.txt / security.txt / humans.txt analysis | Stage 0 | Fetches well‑known files from the root of the origin (`/robots.txt`). |
+Goal: Collect all URLs, JavaScript files, forms, WebSocket URLs, and redirect chains from the web surface.
 
-**Why Stage 1 first?**  
-None of these techniques depend on crawled pages or extracted endpoints. They can run as soon as you have the live base URL.
+Depends on: Stage 0 (live web origins) + any new subdomain/vhosts from Stage 1.
+Module	Description
+Spider / page enumeration	Headless crawler (Playwright) and fast static link extractor.
+JavaScript file collection	Fetch all .js files (including inline extraction).
+Form & input field extraction	Record form action, method, input names.
+API schema discovery	Swagger/OpenAPI JSON, GraphQL introspection.
+Sitemap.xml / RSS feed parsing	Discover additional endpoints.
+7. Stage 4 – Content & Script Analysis
 
----
+Goal: Extract secrets, reverse engineer client‑side logic, and find hidden attack surface.
 
-## Stage 2 – Header & Protocol Baseline Checks
+Depends on: Stage 3 collected data.
+Module	Description
+JavaScript static analysis for secrets/endpoints	Regex for keys, tokens, internal URLs.
+Source map extraction (.js.map)	Recover unminified source.
+DOM‑based routing reverse engineering	Single‑page app router discovery.
+postMessage & WebSocket analysis	Listener origin checks, WS handshake verification.
+WebRTC internal IP disclosure	Gather internal IPs via headless browser.
+SSE / WebTransport endpoint discovery	Search for EventSource, WebTransport usage.
+Backup & default file exposure	Test common backup extensions on all paths.
+.git / .svn exposure	Probe version control directories.
+Telemetry DSN harvesting	Sentry, Datadog RUM keys.
+CSP / Feature‑Policy / Trusted Types analysis	Re‑analyse with fresh page context for DOM clobbering.
+Parameter collection for injection	Compile all parameter names/values from forms, URLs, JSON bodies.
+8. Stage 5 – WAF Bypass & Injection Surface Probing
 
-**Goal:** Extract every piece of information the server exposes on the root or a dummy request, and probe protocol‑level behaviour.
+Goal: Actively test injection vulnerabilities only after understanding the WAF and having a bypass strategy.
 
-These modules still only need the **base origin from Stage 0** – no path discovery required.
+Depends on: Stage 1 (WAF fingerprint), Stage 4 (parameters), Stage 2 (auth endpoints), Stage 3 (endpoints list).
 
-| # | Technique | Depends on | Why |
-|---|-----------|------------|-----|
-| 11 | HTTP method enumeration & override probing | Stage 0 | Sends OPTIONS / PUT / DELETE to root; root is enough. |
-| 12 | WebDAV OPTIONS & PROPFIND probing | Stage 0 | Probes root or a single well‑known path. |
-| 13 | HTTP request smuggling detection (CL/TE, H2.CL) | Stage 0 | Exploits proxy‑server interaction on any live endpoint. |
-| 14 | HTTP desync via hop‑by‑hop header abuse | Stage 0 | Same as smuggling; works on any live endpoint. |
-| 16 | COOP/COEP bypass assessment | Stage 0 | Parses response headers from the root page. |
-| 34 | Cache‑poisoning vector identification (unkeyed headers) | Stage 0 | Probes caching behaviour on any resource; root is fine. |
-| 36 | CSP nonce/hash/report‑uri mapping | Stage 0 | Reads `Content-Security-Policy` header from the root. |
-| 37 | Cross‑domain policy file crawl | Stage 0 | Fetches `/crossdomain.xml` and `/clientaccesspolicy.xml` from root. |
-| 40 | MIME sniffing & X‑Content‑Type‑Options bypass | Stage 0 | Checks response headers and content‑type behaviour on root. |
-| 42 | Feature‑Policy / Permissions‑Policy mis‑scoping | Stage 0 | Parses `Permissions-Policy` header from root. |
-| 41 | CSP report‑uri / report‑to endpoint data leakage | Stage 0 | Extracts reporting endpoints from CSP header; can test further later. |
+Sub‑stage 5a – WAF Bypass Engine
+Module	Description
+WAF‑specific bypass creation	Apply Cloudflare‑centric bypasses (Unicode normalization, HTTP/2 header splitting, request‑line obfuscation) or AWS WAF JSON parser differentials.
+Rate‑limit evasion	PoC tests with slowloris or randomised delays.
+Rule‑set probing	Determine which payload patterns are blocked, which are allowed.
 
-**Why Stage 2 before crawling?**  
-These are lightweight request‑response inspections that do not rely on knowing any internal paths. Doing them early provides critical context (e.g., CSP rules) for later stages and avoids wasting time on paths that are already blocked.
+Sub‑stage 5b – Injection & Exploitation
+Module	Description
+SSRF blind probe (OOB)	Inject interactsh URLs into parameters, headers, XML/JSON.
+XXE / DTD / SVG out‑of‑band	Test for entity expansion and external resource loads.
+Cache poisoning (unkeyed headers)	Manipulate cache keys.
+Web cache deception	Append static extensions to authenticated URLs.
+Request smuggling (CL/TE, H2.CL)	Test with bypass‑aware payloads.
+Timing‑based endpoint discovery	Queue‑based timing for internal routes.
+OOB file inclusion	UNC path injection.
+Auth bypass & privilege escalation	Use discovered IAM endpoints to test token manipulation, JWT key confusion, SAML forgery.
+BITB precursor detection	Analyse iframable SSO for phishing chains.
+9. Feedback Loop – Pivot Engine
 
----
+Goal: Any new hostname, IP, or service discovered anywhere in the pipeline re‑enters the workflow.
 
-## Stage 3 – Crawling & First‑Pass Endpoint Collection
+Implementation:
 
-**Goal:** Perform a deep crawl (headless or fast static) to collect all internal links, JavaScript files, form actions, WebSocket URLs, redirect chains, etc.  
+    Stage 1 virtual host discovery → new domains → re‑enter Pre‑0 to enrich with passive data, then Stage 0 full scan.
 
-### Modules
+    Stage 4 JS‑extracted internal hostnames → add to subdomain list → run Stage 0 scan against them.
 
-| # | Technique | Depends on | Why |
-|---|-----------|------------|-----|
-| — | Spider / page enumeration | Stage 0 (origins) | Navigates pages, extracts anchors, scripts, forms. Foundation for all stages below. |
+    Stage 5 SSRF that confirms internal IP → that IP + port is now a known service → feed into Stage 0 for full port scanning and service identification.
 
-**Output:**  
-A list of discovered **URLs, JS sources, API endpoints, and forms** – fed directly into Stage 4.
-
----
-
-## Stage 4 – Content, Script & Endpoint‑Driven Analysis
-
-**Goal:** Deep dive into client‑side code, hidden endpoints, backup files, and configuration leaks – everything that depends on the crawled data.
-
-| # | Technique | Depends on | Why |
-|---|-----------|------------|-----|
-| 10 | Internal URL shortener & redirect inference | Stage 3 (crawled links, redirects) | Identifies short‑URL patterns and follows redirect chains found during crawling. |
-| 15 | CORS misconfiguration crawl | Stage 3 (list of endpoints) | Sends cross‑origin requests to every discovered endpoint to test CORS headers. |
-| 17 | postMessage origin wildcard enumeration | Stage 3 (loaded pages) | Requires headless loading of pages to capture `onmessage` listeners. |
-| 18 | WebSocket handshake origin bypass & hijacking | Stage 3 (WebSocket URLs) | Needs WebSocket endpoints extracted from JavaScript or crawl. |
-| 19 | WebRTC internal IP disclosure | Stage 3 (any page) | Loads a page to execute WebRTC ICE gathering; just needs one page. |
-| 20 | SSE & WebTransport endpoint discovery | Stage 3 (JavaScript files) | Searches for `EventSource` and `WebTransport` in JS collected from crawling. |
-| 21 | JavaScript static analysis for secrets/endpoints | Stage 3 (JS files) | Directly processes all downloaded `.js` files. |
-| 22 | Source map extraction (`.js.map`) | Stage 3 (JS file URLs) | Fetches `.map` for each JavaScript file discovered. |
-| 23 | DOM‑based routing & client‑side template reverse engineering | Stage 3 (loaded pages) | Headless analysis of single‑page app routers; needs a page to render. |
-| 24 | PWA service worker scope & cache enumeration | Stage 3 (page context) | Executes JS on a loaded page to inspect `navigator.serviceWorker`. |
-| 26 | Parameter discovery (initial collection) | Stage 3 (crawled URLs, forms) | Extracts query and body parameters from URLs and form elements; later used for fuzzing. |
-| 27 | Backup & default file exposure | Stage 3 (discovered directories/paths) | Appends `~`, `.bak`, `.swp` to every found path. |
-| 28 | Log file & crash dump exposure | Stage 3 (paths) | Probes common log file names under discovered directories. |
-| 29 | `.git` / `.svn` / `.hg` / `.bzr` exposure | Stage 3 (paths) | Tests `/.git/config`, `/.svn/entries` on all base directories. |
-| 30 | Directory listing & mod_status/mod_info exposure | Stage 3 (paths) | Checks `Directory listing` on discovered folders; also probes standard diagnostic paths. |
-| 31 | Telemetry, crash‑report & error‑tracking endpoint harvesting | Stage 3 (JS files) | Regex‑parses JavaScript for Sentry DSNs, Datadog RUM keys. |
-| 38 | CSS injection & attribute selector exfiltration (surface detection) | Stage 3 (reflected parameters from forms/links) | Needs an injection point to start testing; identifies candidate reflected inputs. |
-| 39 | Trusted‑type policy & DOM clobbering surface | Stage 3 (page DOM & CSP from Stage 2) | Walks the DOM looking for `id` attributes that shadow globals; needs CSP already parsed. |
-| 47 | BITB precursor detection | Stage 3 (loaded pages) | Analyzes OAuth/SSO popups, iframe behaviour on discovered pages. |
-| 43 | Registration & account creation flow verb‑injection surface | Stage 3 (registration forms/endpoints) | Re‑plays registration request with different HTTP methods; needs the endpoint URL. |
-
-**Why after crawling?**  
-All these modules require either specific URLs discovered during crawling or the JavaScript source that the crawl fetches.
-
----
-
-## Stage 5 – Injection & Exploitation Probing
-
-**Goal:** Actively inject payloads to trigger out‑of‑band callbacks, cache manipulation, and timing attacks using parameters and endpoints gathered in Stages 3‑4.
-
-| # | Technique | Depends on | Why |
-|---|-----------|------------|-----|
-| 32 | SSRF blind probe (OOB callbacks) | Stage 4 (parameters to inject) | Needs a set of URL/domain‑valued parameters from discovery or crawling. |
-| 33 | OOB resource load probe (XXE, DTD, SVG) | Stage 4 (XML/JSON endpoints) | Requires endpoints that parse XML/JSON where an external entity can be injected. |
-| 35 | Web cache deception | Stage 4 (authenticated‑seeming endpoints) | Needs authenticated‑looking URLs (e.g., `/profile`) to try static extension trick. |
-| 45 | Request queue‑based timing attack | Stage 3 (endpoint list) | Probes for the existence of internal endpoints by measuring queue timing; uses a list of candidate paths. |
-| 46 | OOB file inclusion via SMB/WebDAV/HTTP | Stage 4 (file‑path parameters) | Replaces file paths with UNC paths to test remote file inclusion; needs file‑path parameters. |
-| 48 | Browser GPU/CSS side‑channel (cross‑origin inference) | Stage 3 (interesting cross‑origin URLs) | Requires a target URL whose existence you want to infer; uses timing from a page. |
-
-**Why Stage 5 last?**  
-These techniques are active and riskier; they depend on a thorough mapping of injectable parameters, endpoints, and behaviours collected in previous stages.
-
----
-
-## Dependency Graph (Simplified)
-
-Stage 0 – Live Origin
-│
-├──→ Stage 1 – Fingerprint (vhosts, favicon, tunnels…)
-│
-└──→ Stage 2 – Header Baseline (methods, smuggling, CSP…)
-│
-▼
-Stage 3 – Crawl (endpoints, JS, forms)
-│
-└──→ Stage 4 – Script/Content Analysis (secrets, backups, postMessage…)
-│
-└──→ Stage 5 – Injection Exploitation (SSRF, cache poison, timing…)
+The pipeline is no longer a single linear sweep but an iterative loop that expands until no new assets are found or a predefined depth is reached.
+10. Dependency Graph
 text
 
+Pre‑0 (OSINT, subdomain enumeration)
+      │
+      ▼
+Stage 0 (Full‑port scan, service discovery)
+      │
+      ├──→ Stage 1 (WAF/CDN/cloud fingerprint, vhost brute)
+      │        │
+      │        ▼
+      │   Stage 2 (IAM/Auth surface) ──────────┐
+      │        │                               │
+      │        ▼                               │
+      └──→ Stage 3 (Crawl)                     │
+                │                               │
+                ▼                               │
+           Stage 4 (Script/content analysis)   │
+                │                               │
+                └───→ Stage 5a (WAF bypass)    │
+                         │                     │
+                         └→ Stage 5b (Injection/exploit) ←─┘
+                                  │
+                                  ▼
+                           [Pivot Engine] ──→ Pre‑0 / Stage 0 (new assets)
 
-**No module may reference any output from a later stage.** This guarantees that the pipeline can be implemented, tested, and executed incrementally.
+11. Implementation Order
 
----
+    Pre‑0 – fully passive; can be built immediately.
 
-## Implementation Order
+    Stage 0 – requires Pre‑0 output; now includes full‑port scanning.
 
-1. **Stage 0** – entirely self‑contained.  
-2. **Stage 1** – uses only Stage‑0 output.  
-3. **Stage 2** – uses only Stage‑0 output (can run in parallel with Stage 1).  
-4. **Stage 3** – needs Stage‑0 live origins; runs after 1+2 complete (or concurrently if careful).  
-5. **Stage 4** – consumes Stage‑3 data (and optionally Stage‑2 headers).  
-6. **Stage 5** – consumes Stage‑4 parameters and Stage‑3 endpoint lists.
+    Stage 1 – uses live services; includes cloud and WAF identification.
 
-Stages 1 and 2 are independent of each other and can be developed in parallel once Stage 0 is ready.
+    Stage 2 – parallel to Stage 1 once web origins are known.
 
----
+    Stage 3 – uses live web origins from Stage 0.
 
-## Notes for Implementation
+    Stage 4 – needs Stage 3 data.
 
-- **External tools** (ffuf, subfinder, smuggler, etc.) can be wrapped as sub‑processes; the pipeline always normalises their output into a common JSON/line format.
-- **Headless browser** (Playwright) is required for Stage 3+ modules dealing with client‑side JavaScript.
-- **Out‑of‑band callback server** (e.g., interactsh) is needed for Stage 5 probes.
-- **Rate limiting and concurrency** controls must be applied at every stage to avoid overwhelming targets.
+    Stage 5a – WAF bypass logic, needs WAF fingerprints from Stage 1.
 
-This document can now serve as your development roadmap. You can implement each stage in sequence and be confident that no module will be blocked by missing dependencies.
+    Stage 5b – injection tests, needs bypasses and parameters.
+
+    Pivot engine – integrated into the orchestrator from the start; new findings from any stage are queued back.
+
+12. Why This Redesign is Necessary
+
+    No more blind spots: subdomain/cloud/IAM surfaces are now first‑class citizens.
+
+    WAF‑aware: injection tests aren’t blindly launched into a wall.
+
+    Passive‑first: reduces noise and improves targeting before any active packet is sent.
+
+    Self‑healing scope: the pivot engine ensures you never stop at the initial asset list.
+
+This blueprint addresses every gap raised and can be implemented incrementally — each stage can be built and tested in isolation, with a clear interface to the next.
+This response is AI-generated, for reference only.
