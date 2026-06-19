@@ -10,16 +10,20 @@ import tempfile
 import re
 from urllib.parse import urljoin, urlparse, parse_qs
 from datetime import datetime
+import urllib3
+
+# Disable SSL warnings globally
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # ── Pinned binaries (absolute paths, never trust PATH) ──────────────
-SUBFINDER_BIN = os.path.join(os.environ["USERPROFILE"], "go", "bin", "subfinder.exe")
-HTTPX_BIN     = os.path.join(os.environ["USERPROFILE"], "go", "bin", "httpx.exe")
-NAABU_BIN     = os.path.join(os.environ["USERPROFILE"], "go", "bin", "naabu.exe")
-KATANA_BIN    = os.path.join(os.environ["USERPROFILE"], "go", "bin", "katana.exe")
-FFUF_BIN      = os.path.join(os.environ["USERPROFILE"], "go", "bin", "ffuf.exe")
-DNSX_BIN      = os.path.join(os.environ["USERPROFILE"], "go", "bin", "dnsx.exe")
-TLSX_BIN      = os.path.join(os.environ["USERPROFILE"], "go", "bin", "tlsx.exe")
-NUCLEI_BIN    = os.path.join(os.environ["USERPROFILE"], "go", "bin", "nuclei.exe")
+SUBFINDER_BIN = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "subfinder.exe")
+HTTPX_BIN     = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "httpx.exe")
+NAABU_BIN     = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "naabu.exe")
+KATANA_BIN    = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "katana.exe")
+FFUF_BIN      = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "ffuf.exe")
+DNSX_BIN      = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "dnsx.exe")
+TLSX_BIN      = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "tlsx.exe")
+NUCLEI_BIN    = os.path.join(os.environ.get("USERPROFILE", ""), "go", "bin", "nuclei.exe")
 
 # ── Scope gate (sacred, deterministic, deny-by-default) ───────────────
 IN_SCOPE = ["bahria.edu.pk"]
@@ -30,6 +34,19 @@ def is_in_scope(domain: str) -> bool:
         if domain == allowed or domain.endswith("." + allowed):
             return True
     return False
+
+
+def _canonicalize_domain(domain: str) -> Optional[str]:
+    """CAF: strip wildcards, lowercase, validate."""
+    domain = domain.strip().lower().rstrip(".")
+    if domain.startswith("*."):
+        domain = domain[2:]
+    if not domain or "." not in domain:
+        return None
+    # Reject anything with invalid characters
+    if re.search(r'[^a-z0-9.\-_]', domain):
+        return None
+    return domain
 
 
 def _merge_dicts(left: Dict[str, Dict], right: Dict[str, Dict]) -> Dict[str, Dict]:
@@ -138,7 +155,7 @@ def _run_crtsh(target: str) -> List[str]:
     url = f"https://crt.sh/?q=%.{target}&output=json"
     print(f"[_run_crtsh] querying crt.sh")
     try:
-        resp = requests.get(url, timeout=30)
+        resp = requests.get(url, timeout=30, verify=False)
         resp.raise_for_status()
         entries = resp.json()
         discovered = set()
@@ -452,28 +469,52 @@ def crawl_layer(state: ReconState) -> dict:
 
 # ── LAYER: FUZZ ──────────────────────────────────────────────────────
 
-def _run_ffuf(urls: List[str], wordlist: str = None) -> List[Dict]:
-    """Directory and file brute force using ffuf."""
-    if not urls:
-        return []
-    print(f"[_run_ffuf] fuzzing {len(urls)} base urls")
+def _resolve_wordlists(preferred: Optional[str] = None) -> List[str]:
+    """Resolve wordlists with cross-platform fallbacks and a nuclear temp-file option."""
+    if preferred and os.path.exists(preferred):
+        return [preferred]
 
-    # Default wordlist paths - adjust as needed
-    default_wordlists = [
-        os.path.join(os.environ["USERPROFILE"], "wordlists", "common.txt"),
-        os.path.join(os.environ["USERPROFILE"], "wordlists", "api-endpoints.txt"),
-        os.path.join(os.environ["USERPROFILE"], "wordlists", "raft-medium-directories.txt"),
+    candidates = [
+        os.environ.get("FFUF_WORDLIST"),
+        os.path.join(os.environ.get("USERPROFILE", ""), "wordlists", "common.txt"),
+        os.path.join(os.environ.get("USERPROFILE", ""), "wordlists", "raft-medium-directories.txt"),
+        os.path.join(os.environ.get("USERPROFILE", ""), "wordlists", "api-endpoints.txt"),
+        "/usr/share/wordlists/dirb/common.txt",
+        "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt",
+        "/usr/share/seclists/Discovery/Web-Content/common.txt",
+        "/usr/share/seclists/Discovery/Web-Content/raft-medium-directories.txt",
+        "wordlists/common.txt",
+        "common.txt",
     ]
 
-    wordlists = [wordlist] if wordlist else default_wordlists
+    found = [p for p in candidates if p and os.path.exists(p)]
+    if found:
+        return found
+
+    # Nuclear fallback: generate a minimal temp wordlist so ffuf never runs empty
+    minimal = [
+        "admin", "login", "api", "test", "dev", "staging", "backup",
+        "config", "env", ".env", "wp-admin", "phpmyadmin", "robots.txt",
+        "sitemap.xml", ".git", "api/v1", "graphql", "swagger", "debug",
+        "panel", "manage", "setup", "install", "webmail", "phpinfo"
+    ]
+    tmp = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".txt")
+    tmp.write("\n".join(minimal))
+    tmp.close()
+    print(f"[_resolve_wordlists] WARNING: No wordlists found. Generated minimal fallback: {tmp.name}")
+    return [tmp.name]
+
+
+def _run_ffuf(urls: List[str], wordlist: Optional[str] = None) -> List[Dict]:
+    if not urls:
+        return []
+
+    wordlists = _resolve_wordlists(wordlist)
     all_results = []
+    temp_files_to_clean: List[str] = []
 
     for base_url in urls:
         for wl in wordlists:
-            if not os.path.exists(wl):
-                print(f"[_run_ffuf] wordlist not found: {wl}")
-                continue
-
             result = _run_cmd([
                 FFUF_BIN,
                 "-u", f"{base_url}/FUZZ",
@@ -508,6 +549,13 @@ def _run_ffuf(urls: List[str], wordlist: str = None) -> List[Dict]:
                     })
                 except json.JSONDecodeError:
                     continue
+
+    # Clean up any generated temp wordlists
+    for tf in temp_files_to_clean:
+        try:
+            os.unlink(tf)
+        except OSError:
+            pass
 
     print(f"[_run_ffuf] found {len(all_results)} potential paths")
     return all_results
@@ -610,7 +658,7 @@ def _analyze_js_for_secrets(js_files: List[Dict]) -> List[Dict]:
     for js_file in js_files[:20]:  # Limit to first 20 to avoid timeout
         url = js_file.get("url", "")
         try:
-            resp = requests.get(url, timeout=15, headers={
+            resp = requests.get(url, timeout=15, verify=False, headers={
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
             })
             content = resp.text
@@ -651,7 +699,7 @@ def _check_git_exposure(urls: List[str]) -> List[str]:
         for path in git_paths:
             try:
                 url = base.rstrip("/") + path
-                resp = requests.get(url, timeout=10, allow_redirects=False)
+                resp = requests.get(url, timeout=10, allow_redirects=False, verify=False)
                 if resp.status_code == 200 and ("ref:" in resp.text or "[core]" in resp.text):
                     exposed.append(url)
                     break  # Found one, no need to check others
@@ -675,7 +723,7 @@ def _check_env_files(urls: List[str]) -> List[str]:
         for path in env_paths:
             try:
                 url = base.rstrip("/") + path
-                resp = requests.get(url, timeout=10, allow_redirects=False)
+                resp = requests.get(url, timeout=10, allow_redirects=False, verify=False)
                 if resp.status_code == 200:
                     # Check if it looks like an env file
                     content = resp.text.lower()
@@ -775,24 +823,19 @@ def _run_dnsx(targets: List[str], query_type: str) -> List[Dict]:
         f.write("\n".join(targets))
         target_path = f.name
 
+    # Build flag based on query type
+    type_flag = {
+        "A": "-a", "AAAA": "-aaaa", "MX": "-mx", "NS": "-ns",
+        "TXT": "-txt", "CNAME": "-cname", "PTR": "-ptr", "SOA": "-soa"
+    }.get(query_type, "-a")
+
     try:
         result = _run_cmd([
-            DNSX_BIN,
-            "-l", target_path,
-            "-resp",
-            "-json",
-            "-silent",
-            "-retry", "3",
-            "-timeout", "10",
-        ] + (["-aaaa"] if query_type == "AAAA" else 
-            ["-mx"] if query_type == "MX" else
-            ["-ns"] if query_type == "NS" else
-            ["-txt"] if query_type == "TXT" else
-            ["-cname"] if query_type == "CNAME" else
-            ["-ptr"] if query_type == "PTR" else
-            ["-soa"] if query_type == "SOA" else []),
-        timeout=120
-        )
+            DNSX_BIN, "-l", target_path,
+            "-resp", "-json", "-silent",
+            "-retry", "3", "-timeout", "10",
+            type_flag,
+        ], timeout=180)
 
         if result["error"]:
             print(f"[_run_dnsx] failed: {result['error']}")
@@ -804,8 +847,7 @@ def _run_dnsx(targets: List[str], query_type: str) -> List[Dict]:
             if not line:
                 continue
             try:
-                obj = json.loads(line)
-                records.append(obj)
+                records.append(json.loads(line))
             except json.JSONDecodeError:
                 continue
         return records
@@ -1007,9 +1049,10 @@ def extract_endpoints(state: ReconState) -> dict:
         url = line.split(" [")[0] if " [" in line else line
         print(f"[extract_endpoints] fetching body from {url}")
         try:
-            resp = requests.get(url, timeout=20, allow_redirects=True, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-            })
+            resp = requests.get(
+                url, timeout=20, allow_redirects=True, verify=False,
+                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
+            )
             body = resp.text
             extracted = _extract_from_body(url, body)
             for ep in extracted:
@@ -1091,10 +1134,24 @@ def discovery_layer(state: ReconState) -> dict:
 def filter_scope(state: ReconState) -> dict:
     discovered = state.get("recon_output", [])
     kept, dropped = [], []
+    seen: Set[str] = set()
+
     for host in discovered:
-        (kept if is_in_scope(host) else dropped).append(host)
-    kept = sorted(set(kept))
-    print(f"[filter_scope] kept {len(kept)} in-scope, dropped {len(dropped)}")
+        canonical = _canonicalize_domain(host)
+        if not canonical:
+            dropped.append(host)
+            continue
+        if canonical in seen:
+            continue
+        seen.add(canonical)
+
+        if is_in_scope(canonical):
+            kept.append(canonical)
+        else:
+            dropped.append(canonical)
+
+    kept = sorted(kept)
+    print(f"[filter_scope] CAF normalized: kept {len(kept)} in-scope, dropped {len(dropped)}")
     return {"in_scope_hosts": kept}
 
 
@@ -1104,19 +1161,35 @@ def resolution_layer(state: ReconState) -> dict:
         return {
             "ip_map": {},
             "resolved_ips": [],
-            "audit_log": [{
-                "layer": "resolution", "status": "skipped"
-            }]
+            "audit_log": [{"layer": "resolution", "status": "skipped"}]
         }
 
-    ip_map = {}
-    for host in in_scope:
+    # Primary: delegate to dnsx for fast, bulk A-record resolution
+    print(f"[resolution_layer] delegating {len(in_scope)} hosts to dnsx")
+    dnsx_records = _run_dnsx(in_scope, "A")
+
+    ip_map: Dict[str, List[str]] = {host: [] for host in in_scope}
+    for entry in dnsx_records:
+        host = entry.get("host", "")
+        # dnsx JSON schema varies by version: 'a' field or 'response' string
+        raw_ips = entry.get("a") or entry.get("response", "")
+        ips: List[str] = []
+        if isinstance(raw_ips, list):
+            ips = [str(i).strip() for i in raw_ips if i]
+        elif isinstance(raw_ips, str):
+            ips = [i.strip() for i in raw_ips.split(",") if i.strip()]
+        if host in ip_map and ips:
+            ip_map[host] = ips
+
+    # Fallback: native socket only for hosts dnsx missed
+    unresolved = [h for h, ips in ip_map.items() if not ips]
+    for host in unresolved:
         try:
             addrs = socket.getaddrinfo(host, None)
             ips = list({addr[4][0] for addr in addrs})
             ip_map[host] = ips
         except Exception as e:
-            print(f"[resolution_layer] could not resolve {host}: {e}")
+            print(f"[resolution_layer] socket fallback failed for {host}: {e}")
             ip_map[host] = []
 
     unique_ips = sorted({ip for ips in ip_map.values() for ip in ips})
@@ -1125,7 +1198,12 @@ def resolution_layer(state: ReconState) -> dict:
         "ip_map": ip_map,
         "resolved_ips": unique_ips,
         "layer_results": {
-            "resolution": {"hosts": len(in_scope), "unique_ips": len(unique_ips)},
+            "resolution": {
+                "hosts": len(in_scope),
+                "unique_ips": len(unique_ips),
+                "dnsx_resolved": len(in_scope) - len(unresolved),
+                "socket_fallback": len(unresolved),
+            },
         },
     }
 
@@ -1219,7 +1297,7 @@ def propose_target(state: ReconState) -> dict:
 def scope_gate(state: ReconState) -> dict:
     target = state["target"]
     decision = "ALLOWED" if is_in_scope(target) else "DENIED"
-    print(f"[scope_gate] {target} → {decision}")
+    print(f"[scope_gate] {target} -> {decision}")
     return {"scope_decision": decision}
 
 
