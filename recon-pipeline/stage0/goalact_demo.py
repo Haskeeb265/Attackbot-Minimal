@@ -34,6 +34,7 @@ GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MAX_ITERS    = 20
 
 # ─────────────────────────────────────────────────────────
+
 # PLANNER — calls Groq to decide the next step
 # ─────────────────────────────────────────────────────────
 
