@@ -2,7 +2,7 @@ from cerebras.cloud.sdk import Cerebras
 from main_loop import run_goalact
 
 if __name__ == "__main__":
-    client = Cerebras(api_key="csk-m6p6m8hxmex2vttfdht5jv8hmwcp3j5dhex4t5k4yw35wje4")
+    client = Cerebras(api_key="")
     TARGET_QUERY = (
         "Perform passive subdomain enumeration on qbsco.net. "
         "Then resolve discovered subdomains with dnsx to find live hosts. "
