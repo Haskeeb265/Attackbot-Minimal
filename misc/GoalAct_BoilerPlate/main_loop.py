@@ -1,14 +1,18 @@
 import json
 import re
 from cerebras.cloud.sdk import Cerebras
-from config import MODEL, MAX_ITERATIONS, MAX_TOKENS, SKILLS
+import skills  # noqa: F401 — registers SKILLS executors
+
+from config import MODEL, MAX_ITERATIONS, MAX_TOKENS, SKILLS, DEFAULT_MISSION
 from scratchpad import Scratchpad
 from result_state import Result_State
 
 # Planner prompt templates
 _PLANNER_SYSTEM = """\
 You are the Planner for an autonomous security reconnaissance agent (Attackbot).
-Your job: maintain a continuously updated global plan and decide the very next action.
+Your job: given a mission and target scope, autonomously decompose the work into
+a global plan and decide the very next action. You choose tools, ordering, and
+commands — the mission does not prescribe step-by-step instructions.
 
 ## Skills available to you
 {skills_block}
@@ -42,8 +46,11 @@ Your job: maintain a continuously updated global plan and decide the very next a
 """
 
 _PLANNER_USER = """\
-## Target / Task
-{query}
+## Mission
+{mission}
+
+## Target scope
+{target}
 
 ## Execution history (scratchpad St)
 {scratchpad}
@@ -57,13 +64,16 @@ def _build_skills_block() -> str:
         lines.append(f"- {name}: {info['description']}")
     return "\n".join(lines)
 
-def call_planner(client: Cerebras, query: str, scratchpad: Scratchpad) -> dict:
+def call_planner(
+    client: Cerebras, target: str, mission: str, scratchpad: Scratchpad
+) -> dict:
     system = _PLANNER_SYSTEM.format(
         skills_block=_build_skills_block(),
         skill_names=", ".join(SKILLS.keys()),
     )
     user = _PLANNER_USER.format(
-        query=query,
+        mission=mission,
+        target=target,
         scratchpad=scratchpad.to_text(),
     )
 
@@ -103,15 +113,22 @@ def _parse_planner_output(raw: str) -> dict:
     except json.JSONDecodeError as e:
         raise ValueError(f"JSON parse failed: {e}\nRaw snippet: {raw[start:start+400]}")
 
-def run_goalact(query: str, client: Cerebras | None = None) -> tuple[dict, Scratchpad]:
+def run_goalact(
+    target: str,
+    client: Cerebras | None = None,
+    mission: str | None = None,
+) -> tuple[dict, Scratchpad]:
     if client is None:
         client = Cerebras()
+    if mission is None:
+        mission = DEFAULT_MISSION
 
     scratchpad = Scratchpad()
-    results: dict = {}
+    results: dict = {"target": target}
 
     print(f"\n{'#' * 60}")
-    print(f"[GoalAct] Task: {query}")
+    print(f"[GoalAct] Target: {target}")
+    print(f"[GoalAct] Mission: {mission}")
     print(f"{'#' * 60}\n")
 
     for iteration in range(1, MAX_ITERATIONS + 1):
@@ -121,7 +138,7 @@ def run_goalact(query: str, client: Cerebras | None = None) -> tuple[dict, Scrat
 
         # Planner: rewrite global plan, select next step
         try:
-            plan_output = call_planner(client, query, scratchpad)
+            plan_output = call_planner(client, target, mission, scratchpad)
         except Exception as e:
             print(f"[PLANNER ERROR] {e}")
             break
