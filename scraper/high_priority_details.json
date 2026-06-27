@@ -1,0 +1,828 @@
+[
+    {
+        "data": [
+            {
+                "id": "3",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackerone.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is our main application that hackers and customers use to interact with each other. It connects with a database that contains information about vulnerability reports, users, and programs. This system\u2019s backend is written in Ruby and exposes data to the client through GraphQL, rendered pages, and JSON endpoints.",
+                    "max_severity": "critical",
+                    "created_at": "2017-06-14T18:14:32.949Z",
+                    "updated_at": "2024-05-15T11:52:14.327Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "4",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "support.hackerone.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Freshdesk (as of 2023-04-28), and as such these reports should be submitted to the appropriate program: https://hackerone.com/freshworks",
+                    "max_severity": "none",
+                    "created_at": "2017-06-14T18:16:54.281Z",
+                    "updated_at": "2023-07-13T09:08:54.752Z"
+                }
+            },
+            {
+                "id": "5",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.hackerone.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is our public API that customers use to read and interact with reports. To look for vulnerabilities in this asset, create a sandboxed program, select HackerOne Professional or HackerOne Enterprise in the Product Edition settings page, and create an API token. This system\u2019s backend is written in Ruby, converts the request to a GraphQL query, and serializes the GraphQL result to JSON.",
+                    "max_severity": "critical",
+                    "created_at": "2017-06-14T18:18:35.455Z",
+                    "updated_at": "2024-05-15T11:52:00.995Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "6",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.hackerone.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is our marketing website. It does not contain any report or customer information. It may store information about hackers, such as information collected through the [penetration tester sign up form](https://www.hackerone.com/hackers/pentest-community-application). The website runs Drupal with a few customizations.",
+                    "max_severity": "critical",
+                    "created_at": "2017-06-14T18:20:03.407Z",
+                    "updated_at": "2024-05-15T11:52:29.888Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "8",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "https://*.hackerone-user-content.com/",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.\n\n",
+                    "max_severity": "low",
+                    "created_at": "2017-06-14T18:25:23.670Z",
+                    "updated_at": "2024-05-15T11:58:00.278Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "6917",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "errors.hackerone.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "A separate domain that we use to capture information of client and server side exceptions.",
+                    "max_severity": "high",
+                    "created_at": "2018-03-13T10:10:38.942Z",
+                    "updated_at": "2024-05-15T11:57:37.053Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "6918",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "https://*.hackerone-ext-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This domain is used to serve static marketing assets. No confidential information is stored on these systems. However, it is important to us that these assets cannot be updated by an unauthorized third-party.",
+                    "max_severity": "medium",
+                    "created_at": "2018-03-13T10:19:13.561Z",
+                    "updated_at": "2024-05-15T11:57:49.825Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "14979",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "*.vpn.hackerone.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The HackerOne hacker VPN is used by hackers and HackerOne personnel. We'd be most interested in vulnerabilities that allow you to route traffic to other clients (lack of client isolation), routing traffic to internal HackerOne / Amazon networks, and bypassing [sslsplit](https://github.com/droe/sslsplit). Traffic routed through the VPN will originate from `66.232.20.0/23` or `206.166.248.0/23` (HackerOne netblocks). The VPN is based on OpenVPN.",
+                    "max_severity": "critical",
+                    "created_at": "2018-09-28T18:44:38.839Z",
+                    "updated_at": "2024-05-15T11:56:08.634Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "130959",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "app.pullrequest.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Please use your `@wearehackerone.com` email address when signing up.",
+                    "max_severity": "critical",
+                    "created_at": "2022-06-03T14:47:22.812Z",
+                    "updated_at": "2024-05-15T11:55:39.396Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "130960",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "reviewer.pullrequest.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Please use your `@wearehackerone.com` email address when signing up.",
+                    "max_severity": "critical",
+                    "created_at": "2022-06-03T14:47:22.848Z",
+                    "updated_at": "2024-05-15T11:55:48.370Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "130963",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "ctf.hacker101.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The Hacker101 CTF domain, ctf.hacker101.com, is not connected to HackerOne's production environment. It is hosted on Amazon AWS. Users authenticate through HackerOne.com (OAuth). The maximum bounty for any vulnerability on this asset is $500 right now. The CTF challenges itself are not in scope for our bug bounty program.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-03T14:50:11.172Z",
+                    "updated_at": "2024-05-15T11:57:00.052Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "130964",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains attachments of reports and activities. These attachments may contain confidential information. A signed request is required to download an object.",
+                    "max_severity": "critical",
+                    "created_at": "2022-06-03T14:51:28.822Z",
+                    "updated_at": "2024-07-29T09:36:43.094Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "130965",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.hackeronestatus.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Atlassian, and as such these reports should be submitted to their program instead via https://bugcrowd.com/statuspage. ",
+                    "max_severity": "none",
+                    "created_at": "2022-06-03T14:53:58.005Z",
+                    "updated_at": "2022-06-03T14:53:58.005Z"
+                }
+            },
+            {
+                "id": "130966",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "go.hacker.one",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Marketo, and as such these reports should be submitted to them directly.",
+                    "max_severity": "none",
+                    "created_at": "2022-06-03T14:55:31.134Z",
+                    "updated_at": "2023-07-13T09:13:06.299Z"
+                }
+            },
+            {
+                "id": "130967",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "info.hacker.one",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Unbounce, and as such these reports should be submitted to them via https://unbounce.com/security/.",
+                    "max_severity": "none",
+                    "created_at": "2022-06-03T14:55:31.167Z",
+                    "updated_at": "2022-06-03T14:55:31.167Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "130968",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "ma.hacker.one",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Marketo, and as such these reports should be submitted to them directly.",
+                    "max_severity": "none",
+                    "created_at": "2022-06-03T14:55:31.194Z",
+                    "updated_at": "2022-06-03T14:55:31.194Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "131853",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "a5s.hackerone-ext-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This domain is used to serve static marketing assets. No confidential information is stored on these systems. However, it is important to us that these assets cannot be updated by an unauthorized third-party.",
+                    "max_severity": "medium",
+                    "created_at": "2022-06-07T12:37:46.103Z",
+                    "updated_at": "2024-05-15T11:53:15.251Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131854",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "b5s.hackerone-ext-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This domain is used to serve static marketing assets. No confidential information is stored on these systems. However, it is important to us that these assets cannot be updated by an unauthorized third-party.",
+                    "max_severity": "medium",
+                    "created_at": "2022-06-07T12:37:46.130Z",
+                    "updated_at": "2024-05-15T11:53:28.566Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131855",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackerone-ext-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This domain is used to serve static marketing assets. No confidential information is stored on these systems. However, it is important to us that these assets cannot be updated by an unauthorized third-party.",
+                    "max_severity": "medium",
+                    "created_at": "2022-06-07T12:37:46.154Z",
+                    "updated_at": "2024-05-15T11:53:40.312Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131856",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackathon-photos.hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.181Z",
+                    "updated_at": "2024-05-15T11:54:28.432Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131857",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "cover-photos.hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.208Z",
+                    "updated_at": "2024-05-15T11:53:56.346Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131858",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackathon-photos-us-east-2.hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.238Z",
+                    "updated_at": "2024-05-15T11:54:13.264Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131859",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "profile-photos.hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.262Z",
+                    "updated_at": "2024-05-15T11:55:11.326Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131860",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.284Z",
+                    "updated_at": "2024-05-15T11:54:44.432Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "131861",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "profile-photos-us-east-2.hackerone-user-content.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an Amazon S3 bucket that contains profile and cover photos of users and programs. It does not contain any highly confidential information and would not impact the main application if it would be unreachable. A signed request is required to download an object.",
+                    "max_severity": "low",
+                    "created_at": "2022-06-07T12:37:46.306Z",
+                    "updated_at": "2024-05-15T11:55:00.151Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/security/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/security/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/security/structured_scopes?page%5Bnumber%5D=2"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "15902",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "support.cloudflare.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Zendesk, and as such these reports should be submitted to their program instead via @Zendesk",
+                    "max_severity": "none",
+                    "created_at": "2018-10-29T05:20:00.521Z",
+                    "updated_at": "2023-01-24T12:44:46.431Z"
+                }
+            },
+            {
+                "id": "92116",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "dash.cloudflare.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The Cloudflare dashboard (https://dash.cloudflare.com/) and any direct calls from the dashboard to other Cloudflare owned resources are considered in scope.",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:05:18.302Z",
+                    "updated_at": "2023-01-24T12:44:45.364Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92118",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "cloudflareworkers.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is a Cloudflare Workers test site.\nCloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.\nhttps://www.cloudflare.com/products/cloudflare-workers/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:08:16.833Z",
+                    "updated_at": "2023-01-24T12:44:45.654Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92119",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.teams.cloudflare.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:08:46.981Z",
+                    "updated_at": "2023-01-24T12:44:45.719Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92120",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Cloudflare Pages",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "https://developers.cloudflare.com/pages",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:09:24.726Z",
+                    "updated_at": "2023-10-26T15:23:05.850Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92121",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "CDNJS",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "CDNJS is a free and open source project to organize and provide popular front-end web development resources to developers via a fast CDN infrastructure without usage limitations and fees.\n\nhttps://github.com/cdnjs/cdnjs\nhttps://blog.cloudflare.com/an-update-on-cdnjs/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:10:02.773Z",
+                    "updated_at": "2023-01-24T12:44:47.049Z"
+                }
+            },
+            {
+                "id": "92122",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "WARP Mobile Apps",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Download on Android: https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone\nDownload on iOS: https://itunes.apple.com/us/app/1-1-1-1-faster-internet/id1423538627\nWARP is a free VPN for mobile phones. The app can be used as a 1.1.1.1 DNS resolver or VPN or our premium paid service Warp+. It works on wireguard protocol. See documentation section for more details.\nAreas of interest:\nCan other apps snoop with Warp\nDowngrade of connections\nMisconfiguration in the apps or backend\nMITM attacks\n\nOut of scope:\nUsing WARP+ features without paying",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:10:51.885Z",
+                    "updated_at": "2024-05-10T17:52:05.509Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92123",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Cloudflare Access",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Cloudflare Access is an application that controls access to your sites and integrates with social and enterprise identity providers (IdP) for managing user credentials.\n\nhttps://www.cloudflare.com/products/cloudflare-access/\n\n",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:13:18.371Z",
+                    "updated_at": "2023-01-24T12:44:47.206Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92124",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Stream",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Cloudflare Stream is an easy-to-use, affordable, on-demand video streaming platform. Stream seamlessly integrates video storage, encoding, and a customizable player with Cloudflare\u2019s fast, secure, and reliable global network.\n\nhttps://www.cloudflare.com/products/cloudflare-stream/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:14:31.562Z",
+                    "updated_at": "2023-01-24T12:44:47.281Z"
+                }
+            },
+            {
+                "id": "92125",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "1.1.1.1 Resolver",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "\nA blazing fast DNS resolver built for private browsing.\nhttps://1.1.1.1/\nhttps://developers.cloudflare.com/1.1.1.1/what-is-1.1.1.1/\nhttps://developers.cloudflare.com/1.1.1.1/setting-up-1.1.1.1/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:41:52.371Z",
+                    "updated_at": "2023-01-24T12:44:47.356Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92126",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Magic Transit",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Magic Transit is a software-defined networking product that offers IP transit with DDoS protection, next-gen firewall, traffic acceleration and more for your on-premise and data center networks from a single, easy-to-use interface.\n\nhttps://www.cloudflare.com/magic-transit/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:42:32.697Z",
+                    "updated_at": "2023-01-24T12:44:47.425Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92128",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Spectrum",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "\nSpectrum extends the power of Cloudflare's DDoS, TLS, and IP Firewall to TCP and UDP-based services, keeping them online and secure.\nhttps://www.cloudflare.com/products/cloudflare-spectrum/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:43:43.653Z",
+                    "updated_at": "2023-01-24T12:44:47.569Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92129",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Load Balancing",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "\nCloudflare's Load Balancing automatically reduces latency by directing visitors to infrastructure closest to them.\n\nhttps://www.cloudflare.com/load-balancing/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:44:19.059Z",
+                    "updated_at": "2023-01-24T12:44:47.670Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92130",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Bot Management",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Cloudflare enables you to manage bots with speed and accuracy by applying several detection methods: Behavioral analysis, machine learning, and fingerprinting.\nhttps://www.cloudflare.com/products/bot-management/",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T00:45:06.531Z",
+                    "updated_at": "2023-01-24T12:44:47.739Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92131",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.cloudflare.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T01:34:27.939Z",
+                    "updated_at": "2023-01-24T12:44:45.786Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92132",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Cloudflare Zero Trust/Cloudflare One",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T01:35:22.411Z",
+                    "updated_at": "2023-01-24T12:44:47.805Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92133",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.cloudflare.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Excluding support.cloudflare.com, community.cloudflare.com and other SaaS applications",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T01:38:12.302Z",
+                    "updated_at": "2023-01-24T12:44:45.858Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "92134",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Open source tools from Cloudflare",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "https://github.com/cloudflare",
+                    "max_severity": "critical",
+                    "created_at": "2022-02-01T01:39:46.459Z",
+                    "updated_at": "2023-01-24T12:44:47.872Z"
+                }
+            },
+            {
+                "id": "94897",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Area 1",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-03-07T22:34:19.515Z",
+                    "updated_at": "2024-10-04T06:05:20.136Z"
+                }
+            },
+            {
+                "id": "103820",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Cloudflare D1",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "https://blog.cloudflare.com/introducing-d1/",
+                    "max_severity": "critical",
+                    "created_at": "2022-05-11T15:35:51.512Z",
+                    "updated_at": "2023-01-24T12:44:48.001Z"
+                }
+            },
+            {
+                "id": "103824",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Cloudflare R2",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "https://blog.cloudflare.com/r2-open-beta/",
+                    "max_severity": "critical",
+                    "created_at": "2022-05-11T15:40:28.505Z",
+                    "updated_at": "2023-01-24T12:44:48.066Z"
+                }
+            },
+            {
+                "id": "113219",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "http://github.com/cloudflare",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "-",
+                    "max_severity": "critical",
+                    "created_at": "2022-05-18T10:14:05.317Z",
+                    "updated_at": "2024-10-04T06:00:05.177Z"
+                }
+            },
+            {
+                "id": "194426",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "community.cloudflare.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-13T10:28:49.805Z",
+                    "updated_at": "2023-01-24T12:44:46.704Z"
+                }
+            },
+            {
+                "id": "205279",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/cloudflare/workerd",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-09-27T17:15:13.677Z",
+                    "updated_at": "2023-01-24T12:44:46.893Z"
+                }
+            },
+            {
+                "id": "236679",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "support.cloudflarewarp.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is hosted by Zendesk, and as such these reports should be submitted to their program instead via @zendesk.",
+                    "max_severity": "none",
+                    "created_at": "2022-10-26T09:58:18.027Z",
+                    "updated_at": "2023-01-24T12:44:46.786Z"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/cloudflare/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/cloudflare/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/cloudflare/structured_scopes?page%5Bnumber%5D=3"
+        }
+    }
+]

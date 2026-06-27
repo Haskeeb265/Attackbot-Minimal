@@ -1,0 +1,4152 @@
+[
+    {
+        "data": [],
+        "links": {}
+    },
+    {
+        "data": [],
+        "links": {}
+    },
+    {
+        "data": [],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "2750",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "WordPress Core",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Download source code from: https://wordpress.org/download/source/",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:22:57.445Z",
+                    "updated_at": "2018-11-22T19:56:00.602Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2751",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "BuddyPress Core",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Download source code from: https://buddypress.org/download/",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:23:29.176Z",
+                    "updated_at": "2018-11-22T19:56:20.927Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2752",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "bbPress Core",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Download source code from: https://bbpress.org/download/",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:24:34.612Z",
+                    "updated_at": "2026-06-11T21:59:30.580Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2753",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "All wordpress.org domains that **are not listed in other assets**, including (but not limited to) the following:\n* login.wordpress.org\n* developer.wordpress.org\n* make.wordpress.org\n* translate.wordpress.org\n* global.wordpress.org, {locale}.wordpress.org (e.g., de.wordpress.org, es-mx.wordpress.org)\n* learn.wordpress.org",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:34:57.382Z",
+                    "updated_at": "2023-05-15T16:31:40.026Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "2754",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:36:40.684Z",
+                    "updated_at": "2017-10-21T14:36:40.751Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2755",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.buddypress.org,bbpress.org,profiles.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:37:26.340Z",
+                    "updated_at": "2023-05-15T16:31:40.101Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "2756",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wordcamp.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:37:54.442Z",
+                    "updated_at": "2023-05-15T16:31:40.164Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "2757",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "codex.wordpress.org,codex.bbpress.org,codex.buddypress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "These are wikis, they're intended to be freely edited by anonymous users. We are not interested in vulnerabilities unless they have a severe impact.",
+                    "max_severity": "medium",
+                    "created_at": "2017-10-21T14:38:36.709Z",
+                    "updated_at": "2017-10-21T14:38:36.741Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "2758",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "mercantile.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This site runs uses [the WooCommerce plugin](https://woocommerce.com/), but we don't accept reports for that. We only accept reports for our custom code. If you find any vulnerabilities that are also present in WooCommerce itself, please [report them to Automattic](/automattic).\n\nPlease don't submit test orders (especially automated ones). They don't test any of our custom code, and are a pain to clean up.\n\nAdditionally, price manipulation is a common invalid report, please see #682344.",
+                    "max_severity": "medium",
+                    "created_at": "2017-10-21T14:39:14.015Z",
+                    "updated_at": "2021-03-02T17:40:52.979Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "2759",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "*.trac.wordpress.org, *.svn.wordpress.org, *.git.wordpress.org, github.com/WordPress",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "**Do _not_ pentest Trac instances**, it's very annoying to clean up after. Setup a local environment instead; the custom source code is available via the Git command below, in the `trac.wordpress.org` subfolder. **If you ignore this you'll forfeit any bounty.**\n\nThe projects here are kept mostly for archival purposes and non-critical information disclosure will generally not be eligible for a bounty.\n\nOnly report vulnerabilities in our custom code, don't report vulnerabilities that only exist upstream in Trac itself. Report those directly to info@edgewall.com.\n\nAll source code that isn't behind authentication is intended to be public. The source code itself has `High` CVSS impact scores. The applications that manage the code (Trac, Git, SVN, etc) have `Low` scores, except for vulnerabilities that allow modifications to the source code.\n\nMost of the source code in these domains is contained in the \"meta\" repository: `git clone git://meta.git.wordpress.org/`",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:40:53.976Z",
+                    "updated_at": "2024-05-17T12:42:48.022Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "2760",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "irclogs.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "These are public logs of very old conversations. We are not interested in vulnerabilities unless they have a severe impact (e.g., RCE, XSS, modifying the logs, etc). DoS is not severe in this case.",
+                    "max_severity": "low",
+                    "created_at": "2017-10-21T14:41:21.207Z",
+                    "updated_at": "2019-03-20T16:52:43.926Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "2761",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "lists.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "We are not interested in vulnerabilities unless they have a severe impact.",
+                    "max_severity": "medium",
+                    "created_at": "2017-10-21T14:41:55.774Z",
+                    "updated_at": "2018-11-22T19:31:03.886Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "2762",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "planet.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-21T14:42:23.396Z",
+                    "updated_at": "2017-10-21T14:42:23.421Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "2763",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wordpress.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "For bounty purposes, only the following *.wordpress.net sites are eligible:\n-jobs\n-playground",
+                    "max_severity": "low",
+                    "created_at": "2017-10-21T14:42:56.436Z",
+                    "updated_at": "2026-06-21T18:26:52.970Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "2764",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wordpress.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "All WordPress.com vulnerabilities should be reported to [Automattic's HackerOne program](https://hackerone.com/automattic). \n\n**WordPress.com vulnerabilities reported here will be marked as `Not Applicable`.**",
+                    "max_severity": "none",
+                    "created_at": "2017-10-21T14:44:05.525Z",
+                    "updated_at": "2023-05-15T16:31:40.287Z"
+                }
+            },
+            {
+                "id": "2765",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "status.wordpress.org,glotpress.blog,wordpress.tv",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "These are hosted on WordPress.com and we don't have access to modify the code, servers, etc. Check [Automattic's HackerOne program](https://hackerone.com/automattic) for details on reporting vulnerabilities with WordPress.com sites.",
+                    "max_severity": "none",
+                    "created_at": "2017-10-21T14:45:31.587Z",
+                    "updated_at": "2018-11-22T19:23:48.518Z"
+                }
+            },
+            {
+                "id": "3705",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "335703880",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "**Please, report vulnerabilities for the WordPress mobile apps through the [Automattic HackerOne page](/automattic).**\n",
+                    "max_severity": "none",
+                    "created_at": "2017-11-20T14:08:56.629Z",
+                    "updated_at": "2018-11-22T19:27:11.600Z"
+                }
+            },
+            {
+                "id": "3706",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "org.wordpress.android",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "**Please, report vulnerabilities for the WordPress mobile apps through the [Automattic HackerOne page](/automattic).**\n",
+                    "max_severity": "none",
+                    "created_at": "2017-11-20T14:12:10.447Z",
+                    "updated_at": "2018-11-22T19:27:05.233Z"
+                }
+            },
+            {
+                "id": "3707",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/wordpress-mobile/",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "**Please, report vulnerabilities for the WordPress mobile apps through the [Automattic HackerOne page](/automattic).**\n",
+                    "max_severity": "none",
+                    "created_at": "2017-11-20T14:13:55.635Z",
+                    "updated_at": "2018-11-22T19:25:57.236Z"
+                }
+            },
+            {
+                "id": "5545",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "Gutenberg",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Download source code from https://github.com/WordPress/gutenberg",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-24T15:31:40.584Z",
+                    "updated_at": "2018-11-22T19:57:26.655Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "17141",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "GlotPress",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "All code located under [the GlotPress organization](https://github.com/GlotPress/) on GitHub.\n\nThe most important target is the `glotpress-wp` repository. Other repositories are in scope, but may have a lower importance.",
+                    "max_severity": "critical",
+                    "created_at": "2018-11-22T19:34:20.023Z",
+                    "updated_at": "2018-11-22T19:53:08.061Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "17142",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "WP-CLI",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "All code located under [the WP-CLI organization](https://github.com/wp-cli) on GitHub.\n\nThe most important targets are the main `wp-cli` repository, and any repositories for commands that are bundled with the distributed `wp-cli` source code, like `cache-command`, `scaffold-command`, etc.\n\nOther repositories are in scope, but may have a lower importance.",
+                    "max_severity": "critical",
+                    "created_at": "2018-11-22T19:35:01.523Z",
+                    "updated_at": "2018-11-22T19:53:17.477Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "17143",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "Official WordPress plugins",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Only the following plugins that are officially maintained by WordPress.org are in scope.\n\n* [Classic Editor](https://wordpress.org/plugins/classic-editor/)\n* [Create Block Theme](https://wordpress.org/plugins/create-block-theme/)\n* [Secure Custom Fields](https://wordpress.org/plugins/secure-custom-fields/)\n* [SQLite Database Integration](https://wordpress.org/plugins/sqlite-database-integration/)\n\nAny other plugins, including those that list `wordpressdotorg` as a contributor or developer, are not in scope.",
+                    "max_severity": "critical",
+                    "created_at": "2018-11-22T19:50:18.784Z",
+                    "updated_at": "2026-06-10T16:03:36.461Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "17572",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "wordpressfoundation.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2018-12-02T23:34:05.297Z",
+                    "updated_at": "2019-03-20T16:54:30.982Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "20106",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "munin-*.wordpress.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "We are not interested in vulnerabilities unless they have a severe impact (e.g., RCE, SSRF). Metrics data is intentionally made public.",
+                    "max_severity": "low",
+                    "created_at": "2019-01-14T17:29:19.798Z",
+                    "updated_at": "2023-05-15T16:33:00.781Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "none"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/wordpress/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/wordpress/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/wordpress/structured_scopes?page%5Bnumber%5D=2"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "11943",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:34:19.782Z",
+                    "updated_at": "2018-07-06T18:34:19.827Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11944",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "player.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:34:37.173Z",
+                    "updated_at": "2018-07-06T18:34:37.222Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11945",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:34:55.194Z",
+                    "updated_at": "2018-07-06T18:34:55.262Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11946",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.cloud.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Upload endpoints such as \\ *.cloud.vimeo.com",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:35:45.081Z",
+                    "updated_at": "2023-05-15T16:32:21.724Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11947",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "vimeopro.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Vimeo Pro portfolios hosted on vimeopro.com",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:36:13.031Z",
+                    "updated_at": "2018-07-06T18:36:13.079Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11948",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "http://vimeo.com/ondemand",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Vimeo On Demand hosted sites: https://vimeo.com/ondemand",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:36:44.073Z",
+                    "updated_at": "2018-07-06T18:36:44.106Z"
+                }
+            },
+            {
+                "id": "11949",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "http://vimeo.com/api",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Legacy API endpoints such as vimeo.com/api",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T18:37:25.758Z",
+                    "updated_at": "2018-07-06T18:37:25.803Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11990",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "425194759",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T19:27:33.933Z",
+                    "updated_at": "2018-07-06T19:27:33.977Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "11992",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.vimeo.android.videoapp",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-06T19:29:54.297Z",
+                    "updated_at": "2018-07-06T19:29:54.353Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "medium",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "14963",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "See scope/program for more definitive information. Does not include 3rd parties under vimeo.com domain names. Subject to realization we missed one.",
+                    "max_severity": "critical",
+                    "created_at": "2018-09-27T20:52:04.880Z",
+                    "updated_at": "2023-05-15T16:32:40.650Z"
+                }
+            },
+            {
+                "id": "14964",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "checkout.vimeo.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is an S3 bucket behind a CDN. We will be responsible for things WE can control about this (Content, S3 permissions, CDN headers, etc). For items beyond our control, those are not in scope.",
+                    "max_severity": "critical",
+                    "created_at": "2018-09-27T20:53:37.643Z",
+                    "updated_at": "2018-09-27T20:53:37.673Z"
+                }
+            },
+            {
+                "id": "24998",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.email.vimeo.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "3rd party",
+                    "max_severity": "none",
+                    "created_at": "2019-04-18T15:48:36.274Z",
+                    "updated_at": "2023-05-15T16:33:28.632Z"
+                }
+            },
+            {
+                "id": "25448",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WINDOWS_APP_STORE_APP_ID",
+                    "asset_identifier": "All",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "No MS versions will be accepted.",
+                    "max_severity": "none",
+                    "created_at": "2019-04-25T19:12:14.315Z",
+                    "updated_at": "2019-04-25T19:12:14.397Z"
+                }
+            },
+            {
+                "id": "40231",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "http://vimeo.com/create",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-11-14T15:00:32.127Z",
+                    "updated_at": "2019-11-14T15:00:32.142Z"
+                }
+            },
+            {
+                "id": "40524",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "vimeo.magisto.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Only as it integrates with Vimeo. For anything about it itself, please report on the Magisto program",
+                    "max_severity": "critical",
+                    "created_at": "2019-11-20T19:42:38.279Z",
+                    "updated_at": "2019-11-20T19:42:38.292Z"
+                }
+            },
+            {
+                "id": "44650",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.vimeocreate.videoeditor.moviemaker",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-02-25T21:27:07.597Z",
+                    "updated_at": "2020-02-25T21:27:07.614Z"
+                }
+            },
+            {
+                "id": "44651",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "1491791513",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-02-25T21:27:59.540Z",
+                    "updated_at": "2020-02-25T21:27:59.555Z"
+                }
+            },
+            {
+                "id": "46443",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "vimeo.atlassian.net",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Although it has the name VIMEO, this is not our instance.",
+                    "max_severity": "none",
+                    "created_at": "2020-04-04T00:51:52.645Z",
+                    "updated_at": "2020-04-04T00:51:52.662Z"
+                }
+            },
+            {
+                "id": "87420",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wirewax.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Do not perform any testing on these assets.",
+                    "max_severity": "none",
+                    "created_at": "2021-11-18T15:40:26.588Z",
+                    "updated_at": "2023-05-15T16:38:11.103Z"
+                }
+            },
+            {
+                "id": "87421",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wirewax.app",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Do not perform any testing on these assets.",
+                    "max_severity": "none",
+                    "created_at": "2021-11-18T15:41:08.201Z",
+                    "updated_at": "2023-05-15T16:38:11.172Z"
+                }
+            },
+            {
+                "id": "87422",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.wibbitz.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Do not perform any testing on these assets.",
+                    "max_severity": "none",
+                    "created_at": "2021-11-18T15:42:29.560Z",
+                    "updated_at": "2023-05-15T16:38:11.242Z"
+                }
+            },
+            {
+                "id": "172397",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "vhx.tv",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The VHX homepage at vhx.tv redirects to a login page at ott.vimeo.com. Please submit these reports to the VHX program.",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-27T20:25:04.223Z",
+                    "updated_at": "2022-07-29T17:12:21.778Z"
+                }
+            },
+            {
+                "id": "172398",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "embed.vhx.tv",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-27T20:25:41.874Z",
+                    "updated_at": "2022-07-29T17:12:16.296Z"
+                }
+            },
+            {
+                "id": "172399",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.vhx.tv",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-27T20:26:13.494Z",
+                    "updated_at": "2022-07-29T17:12:13.762Z"
+                }
+            },
+            {
+                "id": "172400",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.vhx.tv",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "**EXCEPT for community.vhx.tv, 3rd party sites and EXCEPT a single-customer configured site**\n\nThe vulnerability must affect every site in order to be valid.",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-27T20:27:17.248Z",
+                    "updated_at": "2023-05-15T16:39:07.633Z"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/vimeo/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/vimeo/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/vimeo/structured_scopes?page%5Bnumber%5D=3"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "61408",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.linkedin.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-02-04T21:07:35.462Z",
+                    "updated_at": "2022-05-18T15:29:01.909Z"
+                }
+            },
+            {
+                "id": "61410",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.linkedin.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-02-04T21:07:47.690Z",
+                    "updated_at": "2022-05-18T15:29:01.912Z"
+                }
+            },
+            {
+                "id": "61412",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "288429040",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-02-04T21:08:30.628Z",
+                    "updated_at": "2022-05-18T15:29:01.915Z"
+                }
+            },
+            {
+                "id": "61413",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.linkedin.android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-02-04T21:09:02.398Z",
+                    "updated_at": "2022-05-18T15:29:01.913Z"
+                }
+            },
+            {
+                "id": "245738",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "business.linkedin.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "high",
+                    "created_at": "2022-11-04T18:06:55.632Z",
+                    "updated_at": "2022-11-04T18:20:28.657Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "none"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "6651",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.priceline.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-03-05T17:43:58.934Z",
+                    "updated_at": "2025-05-22T13:16:25.929Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6652",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "secure.rezserver.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2018-03-05T17:44:38.817Z",
+                    "updated_at": "2025-09-03T12:27:00.967Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6653",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "reservations.rezserver.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2018-03-05T17:45:01.895Z",
+                    "updated_at": "2025-09-03T12:26:59.034Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6654",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "cruises.priceline.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-03-05T17:45:18.458Z",
+                    "updated_at": "2025-05-22T13:18:15.247Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6655",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.airportrentalcars.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "\nAirportrentalcars.com is current *not* in scope. Please do not test it. \n",
+                    "max_severity": "none",
+                    "created_at": "2018-03-05T17:45:48.007Z",
+                    "updated_at": "2023-01-24T12:27:13.018Z"
+                }
+            },
+            {
+                "id": "6656",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.bookingholdings.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2018-03-05T17:52:54.272Z",
+                    "updated_at": "2023-09-05T15:23:55.204Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "none",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "6658",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "336381998",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "[Priceline iOS App](https://apps.apple.com/us/app/priceline-hotel-travel-deals/id336381998)",
+                    "max_severity": "critical",
+                    "created_at": "2018-03-05T18:02:43.101Z",
+                    "updated_at": "2025-05-22T13:21:43.128Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6659",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.priceline.android.negotiator",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-03-05T18:08:09.302Z",
+                    "updated_at": "2025-05-22T13:22:15.937Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "6660",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "www.priceline.com/vp-web/* ",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Path www.priceline.com/vp-web/* will be decommissioned soon so it is not eligible for bounty",
+                    "max_severity": "none",
+                    "created_at": "2018-03-05T18:18:14.688Z",
+                    "updated_at": "2023-01-24T12:27:14.682Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "none",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "12698",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.rezserver.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "**Rezserver API**\n_Policy Guidance_\nWe are not currently providing credentials for this asset.\n\n_Rules_\n- Don't use automated tools or scanners\n- Don't DDoS\n\n_Out of scope vulnerabilities_\n- Missing best practices in HTTP header configuration.\n- Any activity that could lead to the disruption of our service (DoS)\n- Missing best practices in SSL/TLS configuration\n- Account/email enumeration issues\n- Disclosure of software version numbers (we maintain forks of several tools, and apply security patches accordingly)\n- Content Spoofing/Text Injection that cannot be leveraged for XSS or sensitive data disclosure\n\n_Endpoints out of scope_\n- Hotel: BookRequest\n- Air: All endpoints\n- Car: All endpoints\n- Custom: All endpoints\n",
+                    "max_severity": "none",
+                    "created_at": "2018-07-23T15:47:23.421Z",
+                    "updated_at": "2025-09-03T12:26:51.911Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "13108",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "admin.rezserver.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "**Policy Guidance**\nWe are not currently providing credentials for this asset.\n\n**Rules of Engagement**\n- In request headers use 'hackerone-{your username}' for user-agent\n- Keep low volume of requests - Automated testing is not permitted\n- Do not Fuzz Contact forms\n- Do not Fuzz \"Request Account Activation\" & \"Request Product Activation\"\n- Do not Fuzz request for \"Change Request under Sites\" \n- Do not modify other hacker_* user accounts under Hacker one test account\n\n**Non-Qualifying Vulnerabilities and Exclusions**\n- CSRF ",
+                    "max_severity": "none",
+                    "created_at": "2018-08-02T13:21:25.994Z",
+                    "updated_at": "2025-09-03T12:26:12.520Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "87518",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "press.priceline.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2021-11-19T16:58:20.848Z",
+                    "updated_at": "2023-01-24T12:27:12.827Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "204326",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.getaroom.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-09-27T14:45:54.127Z",
+                    "updated_at": "2023-01-24T12:27:10.725Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205250",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "availability.getaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:33:54.584Z",
+                    "updated_at": "2023-01-24T12:27:13.306Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205251",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "extranet.getaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:38:54.717Z",
+                    "updated_at": "2023-01-24T12:27:13.379Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205252",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "breadcrumb.getaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:40:04.148Z",
+                    "updated_at": "2023-01-24T12:27:13.464Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205253",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "supply.getaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:40:49.365Z",
+                    "updated_at": "2023-01-24T12:27:13.527Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205254",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "stockroom.production.getaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:41:36.254Z",
+                    "updated_at": "2023-01-24T12:27:13.589Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "205255",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.roomvaluesteam.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Everything under roomvaluesteam.com is current not in scope. Please do not test anything in or under this domain.",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:42:47.262Z",
+                    "updated_at": "2023-01-24T12:27:13.651Z"
+                }
+            },
+            {
+                "id": "205256",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.testaroom.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Everything under testaroom.com is current not in scope. Please do not test anything in or under this domain.",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:44:38.817Z",
+                    "updated_at": "2023-01-24T12:27:13.725Z"
+                }
+            },
+            {
+                "id": "205257",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.testaroom.cloud",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Everything under testaroom.cloud is current not in scope. Please do not test anything in or under this domain.",
+                    "max_severity": "none",
+                    "created_at": "2022-09-27T15:45:39.502Z",
+                    "updated_at": "2023-01-24T12:27:13.791Z"
+                }
+            },
+            {
+                "id": "555848",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "flyiin.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2023-11-01T15:13:30.032Z",
+                    "updated_at": "2023-11-01T15:13:30.032Z"
+                }
+            },
+            {
+                "id": "592845",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "priceline.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-01-29T05:19:13.872Z",
+                    "updated_at": "2024-01-29T05:19:13.872Z"
+                }
+            },
+            {
+                "id": "596377",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "groupdeals.priceline.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2024-02-02T08:25:25.623Z",
+                    "updated_at": "2024-02-02T08:25:25.623Z"
+                }
+            },
+            {
+                "id": "596844",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "weatherstatus.priceline.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2024-02-09T08:14:16.155Z",
+                    "updated_at": "2024-02-09T08:14:16.155Z"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/priceline/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/priceline/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/priceline/structured_scopes?page%5Bnumber%5D=3"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "1062",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.twitter.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-28T23:58:17.131Z",
+                    "updated_at": "2023-05-15T16:31:27.165Z"
+                }
+            },
+            {
+                "id": "1063",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.vine.co",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-28T23:58:31.019Z",
+                    "updated_at": "2023-05-15T16:31:27.231Z"
+                }
+            },
+            {
+                "id": "1068",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.twitter.android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-29T00:03:03.384Z",
+                    "updated_at": "2017-08-29T00:03:03.412Z"
+                }
+            },
+            {
+                "id": "1069",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.atebits.Tweetie2",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-29T00:08:29.142Z",
+                    "updated_at": "2017-08-29T00:08:29.193Z"
+                }
+            },
+            {
+                "id": "1071",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.twimg.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-29T00:13:13.841Z",
+                    "updated_at": "2023-05-15T16:31:27.416Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "1072",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "status.twitter.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is hosted by a third party, status.io.",
+                    "max_severity": "none",
+                    "created_at": "2017-08-29T00:15:03.045Z",
+                    "updated_at": "2017-08-29T00:15:03.060Z"
+                }
+            },
+            {
+                "id": "1073",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "gnip.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-08-29T00:15:23.741Z",
+                    "updated_at": "2017-08-29T00:15:23.777Z"
+                }
+            },
+            {
+                "id": "293432",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "t.co",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": " We are already working on fixing issues with our t.co service, and are not accepting reports regarding this behavior at this time.",
+                    "max_severity": "medium",
+                    "created_at": "2022-12-23T05:26:09.768Z",
+                    "updated_at": "2022-12-23T05:26:36.185Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "470417",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "x.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": null,
+                    "max_severity": "critical",
+                    "created_at": "2023-08-08T15:14:37.936Z",
+                    "updated_at": "2023-08-08T15:14:37.936Z"
+                }
+            },
+            {
+                "id": "592818",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "xadsacademy.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2024-01-26T20:44:39.978Z",
+                    "updated_at": "2024-01-26T20:44:39.978Z"
+                }
+            },
+            {
+                "id": "755443",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.x.ai",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-10-09T16:31:02.367Z",
+                    "updated_at": "2024-12-18T22:26:27.383Z"
+                }
+            },
+            {
+                "id": "806219",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.x.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-12-18T22:28:18.565Z",
+                    "updated_at": "2024-12-18T22:28:18.565Z"
+                }
+            },
+            {
+                "id": "867742",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.grok.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2025-04-08T18:30:58.358Z",
+                    "updated_at": "2025-04-08T18:30:58.358Z"
+                }
+            },
+            {
+                "id": "867743",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "grok.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2025-04-08T18:31:35.600Z",
+                    "updated_at": "2025-04-08T18:31:35.600Z"
+                }
+            },
+            {
+                "id": "867744",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "ai.x.GrokApp",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2025-04-08T18:32:12.504Z",
+                    "updated_at": "2025-04-08T18:32:12.504Z"
+                }
+            },
+            {
+                "id": "878166",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "ai.x.grok",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2025-04-28T17:52:55.098Z",
+                    "updated_at": "2025-04-28T17:52:55.098Z"
+                }
+            },
+            {
+                "id": "897883",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.twitter.biz",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2025-06-17T22:18:12.492Z",
+                    "updated_at": "2025-06-17T22:18:12.492Z"
+                }
+            },
+            {
+                "id": "987572",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "chat.x.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2026-01-04T20:16:26.005Z",
+                    "updated_at": "2026-01-04T20:16:26.005Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "996122",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "grokipedia.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2026-02-23T21:49:23.518Z",
+                    "updated_at": "2026-02-23T21:49:23.518Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "999590",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "money.x.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2026-03-12T20:20:50.701Z",
+                    "updated_at": "2026-03-12T20:20:50.701Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "1013265",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "grok-build-cli",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2026-05-27T14:04:53.505Z",
+                    "updated_at": "2026-05-27T14:04:53.505Z"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "4653",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.basecamphq.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Basecamp Classic",
+                    "max_severity": "none",
+                    "created_at": "2018-01-11T04:58:15.351Z",
+                    "updated_at": "2023-05-15T16:31:48.835Z"
+                }
+            },
+            {
+                "id": "4654",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "basecamp.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Basecamp 2",
+                    "max_severity": "none",
+                    "created_at": "2018-01-11T04:59:18.652Z",
+                    "updated_at": "2020-10-13T13:06:35.048Z"
+                }
+            },
+            {
+                "id": "4655",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "3.basecamp.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Basecamp 3",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T04:59:43.520Z",
+                    "updated_at": "2020-10-13T13:06:35.026Z"
+                }
+            },
+            {
+                "id": "4656",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "launchpad.37signals.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Launchpad",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T05:00:22.339Z",
+                    "updated_at": "2020-10-13T13:06:35.024Z"
+                }
+            },
+            {
+                "id": "4657",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "basecamp3.exe",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Basecamp for Windows: https://basecamp.com/via#basecamp-for-your-mac-or-pc",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T05:04:19.334Z",
+                    "updated_at": "2020-10-13T13:06:35.037Z"
+                }
+            },
+            {
+                "id": "4658",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "Basecamp.app",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Basecamp for Mac: https://basecamp.com/via#basecamp-for-your-mac-or-pc",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T05:04:51.524Z",
+                    "updated_at": "2020-10-13T13:06:35.035Z"
+                }
+            },
+            {
+                "id": "4659",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.basecamp.bc3-ios",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Basecamp for iOS: https://basecamp.com/via#basecamp-for-ios-and-android-devices",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T05:06:45.826Z",
+                    "updated_at": "2020-10-13T13:06:35.043Z"
+                }
+            },
+            {
+                "id": "4660",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.basecamp.bc3",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Basecamp for Android: https://basecamp.com/via#basecamp-for-ios-and-android-devices",
+                    "max_severity": "critical",
+                    "created_at": "2018-01-11T05:09:00.253Z",
+                    "updated_at": "2020-10-13T13:06:35.031Z"
+                }
+            },
+            {
+                "id": "8344",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.highrisehq.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Highrise",
+                    "max_severity": "none",
+                    "created_at": "2018-04-11T16:09:42.825Z",
+                    "updated_at": "2023-05-15T16:32:03.937Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "53959",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.hey.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T17:58:43.554Z",
+                    "updated_at": "2023-05-15T16:36:15.513Z"
+                }
+            },
+            {
+                "id": "53962",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.hey.app.ios",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "HEY for iOS: https://apps.apple.com/us/app/hey-email/id1506603805",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T18:22:50.029Z",
+                    "updated_at": "2020-10-13T13:06:35.041Z"
+                }
+            },
+            {
+                "id": "53964",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.basecamp.hey",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "HEY for Android: https://play.google.com/store/apps/details?id=com.basecamp.hey",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T18:23:44.803Z",
+                    "updated_at": "2020-10-13T13:06:35.029Z"
+                }
+            },
+            {
+                "id": "53966",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "HEY.app",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "HEY for macOS: https://hey.com/apps/",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T18:28:27.353Z",
+                    "updated_at": "2020-10-13T13:06:35.039Z"
+                }
+            },
+            {
+                "id": "53967",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WINDOWS_APP_STORE_APP_ID",
+                    "asset_identifier": "HEY.exe",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "HEY for Windows: https://www.microsoft.com/en-us/p/hey-mail/9pf08ljw7gw2",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T18:29:53.224Z",
+                    "updated_at": "2020-12-20T03:34:44.839Z"
+                }
+            },
+            {
+                "id": "53968",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "hey-mail",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "HEY for Linux: https://snapcraft.io/hey-mail/",
+                    "max_severity": "critical",
+                    "created_at": "2020-09-03T18:31:20.832Z",
+                    "updated_at": "2020-10-13T13:06:35.033Z"
+                }
+            },
+            {
+                "id": "68020",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "world.hey.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-04-05T22:53:11.599Z",
+                    "updated_at": "2021-04-05T22:53:11.623Z"
+                }
+            },
+            {
+                "id": "974588",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "fizzy.do",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "Full source code is available at https://github.com/basecamp/fizzy and https://github.com/basecamp/fizzy-saas",
+                    "max_severity": "critical",
+                    "created_at": "2025-12-03T05:05:41.116Z",
+                    "updated_at": "2026-03-17T09:23:16.648Z"
+                }
+            },
+            {
+                "id": "1000627",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/basecamp/writebook",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "[Writebook](https://once.com/writebook) is an installable, self-hosted app to publish your own books on the web. \n\nhttps://once.com/writebook",
+                    "max_severity": "high",
+                    "created_at": "2026-03-17T09:25:35.659Z",
+                    "updated_at": "2026-03-17T09:29:14.708Z"
+                }
+            },
+            {
+                "id": "1000633",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/basecamp/once-campfire",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "[Campfire](https://once.com/campfire) is an installable, self-hosted group chat system designed, built, and backed by 37signals.\n\nhttps://once.com/campfire",
+                    "max_severity": "high",
+                    "created_at": "2026-03-17T09:30:50.008Z",
+                    "updated_at": "2026-03-17T09:30:50.008Z"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "15516",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slack.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The slack.com site and application.",
+                    "max_severity": "critical",
+                    "created_at": "2018-10-12T12:32:20.112Z",
+                    "updated_at": "2023-01-25T09:33:23.626Z"
+                }
+            },
+            {
+                "id": "15517",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.slack.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The Slack API",
+                    "max_severity": "critical",
+                    "created_at": "2018-10-12T12:32:45.153Z",
+                    "updated_at": "2023-01-25T09:33:23.695Z"
+                }
+            },
+            {
+                "id": "15518",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "status.slack.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "The Slack status site",
+                    "max_severity": "none",
+                    "created_at": "2018-10-12T12:33:03.121Z",
+                    "updated_at": "2024-05-06T10:07:33.056Z"
+                }
+            },
+            {
+                "id": "22249",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slackb.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-05T10:01:45.823Z",
+                    "updated_at": "2023-01-25T09:33:23.859Z"
+                }
+            },
+            {
+                "id": "38317",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "app.slack.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-10-07T16:48:16.500Z",
+                    "updated_at": "2023-01-25T09:33:24.343Z"
+                }
+            },
+            {
+                "id": "40624",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/slackhq/nebula",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Accepting Critical severity ONLY as of 2026-05-27. Refer to Out of Scope section for detailed guidance",
+                    "max_severity": "critical",
+                    "created_at": "2019-11-21T22:11:24.624Z",
+                    "updated_at": "2026-05-27T20:29:51.958Z"
+                }
+            },
+            {
+                "id": "65189",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "edgeapi.slack.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-03-26T21:05:00.264Z",
+                    "updated_at": "2023-01-25T09:33:30.824Z"
+                }
+            },
+            {
+                "id": "100815",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slackatwork.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-04-21T18:10:46.468Z",
+                    "updated_at": "2023-07-13T09:09:27.091Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "100816",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slack-redir.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-04-21T18:11:27.510Z",
+                    "updated_at": "2023-07-13T09:09:27.141Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "100817",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slack-imgs.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-04-21T18:11:57.948Z",
+                    "updated_at": "2023-07-13T09:09:27.183Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "100818",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "spaces.pm",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-04-21T18:12:27.053Z",
+                    "updated_at": "2023-07-13T09:09:27.232Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "100819",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slackhq.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Includes any subdomains (e.g.*.slackhq.com)",
+                    "max_severity": "none",
+                    "created_at": "2022-04-21T18:17:12.275Z",
+                    "updated_at": "2025-10-13T17:18:48.374Z"
+                }
+            },
+            {
+                "id": "173724",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.Slack",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-29T22:01:01.842Z",
+                    "updated_at": "2023-01-25T09:33:50.127Z"
+                }
+            },
+            {
+                "id": "173725",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.Slack.intune",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-07-29T22:01:51.304Z",
+                    "updated_at": "2023-01-25T09:33:51.884Z"
+                }
+            },
+            {
+                "id": "173726",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.tinyspeck.chatlyio",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The main Slack app is included: [Slack iOS App](https://apps.apple.com/us/app/slack/id618783545)\n\nOther versions of the app, such as the EMM and Intune versions, are not included.",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-29T22:40:55.662Z",
+                    "updated_at": "2023-01-25T09:33:50.630Z"
+                }
+            },
+            {
+                "id": "173727",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.slack.slackmdm",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Reports are accepted for vulnerabilities specific to the [Slack EMM/MDM version of the app](https://apps.apple.com/us/app/slack-for-emm/id1254292716).\n\nEMM client vulnerabilities in the absence of a valid MDM configuration via a supported MDM provider, (such as MobileIron), on an EMM-enabled Slack team are excluded.",
+                    "max_severity": "critical",
+                    "created_at": "2022-07-29T22:57:25.552Z",
+                    "updated_at": "2023-01-25T09:33:50.685Z"
+                }
+            },
+            {
+                "id": "173728",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.slack.slackintune",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-07-29T22:58:26.254Z",
+                    "updated_at": "2023-01-25T09:33:51.943Z"
+                }
+            },
+            {
+                "id": "206844",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.glitchthegame.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This domain was part of a prior company. ",
+                    "max_severity": "none",
+                    "created_at": "2022-09-28T16:39:59.052Z",
+                    "updated_at": "2023-01-25T09:33:40.802Z"
+                }
+            },
+            {
+                "id": "274676",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.quip.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Only accepting Critical reports as of 2023-12-01",
+                    "max_severity": "critical",
+                    "created_at": "2022-12-06T20:36:43.686Z",
+                    "updated_at": "2025-01-28T16:06:58.358Z"
+                }
+            },
+            {
+                "id": "274677",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.quip.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Only accepting Critical reports as of 2023-12-01",
+                    "max_severity": "critical",
+                    "created_at": "2022-12-06T20:37:29.039Z",
+                    "updated_at": "2025-01-28T16:06:43.630Z"
+                }
+            },
+            {
+                "id": "274679",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "DOWNLOADABLE_EXECUTABLES",
+                    "asset_identifier": "https://salesforce.quip.com/blog/desktop",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2022-12-06T20:41:41.027Z",
+                    "updated_at": "2023-01-25T09:33:50.415Z"
+                }
+            },
+            {
+                "id": "274681",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "3rd Party Quip Apps",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "3rd Party Quip App are not eligible for bug bounty program.",
+                    "max_severity": "none",
+                    "created_at": "2022-12-06T20:44:28.817Z",
+                    "updated_at": "2023-07-13T09:21:02.764Z"
+                }
+            },
+            {
+                "id": "648594",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "slack-status.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-05-06T10:09:26.635Z",
+                    "updated_at": "2024-05-06T10:09:26.635Z"
+                }
+            },
+            {
+                "id": "678683",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Slack Desktop Application",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-06-13T11:16:21.496Z",
+                    "updated_at": "2024-06-13T11:16:21.496Z"
+                }
+            },
+            {
+                "id": "829661",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "https://apps.apple.com/us/app/quip-docs-chat-sheets/id647922896",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Only accepting Critical reports as of 2023-12-01",
+                    "max_severity": "critical",
+                    "created_at": "2025-01-28T16:13:18.481Z",
+                    "updated_at": "2025-01-28T16:13:41.532Z"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "4212",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tinder.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-12-12T20:56:46.794Z",
+                    "updated_at": "2023-05-15T16:31:46.301Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "4213",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.gotinder.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-12-12T20:57:05.152Z",
+                    "updated_at": "2024-03-06T16:52:01.859Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "4214",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "547702041",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-12-12T21:00:34.829Z",
+                    "updated_at": "2021-09-27T16:01:10.170Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "4215",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.tinder",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-12-12T21:01:37.402Z",
+                    "updated_at": "2021-09-27T16:01:10.167Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "81952",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "go.tinder.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "`go.tinder.com` is an asset belonging to Branch.io. - You can submit reports directly to Branch here: https://branch.io/security/",
+                    "max_severity": "none",
+                    "created_at": "2021-09-15T18:13:30.830Z",
+                    "updated_at": "2021-09-27T16:01:10.172Z"
+                }
+            },
+            {
+                "id": "81953",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.help.tinder.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "`www.help.tinder.com` is an asset belonging to Zendesk - You can submit reports directly to Zendesk here: https://hackerone.com/zendesk",
+                    "max_severity": "none",
+                    "created_at": "2021-09-15T18:14:05.251Z",
+                    "updated_at": "2021-09-27T16:01:10.178Z"
+                }
+            },
+            {
+                "id": "81954",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "gotinder.imgix.net",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2021-09-15T18:14:18.442Z",
+                    "updated_at": "2021-09-27T16:01:10.175Z"
+                }
+            },
+            {
+                "id": "83562",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tinderops.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-10-05T01:00:30.162Z",
+                    "updated_at": "2023-05-15T16:37:56.274Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "85812",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tstaging.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2021-10-28T16:12:50.707Z",
+                    "updated_at": "2023-05-15T16:38:07.808Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "85813",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tstaging.tools",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2021-10-28T16:16:50.350Z",
+                    "updated_at": "2023-05-15T16:38:07.906Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "85814",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tinderwebstaging.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2021-10-28T16:17:12.133Z",
+                    "updated_at": "2023-05-15T16:38:07.976Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "131138",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "console.gotinder.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset is not owned by us.\n```\ndig console.gotinder.com\n... CNAME app6.creatoriq.com.\n```",
+                    "max_severity": "none",
+                    "created_at": "2022-06-06T18:14:55.374Z",
+                    "updated_at": "2022-06-06T18:14:55.422Z"
+                }
+            },
+            {
+                "id": "308457",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "AppsFlyer Subdomains",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "The following assets are managed by AppsFlyer and are considered out of scope: \n* party.tinder.com\n* open.tinder.com\n* matchmaker.tinder.com\n* invite.tinder.com\n* click.tinder.com",
+                    "max_severity": "none",
+                    "created_at": "2023-02-01T17:46:31.634Z",
+                    "updated_at": "2023-02-01T17:46:31.675Z"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "120",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-20T23:32:30.242Z",
+                    "updated_at": "2023-01-24T12:35:40.879Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "139",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.coinbase.android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-20T23:45:59.186Z",
+                    "updated_at": "2023-01-24T12:35:42.861Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "141",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "CIDR",
+                    "asset_identifier": "54.175.255.192/27",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-20T23:47:28.999Z",
+                    "updated_at": "2023-01-24T12:35:43.139Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "12689",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.cbhq.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2018-07-21T00:10:30.988Z",
+                    "updated_at": "2023-01-24T12:35:40.949Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "18681",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "pro.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T18:57:08.991Z",
+                    "updated_at": "2023-01-24T12:35:41.021Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "18682",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "custody.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "* **[Coinbase Custody - Institutional User Roles Overview](https://hackerone.app.box.com/s/l8rqfuv0xgaf15nwdzmffvsrxjm6vr8n)**\n* **[Custody API Documentation](https://docs.custody.coinbase.com/)**",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T18:57:32.291Z",
+                    "updated_at": "2023-01-24T12:35:41.796Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "18683",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "commerce.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T18:57:55.757Z",
+                    "updated_at": "2023-01-24T12:35:41.862Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "18684",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "prime.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T18:58:11.377Z",
+                    "updated_at": "2023-01-24T12:35:41.925Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "18685",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "paradex.io",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-01-02T18:59:15.849Z",
+                    "updated_at": "2023-12-07T21:06:14.358Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "none",
+                    "availability_requirement": "none"
+                }
+            },
+            {
+                "id": "18686",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Other",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Applications that may have been missed as a part of our standard scope; this will be assessed on a by submission basis. ",
+                    "max_severity": "medium",
+                    "created_at": "2019-01-02T18:59:45.395Z",
+                    "updated_at": "2023-12-07T19:11:24.305Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "18689",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "org.toshi",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T19:21:57.121Z",
+                    "updated_at": "2023-01-24T12:35:42.918Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "18695",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "org.toshi.distribution",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-01-02T19:34:20.025Z",
+                    "updated_at": "2023-01-24T12:35:43.271Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "medium"
+                }
+            },
+            {
+                "id": "21625",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "institutional.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-02-13T20:48:34.512Z",
+                    "updated_at": "2023-01-24T12:35:42.054Z"
+                }
+            },
+            {
+                "id": "21626",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "support.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This domain is out of scope.",
+                    "max_severity": "none",
+                    "created_at": "2019-02-13T20:49:19.359Z",
+                    "updated_at": "2023-01-24T12:35:42.245Z"
+                }
+            },
+            {
+                "id": "21692",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "blog.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-15T19:01:38.799Z",
+                    "updated_at": "2023-01-24T12:35:42.308Z"
+                }
+            },
+            {
+                "id": "21693",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "engineering.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-15T19:02:20.221Z",
+                    "updated_at": "2023-01-24T12:35:42.368Z"
+                }
+            },
+            {
+                "id": "21694",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "developers.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-15T19:03:12.593Z",
+                    "updated_at": "2023-01-24T12:35:42.430Z"
+                }
+            },
+            {
+                "id": "21695",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "status.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-15T19:03:48.916Z",
+                    "updated_at": "2023-01-24T12:35:42.491Z"
+                }
+            },
+            {
+                "id": "21696",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "support.pro.coinbase.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-15T19:04:31.182Z",
+                    "updated_at": "2023-01-24T12:35:42.575Z"
+                }
+            },
+            {
+                "id": "22059",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.blockspring.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-02-27T18:18:06.367Z",
+                    "updated_at": "2023-01-24T12:35:42.629Z"
+                }
+            },
+            {
+                "id": "22718",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.coinbase.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-20T17:33:51.840Z",
+                    "updated_at": "2023-01-24T12:35:42.119Z"
+                }
+            },
+            {
+                "id": "30952",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "N/A - Not Coinbase owned or operated",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This asset labelling is used to signal to a reporter that the asset in question is not owned or operated by Coinbase in any capacity.",
+                    "max_severity": "none",
+                    "created_at": "2019-06-10T21:30:00.919Z",
+                    "updated_at": "2023-01-24T12:35:43.447Z"
+                }
+            },
+            {
+                "id": "41721",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.coinbase.pro",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-12-19T00:22:45.518Z",
+                    "updated_at": "2023-06-05T21:14:09.082Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "41724",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.coinbase.pro",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-12-19T01:31:29.850Z",
+                    "updated_at": "2023-06-05T21:14:09.132Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "43660",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.coinbase.wallite",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "low",
+                    "created_at": "2020-02-07T03:22:55.826Z",
+                    "updated_at": "2023-02-24T15:58:28.892Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "none",
+                    "availability_requirement": "none"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/coinbase/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/coinbase/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/coinbase/structured_scopes?page%5Bnumber%5D=2"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "5736",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "scrollkit.com,*.scrollkit.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2018-01-31T16:37:57.248Z",
+                    "updated_at": "2023-05-15T16:31:51.947Z"
+                }
+            },
+            {
+                "id": "28993",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "learnboost.com,*.learnboost.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2019-05-21T10:07:53.312Z",
+                    "updated_at": "2023-05-15T16:33:40.341Z"
+                }
+            },
+            {
+                "id": "34673",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "*/xmlrpc.php",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "The sole presence of `xmlrpc.php` in `wordpress.com` and all the domains hosted under our platform doesn't constitute a vulnerability. If you report an issue related to this file, please make sure to provide a working proof of concept that clearly shows the impact.",
+                    "max_severity": "none",
+                    "created_at": "2019-07-22T16:11:07.650Z",
+                    "updated_at": "2019-07-22T16:11:07.673Z"
+                }
+            },
+            {
+                "id": "42397",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:07:23.009Z",
+                    "updated_at": "2020-01-15T15:19:55.637Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42398",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "safe.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:08:00.706Z",
+                    "updated_at": "2020-01-09T18:08:00.724Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42399",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "secure.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:08:19.493Z",
+                    "updated_at": "2020-01-09T18:08:19.509Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42400",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "assets.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:08:33.335Z",
+                    "updated_at": "2020-01-09T18:08:33.365Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42401",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "embed.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:08:45.237Z",
+                    "updated_at": "2020-01-09T18:08:45.258Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42402",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "**The Blog Network**\n\n*Note: Blogs are cached for 1 minute after first request (60s from first request); content is re-loaded into cache when a new request is submitted after the 61st second.*\n\nHow to identify you are looking at the Blog Network:\n* Header: `X-tumblr-user` can be used to identify if the domain is a blog on the Blog Network\n* View the domain in a browser, there will be a Tumblr banner visible. \n\nExclusions for this asset:\n* JavaScript is allowed; XSS is excluded from eligibility.\n* Pages can be framed; Clickjacking or other X-Frame-Options attacks are excluded from eligibility.",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:09:03.249Z",
+                    "updated_at": "2023-05-15T16:34:49.372Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42403",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:09:16.694Z",
+                    "updated_at": "2020-01-09T18:09:16.711Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42404",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "t.umblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:09:28.877Z",
+                    "updated_at": "2020-01-09T18:09:28.891Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42405",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.srvcs.tumblr.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-01-09T18:09:42.029Z",
+                    "updated_at": "2023-05-15T16:34:49.459Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42406",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.txmblr.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2020-01-09T18:09:52.829Z",
+                    "updated_at": "2023-05-15T16:34:49.538Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "42407",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.tumblr",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "- Minimum OS version: API 21\n\nExclusions:\n- API keys in code\n- Certificate pinning",
+                    "max_severity": "high",
+                    "created_at": "2020-01-09T18:10:16.598Z",
+                    "updated_at": "2020-01-09T18:10:16.614Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "42408",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.tumblr.tumblr",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "- Minimum OS version: iOS 11\n\nExclusions:\n- API keys in code\n- Certificate pinning",
+                    "max_severity": "high",
+                    "created_at": "2020-01-09T18:10:36.665Z",
+                    "updated_at": "2020-01-09T18:10:36.681Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "47202",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "afterthedeadline.com,*.afterthedeadline.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2020-04-27T15:22:59.361Z",
+                    "updated_at": "2023-05-15T16:35:29.454Z"
+                }
+            },
+            {
+                "id": "47203",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "polishmywriting.com,*.polishmywriting.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2020-04-27T15:24:16.738Z",
+                    "updated_at": "2023-05-15T16:35:29.533Z"
+                }
+            },
+            {
+                "id": "58994",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.survey.fm",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This cookieless domain contains user generated content. While we might decide to fix XSS issues, reports for this domain will not be eligible for a bounty.",
+                    "max_severity": "none",
+                    "created_at": "2020-11-20T11:02:43.704Z",
+                    "updated_at": "2023-05-15T16:36:41.252Z"
+                }
+            },
+            {
+                "id": "58995",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.poll.fm",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This cookieless domain contains user generated content. While we might decide to fix XSS issues, reports for this domain will not be eligible for a bounty.",
+                    "max_severity": "none",
+                    "created_at": "2020-11-20T12:26:03.312Z",
+                    "updated_at": "2023-05-15T16:36:41.323Z"
+                }
+            },
+            {
+                "id": "60222",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "wordpress.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2020-12-30T21:29:03.362Z",
+                    "updated_at": "2020-12-30T21:30:56.275Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "60226",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "intensedebate.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2020-12-31T10:52:08.712Z",
+                    "updated_at": "2020-12-31T10:52:08.731Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "60227",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "simplenote.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "high",
+                    "created_at": "2020-12-31T10:55:03.834Z",
+                    "updated_at": "2020-12-31T10:55:03.852Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "60241",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "simperium.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "high",
+                    "created_at": "2021-01-04T14:21:10.864Z",
+                    "updated_at": "2021-01-04T14:21:10.883Z",
+                    "confidentiality_requirement": "medium",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "60242",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "Jetpack",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Any issues related to the Jetpack plugin https://github.com/Automattic/jetpack and/or https://jetpack.com/",
+                    "max_severity": "critical",
+                    "created_at": "2021-01-04T14:23:58.837Z",
+                    "updated_at": "2021-01-04T14:23:58.857Z"
+                }
+            },
+            {
+                "id": "60243",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "WooCommerce",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Any security issues on the WordPress WooCommerce plugin (https://wordpress.org/plugins/woocommerce/) and/or https://woocommerce.com/",
+                    "max_severity": "critical",
+                    "created_at": "2021-01-04T14:28:59.203Z",
+                    "updated_at": "2021-01-04T14:28:59.223Z",
+                    "confidentiality_requirement": "medium"
+                }
+            }
+        ],
+        "links": {
+            "self": "https://api.hackerone.com/v1/hackers/programs/automattic/structured_scopes",
+            "next": "https://api.hackerone.com/v1/hackers/programs/automattic/structured_scopes?page%5Bnumber%5D=2",
+            "last": "https://api.hackerone.com/v1/hackers/programs/automattic/structured_scopes?page%5Bnumber%5D=2"
+        }
+    },
+    {
+        "data": [
+            {
+                "id": "36333",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "prod-taxexempt.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2019-08-20T14:40:21.059Z",
+                    "updated_at": "2023-01-04T09:50:41.619Z"
+                }
+            },
+            {
+                "id": "37689",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "projectone.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2019-09-19T12:48:23.649Z",
+                    "updated_at": "2023-01-04T09:50:41.749Z"
+                }
+            },
+            {
+                "id": "37849",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "c2m-projectone.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2019-09-25T13:09:17.212Z",
+                    "updated_at": "2023-01-04T09:50:41.866Z"
+                }
+            },
+            {
+                "id": "37850",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "wf-projectone.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission",
+                    "max_severity": "none",
+                    "created_at": "2019-09-25T13:09:48.946Z",
+                    "updated_at": "2023-01-04T09:50:42.015Z"
+                }
+            },
+            {
+                "id": "42677",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "*.sky.com.mx",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2020-01-14T15:47:26.182Z",
+                    "updated_at": "2023-07-13T09:09:06.008Z"
+                }
+            },
+            {
+                "id": "43669",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "accbusinesspricing.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2020-02-07T15:38:00.165Z",
+                    "updated_at": "2023-01-04T09:50:42.139Z"
+                }
+            },
+            {
+                "id": "46171",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "rcloud.social",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2020-03-27T13:07:48.444Z",
+                    "updated_at": "2023-01-04T09:50:42.254Z"
+                }
+            },
+            {
+                "id": "54530",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "attdashboard.wireless.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2020-09-16T14:59:43.850Z",
+                    "updated_at": "2023-01-04T09:50:42.520Z"
+                }
+            },
+            {
+                "id": "61709",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "https://clec.att.com/clec/",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2021-02-11T14:14:50.540Z",
+                    "updated_at": "2023-07-13T09:09:14.132Z"
+                }
+            },
+            {
+                "id": "61710",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "12.0.1.28",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission. ",
+                    "max_severity": "none",
+                    "created_at": "2021-02-11T14:18:20.880Z",
+                    "updated_at": "2023-01-16T16:12:50.835Z"
+                }
+            },
+            {
+                "id": "93552",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "attsuppliers.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission",
+                    "max_severity": "none",
+                    "created_at": "2022-02-18T16:12:33.110Z",
+                    "updated_at": "2023-07-13T09:09:23.275Z"
+                }
+            },
+            {
+                "id": "93553",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "attpurchasing.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "This is out of scope for submission",
+                    "max_severity": "none",
+                    "created_at": "2022-02-18T16:14:06.167Z",
+                    "updated_at": "2023-07-13T09:09:23.322Z"
+                }
+            },
+            {
+                "id": "93994",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "authkeysmx01.att.com.mx",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2022-02-23T21:35:31.438Z",
+                    "updated_at": "2023-07-13T09:09:23.530Z"
+                }
+            },
+            {
+                "id": "635840",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "Other Assets",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2024-04-02T15:43:16.497Z",
+                    "updated_at": "2024-04-02T15:43:16.497Z"
+                }
+            },
+            {
+                "id": "849985",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "IP_ADDRESS",
+                    "asset_identifier": "40.233.66.139",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": null,
+                    "max_severity": "none",
+                    "created_at": "2025-03-10T15:12:21.857Z",
+                    "updated_at": "2025-03-10T15:12:21.857Z"
+                }
+            },
+            {
+                "id": "849990",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "https://40.233.66.139",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": null,
+                    "max_severity": "none",
+                    "created_at": "2025-03-10T15:39:01.846Z",
+                    "updated_at": "2025-03-10T15:39:01.846Z",
+                    "confidentiality_requirement": "not_defined",
+                    "integrity_requirement": "not_defined",
+                    "availability_requirement": "not_defined"
+                }
+            },
+            {
+                "id": "893660",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "thedirectvmarketingzone.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": null,
+                    "max_severity": "none",
+                    "created_at": "2025-05-23T19:15:09.862Z",
+                    "updated_at": "2025-05-23T19:15:09.862Z"
+                }
+            },
+            {
+                "id": "894070",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "att.suppliergateway.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": null,
+                    "max_severity": "none",
+                    "created_at": "2025-05-28T21:32:30.080Z",
+                    "updated_at": "2025-05-28T21:32:30.080Z"
+                }
+            },
+            {
+                "id": "897318",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "DirecTV Owned Assets",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "DIRECTV Assets Exclusion Notice\n\nEffective June 12 at 9 AM CST, all assets owned or operated by DIRECTV are no longer in scope for this bug bounty program. Any vulnerabilities discovered in DIRECTV assets should be reported directly to the DIRECTV security team at bugbounty@mydirectv.com.\n\nPlease note:\n- Do not submit reports related to DIRECTV assets to this AT&T program\n- DIRECTV maintains a separate security process for handling vulnerability reports\n- All DIRECTV-related security concerns should be directed exclusively to directv-bbp@mydirectv.com\n",
+                    "max_severity": "none",
+                    "created_at": "2025-06-12T14:00:56.702Z",
+                    "updated_at": "2025-06-16T17:04:35.975Z"
+                }
+            },
+            {
+                "id": "897609",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "att.com/acctmgmt/*/stub*/*",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Any subdomain under att.com/acctmgmt/ with \"stub\" anywhere in the URL is out of scope as of 6/14/25 at 10:30 AM CT.",
+                    "max_severity": "none",
+                    "created_at": "2025-06-14T15:24:19.956Z",
+                    "updated_at": "2025-06-14T15:28:32.037Z"
+                }
+            },
+            {
+                "id": "897610",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "att.com/acctmgmt/*/chunks/*",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "Any subdomain under att.com/acctmgmt/ with \"chunks\" anywhere in the URL is out of scope as of 6/14/25 at 10:30 AM CT.",
+                    "max_severity": "none",
+                    "created_at": "2025-06-14T15:26:35.496Z",
+                    "updated_at": "2025-06-14T15:28:43.105Z"
+                }
+            },
+            {
+                "id": "1001745",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*tworks-att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2026-03-23T22:00:29.056Z",
+                    "updated_at": "2026-03-23T22:00:29.056Z"
+                }
+            },
+            {
+                "id": "1002704",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "plasma.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "The endpoint plasma.att.com (plasma-coreapi.att.com) is temporarily out of scope while AT&T performs internal updates. Reports submitted for this asset during this time will be marked as 'Informative' and will not be eligible for bounties until further notice as of Wed Mar 25 at 3:17 PM CDT.  This includes but is not limited to the following IP range: 199.108.99.*",
+                    "max_severity": "none",
+                    "created_at": "2026-03-25T20:14:30.088Z",
+                    "updated_at": "2026-03-26T16:34:07.170Z"
+                }
+            },
+            {
+                "id": "1002705",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "plasma-coreapi.att.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "The endpoint plasma.att.com (plasma-coreapi.att.com) is temporarily out of scope while AT&T performs internal updates. Reports submitted for this asset during this time will be marked as 'Informative' and will not be eligible for bounties until further notice as of Wed Mar 25 at 3:17 PM CDT. This includes but is not limited to the following IP range: 199.108.99.*",
+                    "max_severity": "none",
+                    "created_at": "2026-03-25T20:16:27.570Z",
+                    "updated_at": "2026-03-26T16:33:53.922Z"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "256",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "www.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:15:31.671Z",
+                    "updated_at": "2017-07-21T13:15:31.699Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "257",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "api.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:15:43.887Z",
+                    "updated_at": "2017-07-21T13:15:43.901Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "269",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.irccloud.IRCCloud",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The iOS app is open source, decompilation issues are not eligible https://github.com/irccloud/ios\nVulnerabilities requiring local or root access to a device are also not eligible.",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:21:41.785Z",
+                    "updated_at": "2018-01-24T15:16:36.908Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "271",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.irccloud.android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "The Android app is open source, decompilation issues are not eligible https://github.com/irccloud/android\nVulnerabilities requiring local or root access to a device are also not eligible.",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:22:55.120Z",
+                    "updated_at": "2018-01-24T15:16:26.641Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "279",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.irccloud-cdn.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Please note that this domain hosts user-uploaded files which are intentionally public for sharing on IRC. These do not constitute an information disclosure vulnerability and reports will be closed as \"Not Applicable\".",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:31:38.827Z",
+                    "updated_at": "2023-05-15T16:31:24.001Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "280",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "blog.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2017-07-21T13:33:08.075Z",
+                    "updated_at": "2017-07-21T13:33:08.097Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "284",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/irccloud/ios",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:35:42.720Z",
+                    "updated_at": "2017-07-21T13:35:42.735Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "285",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "https://github.com/irccloud/android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:35:57.186Z",
+                    "updated_at": "2017-07-21T13:35:57.200Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "287",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "In particular IRC connection hosts listed here: https://www.irccloud.com/networks",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:38:05.260Z",
+                    "updated_at": "2023-05-15T16:31:24.068Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "288",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:38:17.813Z",
+                    "updated_at": "2017-07-21T13:38:17.830Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "293",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "irc.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Support IRC network.",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:45:05.745Z",
+                    "updated_at": "2017-07-21T13:45:05.759Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "294",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "team-irc.irccloud.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Private team IRC servers",
+                    "max_severity": "critical",
+                    "created_at": "2017-07-21T13:46:07.770Z",
+                    "updated_at": "2017-07-21T13:46:07.785Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "2357",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "WordPress.org plugins",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "[Any plugin listed on my WordPress.org profile](https://profiles.wordpress.org/iandunn#content-plugins) is within scope, **except** for these:\n\n* Email Post Changes and Jetpack should be submitted to [Automattic](https://hackerone.com/automattic) instead.\n* CampTix, CampTix Network Tools, P2 New Post Categories, Tagregator, and SupportFlow should be submitted to [WordPress](https://hackerone.com/wordpress) instead, because they're [Meta team](https://make.wordpress.org/meta/) projects.\n* Manage Tags Capabilities is not covered, since I don't have commit access to it.\n\nThis refers to the source code of the plugins listed on that page, **not** to the wordpress.org website itself. You can report potential vulnerabilities in wordpress.org to [their program](/wordpress).",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-16T03:14:22.256Z",
+                    "updated_at": "2021-07-19T19:45:54.063Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2358",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "GitHub repositories",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "[Any _**source**_ repository on my Github account](https://github.com/iandunn?tab=repositories&type=source), _**except**_ for the ones marked as **archived**. \n\nForks are not in-scope, please report any issues with those upstream. Archived repos are not maintained.\n\nThis refers to the source code in the repositories  listed on that page, **not** to the github.com website itself. You can report potential vulnerabilities in github.com to [them](https://github.com/security).",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-16T03:15:40.572Z",
+                    "updated_at": "2021-07-19T19:47:12.781Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "2394",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "iandunn.name",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": false,
+                    "instruction": "",
+                    "max_severity": "none",
+                    "created_at": "2017-10-17T17:07:10.618Z",
+                    "updated_at": "2020-11-25T17:19:17.001Z",
+                    "confidentiality_requirement": "none",
+                    "integrity_requirement": "none",
+                    "availability_requirement": "none"
+                }
+            }
+        ],
+        "links": {}
+    },
+    {
+        "data": [
+            {
+                "id": "1299",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-09-11T04:16:10.666Z",
+                    "updated_at": "2023-05-15T16:31:27.856Z",
+                    "confidentiality_requirement": "none"
+                }
+            },
+            {
+                "id": "1301",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.net",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-09-11T04:16:29.230Z",
+                    "updated_at": "2023-05-15T16:31:27.918Z",
+                    "confidentiality_requirement": "none"
+                }
+            },
+            {
+                "id": "2781",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "APPLE_STORE_APP_ID",
+                    "asset_identifier": "com.urbandictionary.iphone",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-23T06:13:40.471Z",
+                    "updated_at": "2017-10-23T06:13:40.553Z"
+                }
+            },
+            {
+                "id": "2782",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "GOOGLE_PLAY_APP_ID",
+                    "asset_identifier": "com.urbandictionary.android",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2017-10-23T06:13:54.486Z",
+                    "updated_at": "2017-10-23T06:13:54.536Z"
+                }
+            },
+            {
+                "id": "3632",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "help.urbandictionary.com",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "help.urbandictionary.com is operated by a third party.",
+                    "max_severity": "medium",
+                    "created_at": "2017-11-17T03:33:40.927Z",
+                    "updated_at": "2019-03-04T23:32:44.581Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22233",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.store",
+                    "eligible_for_bounty": false,
+                    "eligible_for_submission": true,
+                    "instruction": "urbandictionary.store is hosted by a third party (Shopify) but we accept bug reports on this asset.",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-04T23:32:05.863Z",
+                    "updated_at": "2023-05-15T16:33:15.034Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22234",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "SOURCE_CODE",
+                    "asset_identifier": "github.com/urbandictionary",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "This is Urban Dictionary's organization on GitHub.",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-04T23:32:32.433Z",
+                    "updated_at": "2019-03-04T23:32:32.472Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22235",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.org",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-04T23:33:26.793Z",
+                    "updated_at": "2023-05-15T16:33:15.096Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22236",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.biz",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-04T23:33:37.305Z",
+                    "updated_at": "2023-05-15T16:33:15.166Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            },
+            {
+                "id": "22237",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "urbandictionary.github.io",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-04T23:40:16.187Z",
+                    "updated_at": "2019-03-04T23:40:16.220Z"
+                }
+            },
+            {
+                "id": "22238",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "OTHER",
+                    "asset_identifier": "twitter.com/urbandictionary",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "@urbandictionary on Twitter is a robot that responds to user requests.",
+                    "max_severity": "critical",
+                    "created_at": "2019-03-04T23:40:56.114Z",
+                    "updated_at": "2019-03-04T23:40:56.152Z"
+                }
+            },
+            {
+                "id": "22331",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.ud.wtf",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Link shortener powered by bitly",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-07T17:50:10.185Z",
+                    "updated_at": "2023-05-15T16:33:17.820Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22332",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.udimg.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Domain for serving static cookieless assets",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-07T17:50:52.121Z",
+                    "updated_at": "2023-05-15T16:33:17.883Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22333",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbandictionary.blog",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-07T17:51:17.839Z",
+                    "updated_at": "2023-05-15T16:33:17.944Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "22334",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "WILDCARD",
+                    "asset_identifier": "*.urbanup.com",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "Link shortener powered by urbandictionary",
+                    "max_severity": "medium",
+                    "created_at": "2019-03-07T17:51:34.319Z",
+                    "updated_at": "2023-05-15T16:33:18.006Z",
+                    "confidentiality_requirement": "low",
+                    "integrity_requirement": "low",
+                    "availability_requirement": "low"
+                }
+            },
+            {
+                "id": "60512",
+                "type": "structured-scope",
+                "attributes": {
+                    "asset_type": "URL",
+                    "asset_identifier": "av.urbandictionary.biz",
+                    "eligible_for_bounty": true,
+                    "eligible_for_submission": true,
+                    "instruction": "",
+                    "max_severity": "critical",
+                    "created_at": "2021-01-13T05:42:23.119Z",
+                    "updated_at": "2021-01-13T05:42:23.140Z",
+                    "confidentiality_requirement": "high",
+                    "integrity_requirement": "high",
+                    "availability_requirement": "high"
+                }
+            }
+        ],
+        "links": {}
+    }
+]
