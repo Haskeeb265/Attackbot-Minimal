@@ -2,6 +2,7 @@ import config
 import requests
 import json
 from program_scraper import ProgramScraper
+from helpers.send_request import SendRequest
 
 class ProgramDetailScraper:
 

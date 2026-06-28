@@ -1,22 +1,17 @@
 import requests
 import config
 import json
+from helpers.send_request import SendRequest
+
 
 class ProgramScraper:
-    
 
     # ============================================================
     # High Priority Handle Scraper
     # ============================================================
     def high_priority_handle_scraping(self):
         high_priority_handles = []
-        r = requests.get(
-            f"{config.BASE}/hackers/programs",
-            auth = config.AUTH
-            )
-
-        r.raise_for_status() # For status_code errors. If not included, program might keep running even on unauthorized request (no results)
-        data = r.json()
+        data = SendRequest.send_request("hackers/programs")
 
         for program in data["data"]:
             attrs = program["attributes"]
@@ -32,13 +27,7 @@ class ProgramScraper:
     # ============================================================
     def low_priority_handle_scraping(self):
         low_priority_handles = []
-        r = requests.get(
-            f"{config.BASE}/hackers/programs",
-            auth = config.AUTH
-            )
-
-        r.raise_for_status() # For status_code errors. If not included, program might keep running even on unauthorized request (no results)
-        data = r.json()
+        data = SendRequest.send_request("hackers/programs")
 
         for program in data["data"]:
             attrs = program["attributes"]
@@ -53,9 +42,9 @@ class ProgramScraper:
 # ============================================================
 # MAIN
 # ============================================================
-# handle_scraper = Program_Scraper()
+# handle_scraper = ProgramScraper()
 # high_priority_handle_data = handle_scraper.high_priority_handle_scraping()
 # low_priority_handle_data = handle_scraper.low_priority_handle_scraping()
 
-# print("High"+high_priority_handle_data)
-# print(low_priority_handle_data)
+# print("High", high_priority_handle_data)
+# print("Low", low_priority_handle_data)
