@@ -3,8 +3,11 @@ import json
 from program_scraper import ProgramScraper
 from helpers.send_request import SendRequest
 
+
 class ProgramDetailScraper:
 
+    MAX_PAGES = 100
+    PAGE_SIZE = 100
 
     @staticmethod
     def _flatten_scope(scope):
@@ -24,15 +27,13 @@ class ProgramDetailScraper:
             'updated_at': attrs.get('updated_at'),
         }
 
-
     @staticmethod
     def _fetch_handle_scopes(handle):
         all_scopes = []
         page = 1
-        page_size = 100
 
         while True:
-            url = f"hackers/programs/{handle}/structured_scopes?page[number]={page}&page[size]={page_size}"
+            url = f"hackers/programs/{handle}/structured_scopes?page[number]={page}&page[size]={ProgramDetailScraper.PAGE_SIZE}"
             data = SendRequest.send_request(url)
 
             scopes = data.get('data', [])
@@ -47,7 +48,7 @@ class ProgramDetailScraper:
             else:
                 break
 
-            if page > 100:
+            if page > ProgramDetailScraper.MAX_PAGES:
                 break
 
         return {
@@ -55,7 +56,6 @@ class ProgramDetailScraper:
             'scope_count': len(all_scopes),
             'scopes': [ProgramDetailScraper._flatten_scope(scope) for scope in all_scopes]
         }
-
 
     @staticmethod
     def get_scope_exclusions(handle: str) -> list[dict]:
@@ -65,20 +65,14 @@ class ProgramDetailScraper:
             return []
         return response["data"]
 
-
     @staticmethod
     def get_weaknesses(handle: str) -> list[dict]:
-        """
-        Fetches weaknesses (CWE/weakness objects) for a given program handle.
-        Endpoint: /hackers/programs/{handle}/weaknesses (paginated)
-        Returns: List of accepted weakness objects.
-        """
+
         all_weaknesses = []
         page = 1
-        page_size = 100
 
         while True:
-            url = f"hackers/programs/{handle}/weaknesses?page[number]={page}&page[size]={page_size}"
+            url = f"hackers/programs/{handle}/weaknesses?page[number]={page}&page[size]={ProgramDetailScraper.PAGE_SIZE}"
             response = SendRequest.send_request(url)
             if response is None or not response.get("data"):
                 break
@@ -86,11 +80,10 @@ class ProgramDetailScraper:
             if not response.get("links", {}).get("next"):
                 break
             page += 1
-            if page > 100:
+            if page > ProgramDetailScraper.MAX_PAGES:
                 break
 
         return all_weaknesses
-
 
     @staticmethod
     def high_priority_handle_detail_scraping():
@@ -119,11 +112,18 @@ class ProgramDetailScraper:
         ]
 
 
-high_function = ProgramDetailScraper.high_priority_handle_detail_scraping()
-low_function = ProgramDetailScraper.low_priority_handle_detail_scraping()
+# ============================================================
+# MAIN
+# ============================================================
+if __name__ == "__main__":
+    high_function = ProgramDetailScraper.high_priority_handle_detail_scraping()
+    low_function = ProgramDetailScraper.low_priority_handle_detail_scraping()
 
-with open("high_priority_details.json", "w") as f:
-    json.dump(high_function, f, indent=4)
+    with open("high_priority_details.json", "w") as f:
+        json.dump(high_function, f, indent=4)
 
-with open("low_priority_details.json", "w") as f:
-    json.dump(low_function, f, indent=4)
+    with open("low_priority_details.json", "w") as f:
+        json.dump(low_function, f, indent=4)
+
+    print(f"High priority details saved: {len(high_function)} programs")
+    print(f"Low priority details saved: {len(low_function)} programs")
