@@ -1,9 +1,12 @@
 Reconnaissance & Attack‑Surface Mapping Pipeline – Revised Hierarchical Design
 
-    Status: replaces previous linear draft
-    Key additions: passive OSINT, subdomain enumeration, full‑port scan, WAF fingerprinting, auth/IAM surface discovery, cloud asset enumeration, and feedback‑loop pivoting.
+```
+Status: replaces previous linear draft
+Key additions: passive OSINT, subdomain enumeration, full‑port scan, WAF fingerprinting, auth/IAM surface discovery, cloud asset enumeration, and feedback‑loop pivoting.
+```
 
 1. Stage Overview
+
 Stage	Name	Purpose
 Pre‑0	Passive OSINT & Domain Reconnaissance	Build the target’s asset inventory without sending a single packet to the target network.
 0	Full‑Spectrum Service Discovery	Resolve, scan (all ports), and verify any reachable service — web, cloud, databases, CI/CD.
@@ -145,11 +148,13 @@ Goal: Any new hostname, IP, or service discovered anywhere in the pipeline re‑
 
 Implementation:
 
-    Stage 1 virtual host discovery → new domains → re‑enter Pre‑0 to enrich with passive data, then Stage 0 full scan.
+```
+Stage 1 virtual host discovery → new domains → re‑enter Pre‑0 to enrich with passive data, then Stage 0 full scan.
 
-    Stage 4 JS‑extracted internal hostnames → add to subdomain list → run Stage 0 scan against them.
+Stage 4 JS‑extracted internal hostnames → add to subdomain list → run Stage 0 scan against them.
 
-    Stage 5 SSRF that confirms internal IP → that IP + port is now a known service → feed into Stage 0 for full port scanning and service identification.
+Stage 5 SSRF that confirms internal IP → that IP + port is now a known service → feed into Stage 0 for full port scanning and service identification.
+```
 
 The pipeline is no longer a single linear sweep but an iterative loop that expands until no new assets are found or a predefined depth is reached.
 10. Dependency Graph
@@ -178,34 +183,20 @@ Stage 0 (Full‑port scan, service discovery)
                                   ▼
                            [Pivot Engine] ──→ Pre‑0 / Stage 0 (new assets)
 
-11. Implementation Order
-
-    Pre‑0 – fully passive; can be built immediately.
-
+1. Implementation Order
+  Pre‑0 – fully passive; can be built immediately.
     Stage 0 – requires Pre‑0 output; now includes full‑port scanning.
-
     Stage 1 – uses live services; includes cloud and WAF identification.
-
     Stage 2 – parallel to Stage 1 once web origins are known.
-
     Stage 3 – uses live web origins from Stage 0.
-
     Stage 4 – needs Stage 3 data.
-
     Stage 5a – WAF bypass logic, needs WAF fingerprints from Stage 1.
-
     Stage 5b – injection tests, needs bypasses and parameters.
-
     Pivot engine – integrated into the orchestrator from the start; new findings from any stage are queued back.
-
-12. Why This Redesign is Necessary
-
-    No more blind spots: subdomain/cloud/IAM surfaces are now first‑class citizens.
-
+2. Why This Redesign is Necessary
+  No more blind spots: subdomain/cloud/IAM surfaces are now first‑class citizens.
     WAF‑aware: injection tests aren’t blindly launched into a wall.
-
     Passive‑first: reduces noise and improves targeting before any active packet is sent.
-
     Self‑healing scope: the pivot engine ensures you never stop at the initial asset list.
 
 This blueprint addresses every gap raised and can be implemented incrementally — each stage can be built and tested in isolation, with a clear interface to the next.
