@@ -1,8 +1,7 @@
 import uuid
-from sqlalchemy import Column, String, Integer, Boolean, TIMESTAMP, ForeignKey
+from sqlalchemy import Column, Text, Integer, Boolean, TIMESTAMP, ForeignKey, UniqueConstraint, func
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base
-from sqlalchemy.sql import func
 
 Base = declarative_base()
 
@@ -13,25 +12,47 @@ class TimestampMixin:
     is_active = Column(Boolean, nullable=False, default=True)
 
 
-class BountyMaster(Base, TimestampMixin):
+class BountyMaster(TimestampMixin, Base):
     __tablename__ = "bounty_master"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    handle = Column(String, nullable=False, unique=True)
+    handle = Column(Text, nullable=False, unique=True)
     scope_count = Column(Integer, nullable=False, default=0)
-    max_severity = Column(String)
+    max_severity = Column(Text)
 
 
-class BountyDetail(Base, TimestampMixin):
+class BountyDetail(TimestampMixin, Base):
     __tablename__ = "bounty_detail"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    bounty_master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
-    asset_type = Column(String, nullable=False)
-    asset_identifier = Column(String, nullable=False)
-    instructions = Column(String)
-    is_exclusion = Column(Boolean, nullable=False, default=False)
+    master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
+    scope_type = Column(Text, nullable=False)
+    scope_identifier = Column(Text, nullable=False)
+    scope_instructions = Column(Text)
 
     __table_args__ = (
-        UniqueConstraint("bounty_master_id", "asset_type", "asset_identifier", "is_exclusion"),
+        UniqueConstraint("master_id", "scope_type", "scope_identifier"),
     )
+
+
+class ProgramWeakness(TimestampMixin, Base):
+    __tablename__ = "program_weaknesses"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
+    weakness_id = Column(Text, nullable=False)
+    weakness_name = Column(Text)
+    weakness_description = Column(Text)
+
+    __table_args__ = (
+        UniqueConstraint("master_id", "weakness_id"),
+    )
+
+
+class BountyExclusion(TimestampMixin, Base):
+    __tablename__ = "bounty_exclusion"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
+    exclusion_category = Column(Text, nullable=False)
+    exclusion_details = Column(Text)
