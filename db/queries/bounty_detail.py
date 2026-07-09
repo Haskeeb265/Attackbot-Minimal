@@ -1,4 +1,4 @@
-from shared.db import db
+import shared.db as db
 
 
 def add_scope(conn, master_id, scope_type: str, scope_identifier: str, scope_instructions: str | None = None):

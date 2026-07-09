@@ -2,10 +2,15 @@ import os
 import sys
 from logging.config import fileConfig
 
+sys.path.insert(
+    0,
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+)
+
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+from config import DATABASE_URL
 from db.init.models import Base
 
 config = context.config
@@ -15,10 +20,11 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 def get_url():
-    return os.environ.get(
-        "DATABASE_URL",
-        "postgresql+psycopg://admin:admin12345@localhost:5432/attackbot",
-    )
+    url = DATABASE_URL
+    # Alembic's sync engine needs the psycopg3 dialect spelled out
+    if url.startswith("postgresql://"):
+        url = url.replace("postgresql://", "postgresql+psycopg://", 1)
+    return url
 
 def run_migrations_offline():
     context.configure(

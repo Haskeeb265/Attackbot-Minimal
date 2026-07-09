@@ -1,4 +1,4 @@
-from shared.db import db
+import shared.db as db
 
 
 def add_exclusion(

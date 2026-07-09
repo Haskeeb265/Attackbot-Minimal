@@ -1,46 +1,54 @@
-import os
+from config import DATABASE_URL
 from contextlib import contextmanager
 from datetime import datetime, timezone
 
-from psycopg_pool import ConnectionPool
 from psycopg.rows import dict_row
+from psycopg_pool import ConnectionPool
 
-_DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://admin:admin12345@localhost:5432/attackbot",
-)
-
+# Pool is created eagerly at import time (ConnectionPool opens connections
+# in the background by default). Call close() once at process shutdown.
 pool = ConnectionPool(
-    conninfo=_DATABASE_URL,
-    min_size=1,
+    conninfo=DATABASE_URL,
+    min_size=2,
     max_size=10,
     kwargs={"row_factory": dict_row},
-    open=True,
 )
+
+
+def close():
+    """Call once at process shutdown to release pooled connections cleanly."""
+    pool.close()
+
 
 @contextmanager
 def get_conn():
     with pool.connection() as conn:
         yield conn
 
+
 @contextmanager
 def atomic(conn):
-    with conn.transaction():   # psycopg3 auto-nests as SAVEPOINT if already inside a transaction
+    with conn.transaction():
         yield conn
 
-def fetch_one(conn, query, params=None):
+
+def fetch_one(conn, query: str, params: tuple = ()):
     with conn.cursor() as cur:
-        cur.execute(query, params or ())
+        cur.execute(query, params)
         return cur.fetchone()
 
-def fetch_all(conn, query, params=None):
+
+def fetch_all(conn, query: str, params: tuple = ()):
     with conn.cursor() as cur:
-        cur.execute(query, params or ())
+        cur.execute(query, params)
         return cur.fetchall()
 
-def execute(conn, query, params=None):
+
+def execute(conn, query: str, params: tuple = ()):
     with conn.cursor() as cur:
-        cur.execute(query, params or ())
+        cur.execute(query, params)
+        return cur.rowcount
+
 
 def now():
     return datetime.now(timezone.utc)

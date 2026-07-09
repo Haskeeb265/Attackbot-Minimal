@@ -1,4 +1,4 @@
-from shared.db import db
+import shared.db as db
 
 
 def add_program(conn, handle: str, scope_count: int = 0, max_severity: str | None = None ):

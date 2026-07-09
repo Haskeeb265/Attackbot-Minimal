@@ -1,4 +1,4 @@
-from shared.db import db
+import shared.db as db
 
 
 def add_weakness(conn, master_id, weakness_id: str, weakness_name: str | None = None, weakness_description: str | None = None):
@@ -6,7 +6,7 @@ def add_weakness(conn, master_id, weakness_id: str, weakness_name: str | None = 
         conn,
 
         """
-        INSERT INTO program_weaknesses (master_id, weakness_id, weakness_name, weakness_description)
+        INSERT INTO bounty_weaknesses (master_id, weakness_id, weakness_name, weakness_description)
         VALUES (%s, %s, %s, %s)
         RETURNING id
         """,
@@ -20,7 +20,7 @@ def add_weakness(conn, master_id, weakness_id: str, weakness_name: str | None = 
 def get_weakness_by_id(conn, weakness_row_id):
     return db.fetch_one(
         conn,
-        "SELECT * FROM program_weaknesses WHERE id = %s AND is_active = TRUE",
+        "SELECT * FROM bounty_weaknesses WHERE id = %s AND is_active = TRUE",
         (weakness_row_id,),
     )
 
@@ -28,7 +28,7 @@ def get_weakness_by_id(conn, weakness_row_id):
 def get_weaknesses_by_master_id(conn, master_id):
     return db.fetch_all(
         conn,
-        "SELECT * FROM program_weaknesses WHERE master_id = %s AND is_active = TRUE",
+        "SELECT * FROM bounty_weaknesses WHERE master_id = %s AND is_active = TRUE",
         (master_id,),
     )
 
@@ -36,7 +36,7 @@ def get_weaknesses_by_master_id(conn, master_id):
 def list_active_weaknesses(conn):
     return db.fetch_all(
         conn,
-        "SELECT * FROM program_weaknesses WHERE is_active = TRUE ORDER BY master_id",
+        "SELECT * FROM bounty_weaknesses WHERE is_active = TRUE ORDER BY master_id",
     )
 
 
@@ -44,7 +44,7 @@ def delete_weaknesses_for_program(conn, master_id):
     """Hard delete all weakness rows for a program. Used internally by replace_weaknesses()."""
     return db.execute(
         conn,
-        "DELETE FROM program_weaknesses WHERE master_id = %s",
+        "DELETE FROM bounty_weaknesses WHERE master_id = %s",
         (master_id,),
     )
 
