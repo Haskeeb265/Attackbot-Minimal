@@ -1,0 +1,2370 @@
+[
+    {
+        "handle": "cloudflare",
+        "scope_count": 62,
+        "scopes": [
+            {
+                "id": "15902",
+                "asset_type": "URL",
+                "asset_identifier": "support.cloudflare.com",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "This asset is hosted by Zendesk, and as such these reports should be submitted to their program instead via @Zendesk",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2018-10-29T05:20:00.521Z",
+                "updated_at": "2023-01-24T12:44:46.431Z"
+            },
+            {
+                "id": "92116",
+                "asset_type": "URL",
+                "asset_identifier": "dash.cloudflare.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "The Cloudflare dashboard (https://dash.cloudflare.com/) and any direct calls from the dashboard to other Cloudflare owned resources are considered in scope.",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:05:18.302Z",
+                "updated_at": "2023-01-24T12:44:45.364Z"
+            },
+            {
+                "id": "92118",
+                "asset_type": "URL",
+                "asset_identifier": "cloudflareworkers.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "This is a Cloudflare Workers test site.\nCloudflare Workers provides a lightweight JavaScript execution environment that allows developers to augment existing applications or create entirely new ones without configuring or maintaining infrastructure.\nhttps://www.cloudflare.com/products/cloudflare-workers/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:08:16.833Z",
+                "updated_at": "2023-01-24T12:44:45.654Z"
+            },
+            {
+                "id": "92119",
+                "asset_type": "URL",
+                "asset_identifier": "*.teams.cloudflare.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:08:46.981Z",
+                "updated_at": "2023-01-24T12:44:45.719Z"
+            },
+            {
+                "id": "92120",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Pages",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/pages",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:09:24.726Z",
+                "updated_at": "2023-10-26T15:23:05.850Z"
+            },
+            {
+                "id": "92121",
+                "asset_type": "OTHER",
+                "asset_identifier": "CDNJS",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "CDNJS is a free and open source project to organize and provide popular front-end web development resources to developers via a fast CDN infrastructure without usage limitations and fees.\n\nhttps://github.com/cdnjs/cdnjs\nhttps://blog.cloudflare.com/an-update-on-cdnjs/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-02-01T00:10:02.773Z",
+                "updated_at": "2023-01-24T12:44:47.049Z"
+            },
+            {
+                "id": "92122",
+                "asset_type": "OTHER",
+                "asset_identifier": "WARP Mobile Apps",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Download on Android: https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone\nDownload on iOS: https://itunes.apple.com/us/app/1-1-1-1-faster-internet/id1423538627\nWARP is a free VPN for mobile phones. The app can be used as a 1.1.1.1 DNS resolver or VPN or our premium paid service Warp+. It works on wireguard protocol. See documentation section for more details.\nAreas of interest:\nCan other apps snoop with Warp\nDowngrade of connections\nMisconfiguration in the apps or backend\nMITM attacks\n\nOut of scope:\nUsing WARP+ features without paying",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:10:51.885Z",
+                "updated_at": "2024-05-10T17:52:05.509Z"
+            },
+            {
+                "id": "92123",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Access",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare Access is an application that controls access to your sites and integrates with social and enterprise identity providers (IdP) for managing user credentials.\n\nhttps://www.cloudflare.com/products/cloudflare-access/\n\n",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:13:18.371Z",
+                "updated_at": "2023-01-24T12:44:47.206Z"
+            },
+            {
+                "id": "92124",
+                "asset_type": "OTHER",
+                "asset_identifier": "Stream",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare Stream is an easy-to-use, affordable, on-demand video streaming platform. Stream seamlessly integrates video storage, encoding, and a customizable player with Cloudflare\u2019s fast, secure, and reliable global network.\n\nhttps://www.cloudflare.com/products/cloudflare-stream/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-02-01T00:14:31.562Z",
+                "updated_at": "2023-01-24T12:44:47.281Z"
+            },
+            {
+                "id": "92125",
+                "asset_type": "OTHER",
+                "asset_identifier": "1.1.1.1 Resolver",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "\nA blazing fast DNS resolver built for private browsing.\nhttps://1.1.1.1/\nhttps://developers.cloudflare.com/1.1.1.1/what-is-1.1.1.1/\nhttps://developers.cloudflare.com/1.1.1.1/setting-up-1.1.1.1/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:41:52.371Z",
+                "updated_at": "2023-01-24T12:44:47.356Z"
+            },
+            {
+                "id": "92126",
+                "asset_type": "OTHER",
+                "asset_identifier": "Magic Transit",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Magic Transit is a software-defined networking product that offers IP transit with DDoS protection, next-gen firewall, traffic acceleration and more for your on-premise and data center networks from a single, easy-to-use interface.\n\nhttps://www.cloudflare.com/magic-transit/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:42:32.697Z",
+                "updated_at": "2023-01-24T12:44:47.425Z"
+            },
+            {
+                "id": "92128",
+                "asset_type": "OTHER",
+                "asset_identifier": "Spectrum",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "\nSpectrum extends the power of Cloudflare's DDoS, TLS, and IP Firewall to TCP and UDP-based services, keeping them online and secure.\nhttps://www.cloudflare.com/products/cloudflare-spectrum/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:43:43.653Z",
+                "updated_at": "2023-01-24T12:44:47.569Z"
+            },
+            {
+                "id": "92129",
+                "asset_type": "OTHER",
+                "asset_identifier": "Load Balancing",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "\nCloudflare's Load Balancing automatically reduces latency by directing visitors to infrastructure closest to them.\n\nhttps://www.cloudflare.com/load-balancing/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:44:19.059Z",
+                "updated_at": "2023-01-24T12:44:47.670Z"
+            },
+            {
+                "id": "92130",
+                "asset_type": "OTHER",
+                "asset_identifier": "Bot Management",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare enables you to manage bots with speed and accuracy by applying several detection methods: Behavioral analysis, machine learning, and fingerprinting.\nhttps://www.cloudflare.com/products/bot-management/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T00:45:06.531Z",
+                "updated_at": "2023-01-24T12:44:47.739Z"
+            },
+            {
+                "id": "92131",
+                "asset_type": "URL",
+                "asset_identifier": "api.cloudflare.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T01:34:27.939Z",
+                "updated_at": "2023-01-24T12:44:45.786Z"
+            },
+            {
+                "id": "92132",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Zero Trust/Cloudflare One",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T01:35:22.411Z",
+                "updated_at": "2023-01-24T12:44:47.805Z"
+            },
+            {
+                "id": "92133",
+                "asset_type": "URL",
+                "asset_identifier": "*.cloudflare.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Excluding support.cloudflare.com, community.cloudflare.com and other SaaS applications",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2022-02-01T01:38:12.302Z",
+                "updated_at": "2023-01-24T12:44:45.858Z"
+            },
+            {
+                "id": "92134",
+                "asset_type": "OTHER",
+                "asset_identifier": "Open source tools from Cloudflare",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://github.com/cloudflare",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-02-01T01:39:46.459Z",
+                "updated_at": "2023-01-24T12:44:47.872Z"
+            },
+            {
+                "id": "94897",
+                "asset_type": "OTHER",
+                "asset_identifier": "Area 1",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-03-07T22:34:19.515Z",
+                "updated_at": "2024-10-04T06:05:20.136Z"
+            },
+            {
+                "id": "103820",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare D1",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://blog.cloudflare.com/introducing-d1/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-05-11T15:35:51.512Z",
+                "updated_at": "2023-01-24T12:44:48.001Z"
+            },
+            {
+                "id": "103824",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare R2",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://blog.cloudflare.com/r2-open-beta/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-05-11T15:40:28.505Z",
+                "updated_at": "2023-01-24T12:44:48.066Z"
+            },
+            {
+                "id": "113219",
+                "asset_type": "URL",
+                "asset_identifier": "http://github.com/cloudflare",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "-",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-05-18T10:14:05.317Z",
+                "updated_at": "2024-10-04T06:00:05.177Z"
+            },
+            {
+                "id": "194426",
+                "asset_type": "URL",
+                "asset_identifier": "community.cloudflare.com",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-09-13T10:28:49.805Z",
+                "updated_at": "2023-01-24T12:44:46.704Z"
+            },
+            {
+                "id": "205279",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/workerd",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-09-27T17:15:13.677Z",
+                "updated_at": "2023-01-24T12:44:46.893Z"
+            },
+            {
+                "id": "236679",
+                "asset_type": "URL",
+                "asset_identifier": "support.cloudflarewarp.com",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "This asset is hosted by Zendesk, and as such these reports should be submitted to their program instead via @zendesk.",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-10-26T09:58:18.027Z",
+                "updated_at": "2023-01-24T12:44:46.786Z"
+            },
+            {
+                "id": "238278",
+                "asset_type": "OTHER",
+                "asset_identifier": "WARP desktop client",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare Zero Trust client applications releases on Windows, Linux and MacOS",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-10-27T15:31:25.149Z",
+                "updated_at": "2023-01-24T12:44:48.137Z"
+            },
+            {
+                "id": "240525",
+                "asset_type": "URL",
+                "asset_identifier": "one.dash.cloudflare.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-10-31T15:48:46.522Z",
+                "updated_at": "2023-01-24T12:44:46.226Z"
+            },
+            {
+                "id": "255964",
+                "asset_type": "OTHER",
+                "asset_identifier": "*.cloudflarepartners.com",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": null,
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2022-11-16T11:57:36.287Z",
+                "updated_at": "2024-05-06T21:54:53.092Z"
+            },
+            {
+                "id": "362636",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare DNS",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": null,
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-04-04T13:27:56.592Z",
+                "updated_at": "2023-04-04T13:27:56.592Z"
+            },
+            {
+                "id": "380567",
+                "asset_type": "URL",
+                "asset_identifier": "waf.cumulusfire.net",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "medium",
+                "instruction": "This domain must be used for testing WAF bypasses.",
+                "confidentiality_requirement": "low",
+                "integrity_requirement": "low",
+                "availability_requirement": "low",
+                "created_at": "2023-04-19T14:50:21.172Z",
+                "updated_at": "2023-07-13T09:23:21.375Z"
+            },
+            {
+                "id": "380568",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare CASB",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare's cloud access security broker (CASB) service gives comprehensive visibility and control over SaaS apps, so you can easily prevent data leaks and compliance violations. With Zero Trust security, block insider threats, Shadow IT, risky data sharing, and bad actors.\nhttps://www.cloudflare.com/products/zero-trust/casb/",
+                "confidentiality_requirement": "high",
+                "integrity_requirement": "high",
+                "availability_requirement": "high",
+                "created_at": "2023-04-19T14:55:38.712Z",
+                "updated_at": "2023-07-13T09:23:21.442Z"
+            },
+            {
+                "id": "404333",
+                "asset_type": "OTHER",
+                "asset_identifier": "Workers",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/workers/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-05-19T15:10:56.376Z",
+                "updated_at": "2023-10-26T15:23:32.689Z"
+            },
+            {
+                "id": "410534",
+                "asset_type": "URL",
+                "asset_identifier": "events.www.cloudflare.com",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": null,
+                "confidentiality_requirement": "none",
+                "integrity_requirement": "none",
+                "availability_requirement": "none",
+                "created_at": "2023-05-30T09:12:13.981Z",
+                "updated_at": "2023-07-13T09:26:16.536Z"
+            },
+            {
+                "id": "548856",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Tunnel",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Cloudflare Tunnel offers an easy way to expose web servers securely to the internet, without opening up firewall ports and configuring ACLs.\n\nhttps://developers.cloudflare.com/cloudflare-one/connections/connect-networks/\n\n",
+                "confidentiality_requirement": "not_defined",
+                "integrity_requirement": "not_defined",
+                "availability_requirement": "not_defined",
+                "created_at": "2023-10-26T15:25:47.540Z",
+                "updated_at": "2023-10-26T15:26:07.509Z"
+            },
+            {
+                "id": "548857",
+                "asset_type": "OTHER",
+                "asset_identifier": "AMP Real URL",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/speed/optimization/other/amp-real-url/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:27:22.835Z",
+                "updated_at": "2023-10-26T15:27:22.835Z"
+            },
+            {
+                "id": "548858",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Cache ",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/cache/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:29:42.751Z",
+                "updated_at": "2023-10-26T15:29:42.751Z"
+            },
+            {
+                "id": "548859",
+                "asset_type": "OTHER",
+                "asset_identifier": "Magic Firewall",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/magic-firewall/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:30:24.843Z",
+                "updated_at": "2023-10-26T15:30:24.843Z"
+            },
+            {
+                "id": "548860",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Zaraz",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/zaraz/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:31:04.448Z",
+                "updated_at": "2023-10-26T15:31:04.448Z"
+            },
+            {
+                "id": "548861",
+                "asset_type": "OTHER",
+                "asset_identifier": "China Network",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/china-network/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:31:36.869Z",
+                "updated_at": "2023-10-26T15:31:36.869Z"
+            },
+            {
+                "id": "548862",
+                "asset_type": "OTHER",
+                "asset_identifier": "API Shield",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/api-shield/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:32:14.679Z",
+                "updated_at": "2023-10-26T15:32:14.679Z"
+            },
+            {
+                "id": "548863",
+                "asset_type": "OTHER",
+                "asset_identifier": "Gateway",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/cloudflare-one/policies/gateway/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:33:11.050Z",
+                "updated_at": "2023-10-26T15:33:11.050Z"
+            },
+            {
+                "id": "548864",
+                "asset_type": "OTHER",
+                "asset_identifier": "Browser Isolation",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/cloudflare-one/policies/browser-isolation/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:33:58.394Z",
+                "updated_at": "2023-10-26T15:33:58.394Z"
+            },
+            {
+                "id": "548865",
+                "asset_type": "OTHER",
+                "asset_identifier": "Images",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "none",
+                "instruction": "https://developers.cloudflare.com/speed/optimization/images/#image-optimization",
+                "confidentiality_requirement": "none",
+                "integrity_requirement": "none",
+                "availability_requirement": "none",
+                "created_at": "2023-10-26T15:34:47.887Z",
+                "updated_at": "2023-10-26T15:34:47.887Z"
+            },
+            {
+                "id": "548866",
+                "asset_type": "AI_MODEL",
+                "asset_identifier": "Workers AI",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "Reports on Prompt Injection attacks on models hosted by Workers AI without demonstrating an impact on Cloudflare will not be accepted. ",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:35:56.610Z",
+                "updated_at": "2025-04-04T19:35:14.756Z"
+            },
+            {
+                "id": "548867",
+                "asset_type": "OTHER",
+                "asset_identifier": "AI Gateway",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/ai-gateway/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:36:14.357Z",
+                "updated_at": "2023-10-26T15:36:14.357Z"
+            },
+            {
+                "id": "548868",
+                "asset_type": "OTHER",
+                "asset_identifier": "Vectorize",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/vectorize/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:36:45.266Z",
+                "updated_at": "2023-10-26T15:36:45.266Z"
+            },
+            {
+                "id": "548869",
+                "asset_type": "OTHER",
+                "asset_identifier": "Hyperdrive",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/hyperdrive/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:37:03.983Z",
+                "updated_at": "2023-10-26T15:37:03.983Z"
+            },
+            {
+                "id": "548870",
+                "asset_type": "OTHER",
+                "asset_identifier": "Workers KV",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/kv/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:37:47.442Z",
+                "updated_at": "2023-10-26T15:37:47.442Z"
+            },
+            {
+                "id": "548872",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Analytics",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/analytics/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:39:32.263Z",
+                "updated_at": "2023-10-26T15:39:32.263Z"
+            },
+            {
+                "id": "548873",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Durable Objects",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/durable-objects/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T15:41:24.458Z",
+                "updated_at": "2023-10-26T15:41:24.458Z"
+            },
+            {
+                "id": "548875",
+                "asset_type": "OTHER",
+                "asset_identifier": "Turnstile",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "https://developers.cloudflare.com/turnstile/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T16:20:29.300Z",
+                "updated_at": "2026-06-23T07:26:21.683Z"
+            },
+            {
+                "id": "548876",
+                "asset_type": "OTHER",
+                "asset_identifier": "Waiting Room",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/waiting-room/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T16:21:25.680Z",
+                "updated_at": "2023-10-26T16:21:25.680Z"
+            },
+            {
+                "id": "548877",
+                "asset_type": "OTHER",
+                "asset_identifier": "Magic WAN",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/magic-wan/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T16:21:52.411Z",
+                "updated_at": "2023-10-26T16:21:52.411Z"
+            },
+            {
+                "id": "548878",
+                "asset_type": "OTHER",
+                "asset_identifier": "Data Loss Prevention (DLP)",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/cloudflare-one/policies/data-loss-prevention/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T16:22:44.475Z",
+                "updated_at": "2023-10-26T16:22:44.475Z"
+            },
+            {
+                "id": "548879",
+                "asset_type": "OTHER",
+                "asset_identifier": "SSL/TLS",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "https://developers.cloudflare.com/ssl/",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2023-10-26T16:23:12.129Z",
+                "updated_at": "2023-10-26T16:23:12.129Z"
+            },
+            {
+                "id": "655225",
+                "asset_type": "OTHER",
+                "asset_identifier": "172.65.0.0/16 ",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "These are customer applications protected by Cloudflare Spectrum, hence out of scope",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2024-05-10T17:50:53.288Z",
+                "updated_at": "2024-05-10T17:50:53.288Z"
+            },
+            {
+                "id": "754456",
+                "asset_type": "OTHER",
+                "asset_identifier": "Cloudflare Workers CI",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2024-10-04T05:58:31.967Z",
+                "updated_at": "2024-10-04T05:58:31.967Z"
+            },
+            {
+                "id": "997155",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/vinext",
+                "eligible_for_bounty": true,
+                "eligible_for_submission": true,
+                "max_severity": "critical",
+                "instruction": " The Next.js API surface, reimplemented on Vite.\nExperimental \u2014 under heavy development.\nTriage may delay for this repo as we will be assessing for duplicates.",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2026-02-27T23:53:03.382Z",
+                "updated_at": "2026-02-27T23:53:03.382Z"
+            },
+            {
+                "id": "997156",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/vinext-private",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "",
+                "confidentiality_requirement": null,
+                "integrity_requirement": null,
+                "availability_requirement": null,
+                "created_at": "2026-02-28T02:50:09.660Z",
+                "updated_at": "2026-02-28T02:50:09.660Z"
+            },
+            {
+                "id": "1022340",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/privacy-gateway-server-go",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "",
+                "confidentiality_requirement": "none",
+                "integrity_requirement": "none",
+                "availability_requirement": "none",
+                "created_at": "2026-07-08T07:27:51.112Z",
+                "updated_at": "2026-07-08T07:27:51.112Z"
+            },
+            {
+                "id": "1022341",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/moq-rs",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "",
+                "confidentiality_requirement": "none",
+                "integrity_requirement": "none",
+                "availability_requirement": "none",
+                "created_at": "2026-07-08T07:28:46.390Z",
+                "updated_at": "2026-07-08T07:28:46.390Z"
+            },
+            {
+                "id": "1022534",
+                "asset_type": "SOURCE_CODE",
+                "asset_identifier": "https://github.com/cloudflare/saffron.git",
+                "eligible_for_bounty": false,
+                "eligible_for_submission": false,
+                "max_severity": "none",
+                "instruction": "",
+                "confidentiality_requirement": "none",
+                "integrity_requirement": "none",
+                "availability_requirement": "none",
+                "created_at": "2026-07-08T13:49:03.834Z",
+                "updated_at": "2026-07-08T13:49:03.834Z"
+            }
+        ],
+        "scope_exclusions": [
+            {
+                "id": "495",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "MITM or physical access to a user's device",
+                    "details": "Attacks requiring MITM or physical access to a user's device will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.632Z",
+                    "updated_at": "2024-10-04T05:56:56.632Z"
+                }
+            },
+            {
+                "id": "496",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Content quality issues like broken links, spelling errors etc",
+                    "details": "Reports detailing content quality issues like broken links, spelling errors etc. will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.637Z",
+                    "updated_at": "2024-10-04T05:56:56.637Z"
+                }
+            },
+            {
+                "id": "497",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Clickjacking and UI redressing",
+                    "details": "Clickjacking, UI redressing, invisible iframe overlays, pointer redressing, clipboard coaching, and attacks that rely on tricking a user into clicking, copying, approving, or entering content are not eligible.",
+                    "created_at": "2024-10-04T05:56:56.640Z",
+                    "updated_at": "2026-06-25T10:23:20.373Z"
+                }
+            },
+            {
+                "id": "498",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Cloud resource takeovers",
+                    "details": "Cloud resource takeovers will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.644Z",
+                    "updated_at": "2024-10-04T05:56:56.644Z"
+                }
+            },
+            {
+                "id": "499",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Content spoofing and text injection issues",
+                    "details": "Content spoofing and text injection issues without showing an attack vector, or without being able to modify HTML/CSS will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.647Z",
+                    "updated_at": "2024-10-04T05:56:56.647Z"
+                }
+            },
+            {
+                "id": "500",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Email configuration issues",
+                    "details": "Email configuration issues without a PoC to demonstrate a specific flaw will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.650Z",
+                    "updated_at": "2024-10-04T05:56:56.650Z"
+                }
+            },
+            {
+                "id": "501",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Insecure origin server configuration",
+                    "details": "Exploits that require the victim to configure their origin server in an insecure and non-default/uncommon way will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.653Z",
+                    "updated_at": "2024-10-04T05:56:56.653Z"
+                }
+            },
+            {
+                "id": "502",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Suggestions on configuration documentation",
+                    "details": "Reports detailing missing best practice, configuration or policy suggestions, including SSL/TLS configurations will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.656Z",
+                    "updated_at": "2024-10-04T05:56:56.656Z"
+                }
+            },
+            {
+                "id": "503",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Lack of \u201cSecure\u201d or \u201cHttpOnly\u201d flag on non-sensitive cookies",
+                    "details": "Reports detailing a lack of \u201cSecure\u201d or \u201cHttpOnly\u201d flag on non-sensitive cookies will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.659Z",
+                    "updated_at": "2024-10-04T05:56:56.659Z"
+                }
+            },
+            {
+                "id": "504",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Open redirects",
+                    "details": "Reports detailing open redirects will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.662Z",
+                    "updated_at": "2024-10-04T05:56:56.662Z"
+                }
+            },
+            {
+                "id": "505",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Security tool output without a PoC",
+                    "details": "Output from security tools (such as automated scanners) without a PoC to demonstrate a specific vulnerability will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.665Z",
+                    "updated_at": "2024-10-04T05:56:56.665Z"
+                }
+            },
+            {
+                "id": "506",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Subdomain takeovers",
+                    "details": "Subdomain takeovers will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.668Z",
+                    "updated_at": "2024-10-04T05:56:56.668Z"
+                }
+            },
+            {
+                "id": "507",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Unauthenticated logout/login CSRF",
+                    "details": "Unauthenticated logout/login CSRF will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.671Z",
+                    "updated_at": "2024-10-04T05:56:56.671Z"
+                }
+            },
+            {
+                "id": "508",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Use of previously known vulnerable libraries",
+                    "details": "Use of previously known vulnerable libraries without a working Proof of Concept will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.674Z",
+                    "updated_at": "2024-10-04T05:56:56.674Z"
+                }
+            },
+            {
+                "id": "509",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Vulnerabilities in SaaS applications",
+                    "details": "Vulnerabilities in SaaS applications (unless the vulnerability is a result of a misconfiguration by Cloudflare) will not be accepted.",
+                    "created_at": "2024-10-04T05:56:56.677Z",
+                    "updated_at": "2024-10-04T05:56:56.677Z"
+                }
+            },
+            {
+                "id": "1368",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Turnstile bypass",
+                    "details": "Automated bypasses on Turnstile via a custom script will not be accepted.",
+                    "created_at": "2025-06-09T16:27:25.843Z",
+                    "updated_at": "2025-06-09T16:27:25.843Z"
+                }
+            },
+            {
+                "id": "2044",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Demo and Test Applications - Quiche",
+                    "details": "For demo applications in quiche, \n- please refer to disclaimer at  https://github.com/cloudflare/quiche\n- we invite contributions to our open-source projects; please open a Pull Request (PR) with any fixes\n- Reports may be considered for bounty if it is reproducible in the Cloudflare stack",
+                    "created_at": "2026-02-13T00:50:32.240Z",
+                    "updated_at": "2026-02-13T00:50:32.240Z"
+                }
+            },
+            {
+                "id": "2345",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "AI-generated and low-effort reports",
+                    "details": "Researchers are welcome to use AI tools to assist their research, but the final report must demonstrate that the researcher understands the vulnerability, has verified the claims, and has produced a working reproduction.",
+                    "created_at": "2026-06-23T08:38:51.800Z",
+                    "updated_at": "2026-06-23T08:49:21.729Z"
+                }
+            },
+            {
+                "id": "2346",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Breach forum / leaked password reports",
+                    "details": "Passwords, cookies, session dumps, or credentials found in breach forums, stealer logs, paste sites, dark web marketplaces, Telegram/Discord channels, or other third-party leak sources are not bounty eligible. Do not attempt to validate leaked credentials.",
+                    "created_at": "2026-06-23T08:38:51.809Z",
+                    "updated_at": "2026-06-23T08:38:51.809Z"
+                }
+            },
+            {
+                "id": "2347",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "GitHub Actions requiring approval",
+                    "details": "GitHub Actions or CI/CD findings requiring maintainer approval, prior contributor trust, workflow approval, PR merge, deployment approval, or social engineering are not bounty eligible.",
+                    "created_at": "2026-06-23T08:38:51.813Z",
+                    "updated_at": "2026-06-23T08:38:51.813Z"
+                }
+            },
+            {
+                "id": "2348",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Untrusted project developer tooling",
+                    "details": "Command execution requiring attacker control of project files such as package.json, build scripts, package-manager hooks, local plugins, or repository configuration is not bounty eligible unless a separate trust-boundary bypass is demonstrated.",
+                    "created_at": "2026-06-23T08:38:51.816Z",
+                    "updated_at": "2026-06-23T08:38:51.816Z"
+                }
+            },
+            {
+                "id": "2349",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Local same-machine attacks",
+                    "details": "Local authenticated or same-machine attacks are not eligible unless they demonstrate privilege escalation or cross-user disclosure of sensitive Cloudflare-managed data.",
+                    "created_at": "2026-06-23T08:38:51.819Z",
+                    "updated_at": "2026-06-23T08:38:51.819Z"
+                }
+            },
+            {
+                "id": "2350",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "WAF / bot / rate-limit tuning",
+                    "details": "Generic payload bypasses, scanner output, customer configuration gaps, rule tuning requests, or payloads reaching an origin without demonstrated Cloudflare-controlled enforcement bypass and meaningful in-scope impact are not bounty eligible.",
+                    "created_at": "2026-06-23T08:38:51.823Z",
+                    "updated_at": "2026-06-23T08:38:51.823Z"
+                }
+            },
+            {
+                "id": "2351",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Theoretical or hardening-only findings",
+                    "details": "Best-practice suggestions, static-analysis warnings, missing validation, defense-in-depth improvements, or theoretical exploit paths without realistic impact are not bounty eligible.",
+                    "created_at": "2026-06-23T08:38:51.827Z",
+                    "updated_at": "2026-06-23T08:38:51.827Z"
+                }
+            },
+            {
+                "id": "2352",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Customer/vendor/third-party systems",
+                    "details": "Testing against Cloudflare customers, partners, vendors, suppliers, or third-party SaaS platforms is prohibited unless explicitly authorized and in scope.",
+                    "created_at": "2026-06-23T08:38:51.830Z",
+                    "updated_at": "2026-06-23T08:38:51.830Z"
+                }
+            },
+            {
+                "id": "1533",
+                "type": "scope-exclusion",
+                "attributes": {
+                    "category": "Demo , Experimental and Test Applications",
+                    "details": "Reports targeting demo, test, experimental or proof-of-concept (PoC) are not in scope for bounty. These are not intended for production use and offer no performance, security, or reliability guarantees.",
+                    "created_at": "2025-07-21T19:03:38.079Z",
+                    "updated_at": "2026-06-28T14:45:16.575Z"
+                }
+            }
+        ],
+        "weaknesses": [
+            {
+                "id": "12",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Array Index Underflow",
+                    "description": "The product uses untrusted input when calculating or using an array index, but the product does not validate or incorrectly validates the index to ensure the index references a valid position within the array.",
+                    "external_id": "cwe-129",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "1629",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI01: Agent Goal Hijack",
+                    "description": "AI Agents exhibit autonomous ability to execute a series of tasks to achieve a goal. Due to inherent weaknesses in how natural-language instructions and related content are processed, agents and the underlying model cannot reliably distinguish instructions from related content.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.183Z"
+                }
+            },
+            {
+                "id": "1630",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI02: Tool Misuse and Exploitation",
+                    "description": "Agents can misuse legitimate tools due to prompt injection, misalignment, or unsafe delegation or ambiguous instruction - leading to data exfiltration, tool output manipulation or workflow hijacking.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.252Z"
+                }
+            },
+            {
+                "id": "1631",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI03: Identity and Privilege Abuse",
+                    "description": "Identity & Privilege Abuse exploits dynamic trust and delegation in agents to escalate access and bypass controls by manipulating delegation chains, role inheritance, control flows, and agent context; context includes cached credentials or conversation history across interconnected systems.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.293Z"
+                }
+            },
+            {
+                "id": "1632",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI04: Agentic Supply Chain Vulnerabilities",
+                    "description": "Agentic Supply Chain Vulnerabilities arise when agents, tools, and related artefacts they work with are provided by third parties and may be malicious, compromised, or tampered with in transit.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.356Z"
+                }
+            },
+            {
+                "id": "1633",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI05: Unexpected Code Execution (RCE)",
+                    "description": "Agentic systems - including popular vibe coding tools - often generate and execute code. Attackers exploit code-generation features or embedded tool access to escalate actions into remote code execution (RCE), local misuse, or exploitation of internal systems.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.419Z"
+                }
+            },
+            {
+                "id": "1634",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI06: Memory & Context Poisoning",
+                    "description": "Agentic systems rely on stored and retrievable information which can be a snapshot of its conversation history, a memory tool or expanded context, which supports continuity across tasks and reasoning cycles.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.452Z"
+                }
+            },
+            {
+                "id": "1635",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI07: Insecure Inter-Agent Communication",
+                    "description": "Multi agent systems depend on continuous communication between autonomous agents that coordinate via APIs, message buses, and shared memory, significantly expanding the attack surface.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.475Z"
+                }
+            },
+            {
+                "id": "1636",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI08: Cascading Failures",
+                    "description": "Agentic cascading failures occur when a single fault (hallucination, malicious input, corrupted tool, or poisoned memory) propagates across autonomous agents, compounding into system-wide harm.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.500Z"
+                }
+            },
+            {
+                "id": "1637",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI09: Human-Agent Trust Exploitation",
+                    "description": "Intelligent agents can establish strong trust with human users through their natural language fluency, emotional intelligence, and perceived expertise, known as anthropomorphism.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.523Z"
+                }
+            },
+            {
+                "id": "1638",
+                "type": "weakness",
+                "attributes": {
+                    "name": "ASI10: Rogue Agents",
+                    "description": "Rogue Agents are malicious or compromised AI Agents that deviate from their intended function or authorized scope, acting harmfully, deceptively, or parasitically within multi-agent or human-agent ecosystems.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T14:28:00.547Z"
+                }
+            },
+            {
+                "id": "9",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Buffer Over-read",
+                    "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations after the targeted buffer.",
+                    "external_id": "cwe-126",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "7",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Buffer Underflow",
+                    "description": "The software writes to a buffer using an index or pointer that references a memory location prior to the beginning of the buffer.",
+                    "external_id": "cwe-124",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "10",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Buffer Under-read",
+                    "description": "The software reads from a buffer using buffer access mechanisms such as indexes or pointers that reference memory locations prior to the targeted buffer.",
+                    "external_id": "cwe-127",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "65",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Business Logic Errors",
+                    "description": "Weaknesses in this category identify some of the underlying problems that commonly allow attackers to manipulate the business logic of an application.",
+                    "external_id": "cwe-840",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "3",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Classic Buffer Overflow",
+                    "description": "The program copies an input buffer to an output buffer without verifying that the size of the input buffer is less than the size of the output buffer, leading to a buffer overflow.",
+                    "external_id": "cwe-120",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "33",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cleartext Storage of Sensitive Information",
+                    "description": "The application stores sensitive information in cleartext within a resource that might be accessible to another control sphere.",
+                    "external_id": "cwe-312",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "34",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cleartext Transmission of Sensitive Information",
+                    "description": "The software transmits sensitive or security-critical data in cleartext in a communication channel that can be sniffed by unauthorized actors.",
+                    "external_id": "cwe-319",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "102",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Client-Side Enforcement of Server-Side Security",
+                    "description": "The software is composed of a server that relies on the client to implement a mechanism that is intended to protect the server.",
+                    "external_id": "cwe-602",
+                    "created_at": "2017-03-10T18:53:51.436Z"
+                }
+            },
+            {
+                "id": "70",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Code Injection",
+                    "description": "The software constructs all or part of a code segment using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the syntax or behavior of the intended code segment.",
+                    "external_id": "cwe-94",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "58",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Command Injection - Generic",
+                    "description": "The software constructs all or part of a command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended command when it is sent to a downstream component.",
+                    "external_id": "cwe-77",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "69",
+                "type": "weakness",
+                "attributes": {
+                    "name": "CRLF Injection",
+                    "description": "The software uses CRLF (carriage return line feeds) as a special element, e.g. to separate lines or records, but it does not neutralize or incorrectly neutralizes CRLF sequences from inputs.",
+                    "external_id": "cwe-93",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "45",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cross-Site Request Forgery (CSRF)",
+                    "description": "The web application does not, or can not, sufficiently verify whether a well-formed, valid, consistent request was intentionally provided by the user who submitted the request.",
+                    "external_id": "cwe-352",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "63",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cross-site Scripting (XSS) - DOM",
+                    "description": "In DOM-based XSS, the client performs the injection of XSS into the page; in the other types, the server performs the injection. DOM-based XSS generally involves server-controlled, trusted script that is sent to the client, such as Javascript that performs sanity checks on a form before the user submits it. If the server-supplied script processes user-supplied data and then injects it back into the web page (such as with dynamic HTML), then DOM-based XSS is possible.",
+                    "external_id": "cwe-79",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "60",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cross-site Scripting (XSS) - Generic",
+                    "description": "The software does not neutralize or incorrectly neutralizes user-controllable input before it is placed in output that is used as a web page that is served to other users.",
+                    "external_id": "cwe-79",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "61",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cross-site Scripting (XSS) - Reflected",
+                    "description": "The server reads data directly from the HTTP request and reflects it back in the HTTP response. Reflected XSS exploits occur when an attacker causes a victim to supply dangerous content to a vulnerable web application, which is then reflected back to the victim and executed by the web browser. The most common mechanism for delivering malicious content is to include it as a parameter in a URL that is posted publicly or e-mailed directly to the victim. URLs constructed in this manner constitute the core of many phishing schemes, whereby an attacker convinces a victim to visit a URL that refers to a vulnerable site. After the site reflects the attacker's content back to the victim, the content is executed by the victim's browser.",
+                    "external_id": "cwe-79",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "62",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cross-site Scripting (XSS) - Stored",
+                    "description": "The application stores dangerous data in a database, message forum, visitor log, or other trusted data store. At a later time, the dangerous data is subsequently read back into the application and included in dynamic content. From an attacker's perspective, the optimal place to inject malicious content is in an area that is displayed to either many users or particularly interesting users. Interesting users typically have elevated privileges in the application or interact with sensitive data that is valuable to the attacker. If one of these users executes malicious content, the attacker may be able to perform privileged operations on behalf of the user or gain access to sensitive data belonging to the user. For example, the attacker might inject XSS into a log message, which might not be handled properly when an administrator views the logs.",
+                    "external_id": "cwe-79",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "32",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Cryptographic Issues - Generic",
+                    "description": "Weaknesses in this category are related to the use of cryptography.",
+                    "external_id": "cwe-310",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "52",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Deserialization of Untrusted Data",
+                    "description": "The application deserializes untrusted data without sufficiently verifying that the resulting data will be valid.",
+                    "external_id": "cwe-502",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "49",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Double Free",
+                    "description": "The product calls free() twice on the same memory address, potentially leading to modification of unexpected memory locations.",
+                    "external_id": "cwe-415",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "85",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Forced Browsing",
+                    "description": "The web application does not adequately enforce appropriate authorization on all restricted URLs, scripts, or files.",
+                    "external_id": "cwe-425",
+                    "created_at": "2017-01-26T23:29:13.909Z"
+                }
+            },
+            {
+                "id": "5",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Heap Overflow",
+                    "description": "A heap overflow condition is a buffer overflow, where the buffer that can be overwritten is allocated in the heap portion of memory, generally meaning that the buffer was allocated using a routine such as malloc().",
+                    "external_id": "cwe-122",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "86",
+                "type": "weakness",
+                "attributes": {
+                    "name": "HTTP Request Smuggling",
+                    "description": "When malformed or abnormal HTTP requests are interpreted by one or more entities in the data flow between the user and the web server, such as a proxy or firewall, they can be interpreted inconsistently, allowing the attacker to \"smuggle\" a request to one device without the other device being aware of it.",
+                    "external_id": "cwe-444",
+                    "created_at": "2017-01-26T23:29:14.332Z"
+                }
+            },
+            {
+                "id": "1",
+                "type": "weakness",
+                "attributes": {
+                    "name": "HTTP Response Splitting",
+                    "description": "The software receives data from an upstream component, but does not neutralize or incorrectly neutralizes CR and LF characters before the data is included in outgoing HTTP headers.",
+                    "external_id": "cwe-113",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "26",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Access Control - Generic",
+                    "description": "The software does not restrict or incorrectly restricts access to a resource from an unauthorized actor.",
+                    "external_id": "cwe-284",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "27",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Authentication - Generic",
+                    "description": "When an actor claims to have a given identity, the software does not prove or insufficiently proves that the claim is correct.",
+                    "external_id": "cwe-287",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "28",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Certificate Validation",
+                    "description": "The software does not validate, or incorrectly validates, a certificate.",
+                    "external_id": "cwe-295",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "29",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Following of a Certificate's Chain of Trust",
+                    "description": "The software does not follow, or incorrectly follows, the chain of trust for a certificate back to a trusted root certificate, resulting in incorrect trust of any resource that is associated with that certificate.",
+                    "external_id": "cwe-296",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "93",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Neutralization of HTTP Headers for Scripting Syntax",
+                    "description": "The application does not neutralize or incorrectly neutralizes web scripting syntax in HTTP headers that can be used by web browser components that can process raw headers, such as Flash.",
+                    "external_id": "cwe-644",
+                    "created_at": "2017-01-26T23:29:17.453Z"
+                }
+            },
+            {
+                "id": "14",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Null Termination",
+                    "description": "The software does not terminate or incorrectly terminates a string or array with a null character or equivalent terminator.",
+                    "external_id": "cwe-170",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "31",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Improper Restriction of Authentication Attempts",
+                    "description": "The software does not implement sufficient measures to prevent multiple failed authentication attempts within in a short time frame, making it more susceptible to brute force attacks.",
+                    "external_id": "cwe-307",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "40",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Inadequate Encryption Strength",
+                    "description": "The software stores or transmits sensitive data using an encryption scheme that is theoretically sound, but is not strong enough for the level of protection required.",
+                    "external_id": "cwe-326",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "13",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Incorrect Calculation of Buffer Size",
+                    "description": "The software does not correctly calculate the size to be used when allocating a buffer, which could lead to a buffer overflow.",
+                    "external_id": "cwe-131",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "18",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Information Disclosure",
+                    "description": "An information disclosure is the intentional or unintentional disclosure of information to an actor that is not explicitly authorized to have access to that information.",
+                    "external_id": "cwe-200",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "82",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Information Exposure Through an Error Message",
+                    "description": "The software generates an error message that includes sensitive information about its environment, users, or associated data.",
+                    "external_id": "cwe-209",
+                    "created_at": "2017-01-26T23:29:12.553Z"
+                }
+            },
+            {
+                "id": "83",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Information Exposure Through Debug Information",
+                    "description": "The application contains debugging code that can expose sensitive information to untrusted parties.",
+                    "external_id": "cwe-215",
+                    "created_at": "2017-01-26T23:29:12.978Z"
+                }
+            },
+            {
+                "id": "89",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Information Exposure Through Directory Listing",
+                    "description": "A directory listing is inappropriately exposed, yielding potentially sensitive information to attackers.",
+                    "external_id": "cwe-548",
+                    "created_at": "2017-01-26T23:29:15.748Z"
+                }
+            },
+            {
+                "id": "55",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Insecure Direct Object Reference (IDOR)",
+                    "description": "The system's authorization functionality does not prevent one user from gaining access to another user's data or record by modifying the key value identifying the data.",
+                    "external_id": "cwe-639",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "101",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Insecure Storage of Sensitive Information",
+                    "description": "The software stores sensitive information without properly limiting read or write access by unauthorized actors.",
+                    "external_id": "cwe-922",
+                    "created_at": "2017-03-10T18:49:08.280Z"
+                }
+            },
+            {
+                "id": "87",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Insufficiently Protected Credentials",
+                    "description": "This weakness occurs when the application transmits or stores authentication credentials and uses an insecure method that is susceptible to unauthorized interception and/or retrieval.",
+                    "external_id": "cwe-522",
+                    "created_at": "2017-01-26T23:29:14.824Z"
+                }
+            },
+            {
+                "id": "90",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Insufficient Session Expiration",
+                    "description": "According to WASC, \"Insufficient Session Expiration is when a web site permits an attacker to reuse old session credentials or session IDs for authorization.\"",
+                    "external_id": "cwe-613",
+                    "created_at": "2017-01-26T23:29:16.182Z"
+                }
+            },
+            {
+                "id": "15",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Integer Overflow",
+                    "description": "The software performs a calculation that can produce an integer overflow or wraparound, when the logic assumes that the resulting value will always be larger than the original value. This can introduce other weaknesses when the calculation is used for resource management or execution control.",
+                    "external_id": "cwe-190",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "16",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Integer Underflow",
+                    "description": "The product subtracts one value from another, such that the result is less than the minimum allowable integer value, which produces a value that is not equal to the correct result.",
+                    "external_id": "cwe-191",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "36",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Key Exchange without Entity Authentication",
+                    "description": "The software performs a key exchange with an actor without verifying the identity of that actor.",
+                    "external_id": "cwe-322",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "99",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LDAP Injection",
+                    "description": "The software constructs all or part of an LDAP query using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended LDAP query when it is sent to a downstream component.",
+                    "external_id": "cwe-90",
+                    "created_at": "2017-01-26T23:29:20.043Z"
+                }
+            },
+            {
+                "id": "103",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Leftover Debug Code (Backdoor)",
+                    "description": "The application was deployed with active debugging code that can create unintended entry points.",
+                    "external_id": "cwe-489",
+                    "created_at": "2017-03-10T18:55:30.252Z"
+                }
+            },
+            {
+                "id": "1595",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM01: Prompt Injection",
+                    "description": "Manipulating LLMs via crafted inputs can lead to unauthorized access, data breaches, and compromised decision-making.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.334Z"
+                }
+            },
+            {
+                "id": "1620",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM02:2025 Sensitive Information Disclosure",
+                    "description": "Sensitive information can affect both the LLM and its application context. This includes personal identifiable information (PII), financial details, health records, confidential business data, security credentials, and legal documents.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.316Z"
+                }
+            },
+            {
+                "id": "1596",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM02: Insecure Output Handling",
+                    "description": "Neglecting to validate LLM outputs may lead to downstream security exploits, including code execution that compromises systems and exposes data.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.355Z"
+                }
+            },
+            {
+                "id": "1621",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM03:2025 Supply Chain",
+                    "description": "LLM supply chains are susceptible to various vulnerabilities, which can affect the integrity of training data, models, and deployment platforms.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.345Z"
+                }
+            },
+            {
+                "id": "1597",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM03: Training Data Poisoning",
+                    "description": "Tampered training data can impair LLM models leading to responses that may compromise security, accuracy, or ethical behavior.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.365Z"
+                }
+            },
+            {
+                "id": "1622",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM04:2025 Data and Model Poisoning",
+                    "description": "Data poisoning occurs when pre-training, fine-tuning, or embedding data is manipulated to introduce vulnerabilities, backdoors, or biases. This manipulation can compromise model security, performance, or ethical behavior, leading to harmful outputs or impaired capabilities.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.377Z"
+                }
+            },
+            {
+                "id": "1598",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM04: Model Denial of Service",
+                    "description": "Overloading LLMs with resource-heavy operations can cause service disruptions and increased costs.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.374Z"
+                }
+            },
+            {
+                "id": "1623",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM05:2025 Improper Output Handling",
+                    "description": "Improper Output Handling refers specifically to insufficient validation, sanitization, and handling of the outputs generated by large language models before they are passed downstream to other components and systems.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.410Z"
+                }
+            },
+            {
+                "id": "1599",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM05: Supply Chain Vulnerabilities",
+                    "description": "Depending upon compromised components, services or datasets undermine system integrity, causing data breaches and system failures.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.384Z"
+                }
+            },
+            {
+                "id": "1624",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM06:2025 Excessive Agency",
+                    "description": "An LLM-based system is often granted a degree of agency by its developer - the ability to call functions or interface with other systems via extensions (sometimes referred to as tools, skills or plugins by different vendors) to undertake actions in response to a prompt.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.449Z"
+                }
+            },
+            {
+                "id": "1600",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM06: Sensitive Information Disclosure",
+                    "description": "Failure to protect against disclosure of sensitive information in LLM outputs can result in legal consequences or a loss of competitive advantage.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.395Z"
+                }
+            },
+            {
+                "id": "1625",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM07:2025 System Prompt Leakage",
+                    "description": "The system prompt leakage vulnerability in LLMs refers to the risk that the system prompts or instructions used to steer the behavior of the model can also contain sensitive information that was not intended to be discovered.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.475Z"
+                }
+            },
+            {
+                "id": "1601",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM07: Insecure Plugin Design",
+                    "description": "LLM plugins processing untrusted inputs and having insufficient access control risk severe exploits like remote code execution.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.405Z"
+                }
+            },
+            {
+                "id": "1626",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM08:2025 Vector and Embedding Weaknesses",
+                    "description": "Weaknesses in how vectors and embeddings are generated, stored, or retrieved can be exploited by malicious actions (intentional or unintentional) to inject harmful content, manipulate model outputs, or access sensitive information.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.502Z"
+                }
+            },
+            {
+                "id": "1602",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM08: Excessive Agency",
+                    "description": "Granting LLMs unchecked autonomy to take action can lead to unintended consequences, jeopardizing reliability, privacy, and trust.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.416Z"
+                }
+            },
+            {
+                "id": "1627",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM09:2025 Misinformation",
+                    "description": "Misinformation occurs when LLMs produce false or misleading information that appears credible. This vulnerability can lead to security breaches, reputational damage, and legal liability.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.533Z"
+                }
+            },
+            {
+                "id": "1603",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM09: Overreliance",
+                    "description": "Failing to critically assess LLM outputs can lead to compromised decision making, security vulnerabilities, and legal liabilities.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.425Z"
+                }
+            },
+            {
+                "id": "1628",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM10:2025 Unbounded Consumption",
+                    "description": "Unbounded Consumption refers to the process where a Large Language Model (LLM) generates outputs based on input queries or prompts.",
+                    "external_id": null,
+                    "created_at": "2026-01-21T13:54:58.554Z"
+                }
+            },
+            {
+                "id": "1604",
+                "type": "weakness",
+                "attributes": {
+                    "name": "LLM10: Model Theft",
+                    "description": "Unauthorized access to proprietary large language models risks theft, competitive advantage, and dissemination of sensitive information.",
+                    "external_id": null,
+                    "created_at": "2023-12-11T08:38:11.436Z"
+                }
+            },
+            {
+                "id": "76",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Malware",
+                    "description": "An adversary installs and executes malicious code on the target system in an effort to achieve a negative technical impact.",
+                    "external_id": "capec-549",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "30",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Man-in-the-Middle",
+                    "description": "The product does not adequately verify the identity of actors at both ends of a communication channel, or does not adequately ensure the integrity of the channel, in a way that allows the channel to be accessed or influenced by an actor that is not an endpoint.",
+                    "external_id": "cwe-300",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "2",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Memory Corruption - Generic",
+                    "description": "The software performs operations on a memory buffer, but it can read from or write to a memory location that is outside of the intended boundary of the buffer.",
+                    "external_id": "cwe-119",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "84",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Missing Encryption of Sensitive Data",
+                    "description": "The software does not encrypt sensitive or critical information before storage or transmission.",
+                    "external_id": "cwe-311",
+                    "created_at": "2017-01-26T23:29:13.475Z"
+                }
+            },
+            {
+                "id": "39",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Missing Required Cryptographic Step",
+                    "description": "The software does not implement a required step in a cryptographic algorithm, resulting in weaker encryption than advertised by that algorithm.",
+                    "external_id": "cwe-325",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "51",
+                "type": "weakness",
+                "attributes": {
+                    "name": "NULL Pointer Dereference",
+                    "description": "A NULL pointer dereference occurs when the application dereferences a pointer that it expects to be valid, but is NULL, typically causing a crash or exit.",
+                    "external_id": "cwe-476",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "17",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Off-by-one Error",
+                    "description": "A product calculates or uses an incorrect maximum or minimum value that is 1 more, or 1 less, than the correct value.",
+                    "external_id": "cwe-193",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "59",
+                "type": "weakness",
+                "attributes": {
+                    "name": "OS Command Injection",
+                    "description": "The software constructs all or part of an OS command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended OS command when it is sent to a downstream component.",
+                    "external_id": "cwe-78",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "8",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Out-of-bounds Read",
+                    "description": "The software reads data past the end, or before the beginning, of the intended buffer.",
+                    "external_id": "cwe-125",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "24",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Password in Configuration File",
+                    "description": "The software stores a password in a configuration file that might be accessible to actors who do not know the password.",
+                    "external_id": "cwe-260",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "19",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Path Traversal",
+                    "description": "The software uses external input to construct a pathname that is intended to identify a file or directory that is located underneath a restricted parent directory, but the software does not properly neutralize special elements within the pathname that can cause the pathname to resolve to a location that is outside of the restricted directory.",
+                    "external_id": "cwe-22",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "73",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Phishing",
+                    "description": "Phishing is a social engineering technique where an attacker masquerades as a legitimate entity with which the victim might do business in order to prompt the user to reveal some confidential information (very frequently authentication credentials) that can later be used by an attacker. Phishing is essentially a form of information gathering or \"fishing\" for information.",
+                    "external_id": "capec-98",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "21",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Plaintext Storage of a Password",
+                    "description": "Storing a password in plaintext may result in a system compromise.",
+                    "external_id": "cwe-256",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "46",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Privacy Violation",
+                    "description": "The software does not properly prevent private data (such as credit card numbers) from being accessed by actors who either (1) are not explicitly authorized to access the data or (2) do not have the implicit consent of the people to which the data is related.",
+                    "external_id": "cwe-359",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "75",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Privilege Escalation",
+                    "description": "An adversary exploits a weakness enabling them to elevate their privilege and perform an action that they are not supposed to be authorized to perform.",
+                    "external_id": "capec-233",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "97",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Reliance on Cookies without Validation and Integrity Checking in a Security Decision",
+                    "description": "The application uses a protection mechanism that relies on the existence or values of a cookie, but it does not properly ensure that the cookie is valid for the associated user.",
+                    "external_id": "cwe-784",
+                    "created_at": "2017-01-26T23:29:19.178Z"
+                }
+            },
+            {
+                "id": "71",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Remote File Inclusion",
+                    "description": "The PHP application receives input from an upstream component, but it does not restrict or incorrectly restricts the input before its usage in \"require,\" \"include,\" or similar functions.",
+                    "external_id": "cwe-98",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "72",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Resource Injection",
+                    "description": "The software receives input from an upstream component, but it does not restrict or incorrectly restricts the input before it is used as an identifier for a resource that may be outside the intended sphere of control.",
+                    "external_id": "cwe-99",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "37",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Reusing a Nonce, Key Pair in Encryption",
+                    "description": "Nonces should be used for the present occasion and only once.",
+                    "external_id": "cwe-323",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "42",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Reversible One-Way Hash",
+                    "description": "The product uses a hashing algorithm that produces a hash value that can be used to determine the original input, or to find an input that can produce the same hash, more efficiently than brute force techniques.",
+                    "external_id": "cwe-328",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "56",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Security Through Obscurity",
+                    "description": "The software uses a protection mechanism whose strength depends heavily on its obscurity, such that knowledge of its algorithms or key data is sufficient to defeat the mechanism.",
+                    "external_id": "cwe-656",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "68",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Server-Side Request Forgery (SSRF)",
+                    "description": "The web server receives a URL or similar request from an upstream component and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination.",
+                    "external_id": "cwe-918",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "47",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Session Fixation",
+                    "description": "Authenticating a user, or otherwise establishing a new user session, without invalidating any existing session identifier gives an attacker the opportunity to steal authenticated sessions.",
+                    "external_id": "cwe-384",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "67",
+                "type": "weakness",
+                "attributes": {
+                    "name": "SQL Injection",
+                    "description": "The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.",
+                    "external_id": "cwe-89",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "4",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Stack Overflow",
+                    "description": "A stack-based buffer overflow condition is a condition where the buffer being overwritten is allocated on the stack (i.e., is a local variable or, rarely, a parameter to a function).",
+                    "external_id": "cwe-121",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "22",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Storing Passwords in a Recoverable Format",
+                    "description": "The storage of passwords in a recoverable format makes them subject to password reuse attacks by malicious users. In fact, it should be noted that recoverable encrypted passwords provide no significant benefit over plaintext passwords since they are subject not only to reuse by malicious attackers but also by malicious insiders. If a system administrator can recover a password directly, or use a brute force search on the available information, the administrator can use the password on other accounts.",
+                    "external_id": "cwe-257",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "66",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Type Confusion",
+                    "description": "The program allocates or initializes a resource such as a pointer, object, or variable using one type, but it later accesses that resource using a type that is incompatible with the original type.",
+                    "external_id": "cwe-843",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "74",
+                "type": "weakness",
+                "attributes": {
+                    "name": "UI Redressing (Clickjacking)",
+                    "description": "In a clickjacking attack the victim is tricked into unknowingly initiating some action in one system while interacting with the UI from seemingly completely different system.",
+                    "external_id": "capec-103",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "48",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Uncontrolled Resource Consumption",
+                    "description": "The product does not properly control the allocation and maintenance of a limited resource, thereby enabling an actor to influence the amount of resources consumed, eventually leading to the exhaustion of available resources.",
+                    "external_id": "cwe-400",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "88",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Unprotected Transport of Credentials",
+                    "description": "Login pages not using adequate measures to protect the user name and password while they are in transit from the client to the server.",
+                    "external_id": "cwe-523",
+                    "created_at": "2017-01-26T23:29:15.321Z"
+                }
+            },
+            {
+                "id": "91",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Unverified Password Change",
+                    "description": "When setting a new password for a user, the product does not require knowledge of the original password, or using another form of authentication.",
+                    "external_id": "cwe-620",
+                    "created_at": "2017-01-26T23:29:16.614Z"
+                }
+            },
+            {
+                "id": "50",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use After Free",
+                    "description": "Referencing memory after it has been freed can cause a program to crash, use unexpected values, or execute code.",
+                    "external_id": "cwe-416",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "41",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of a Broken or Risky Cryptographic Algorithm",
+                    "description": "The use of a broken or risky cryptographic algorithm is an unnecessary risk that may result in the exposure of sensitive information.",
+                    "external_id": "cwe-327",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "38",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of a Key Past its Expiration Date",
+                    "description": "The product uses a cryptographic key or password past its expiration date, which diminishes its safety significantly by increasing the timing window for cracking attacks against that key.",
+                    "external_id": "cwe-324",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "44",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)",
+                    "description": "The product uses a Pseudo-Random Number Generator (PRNG) in a security context, but the PRNG is not cryptographically strong.",
+                    "external_id": "cwe-338",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "81",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Externally-Controlled Format String",
+                    "description": "The software uses a function that accepts a format string as an argument, but the format string originates from an external source.",
+                    "external_id": "cwe-134",
+                    "created_at": "2017-01-26T23:29:11.983Z"
+                }
+            },
+            {
+                "id": "64",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Hard-coded Credentials",
+                    "description": "The software contains hard-coded credentials, such as a password or cryptographic key, which it uses for its own inbound authentication, outbound communication to external components, or encryption of internal data.",
+                    "external_id": "cwe-798",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "35",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Hard-coded Cryptographic Key",
+                    "description": "The use of a hard-coded cryptographic key significantly increases the possibility that encrypted data may be recovered.",
+                    "external_id": "cwe-321",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "23",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Hard-coded Password",
+                    "description": "The software contains a hard-coded password, which it uses for its own inbound authentication or for outbound communication to external components.",
+                    "external_id": "cwe-259",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "20",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Inherently Dangerous Function",
+                    "description": "The program calls a function that can never be guaranteed to work safely.",
+                    "external_id": "cwe-242",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "43",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Use of Insufficiently Random Values",
+                    "description": "The software may use insufficiently random numbers or values in a security context that depends on unpredictable numbers.",
+                    "external_id": "cwe-330",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "25",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Weak Cryptography for Passwords",
+                    "description": "Obscuring a password with a trivial encoding does not protect the password.",
+                    "external_id": "cwe-261",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "92",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Weak Password Recovery Mechanism for Forgotten Password",
+                    "description": "The software contains a mechanism for users to recover or change their passwords without knowing the original password, but the mechanism is weak.",
+                    "external_id": "cwe-640",
+                    "created_at": "2017-01-26T23:29:17.034Z"
+                }
+            },
+            {
+                "id": "11",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Wrap-around Error",
+                    "description": "Wrap around errors occur whenever a value is incremented past the maximum value for its type and therefore \"wraps around\" to a very small, negative, or undefined value.",
+                    "external_id": "cwe-128",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "6",
+                "type": "weakness",
+                "attributes": {
+                    "name": "Write-what-where Condition",
+                    "description": "Any condition where the attacker has the ability to write an arbitrary value to an arbitrary location, often as the result of a buffer overflow.",
+                    "external_id": "cwe-123",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "96",
+                "type": "weakness",
+                "attributes": {
+                    "name": "XML Entity Expansion",
+                    "description": "The software uses XML documents and allows their structure to be defined with a Document Type Definition (DTD), but it does not properly control the number of recursive definitions of entities.",
+                    "external_id": "cwe-776",
+                    "created_at": "2017-01-26T23:29:18.747Z"
+                }
+            },
+            {
+                "id": "54",
+                "type": "weakness",
+                "attributes": {
+                    "name": "XML External Entities (XXE)",
+                    "description": "The software processes an XML document that can contain XML entities with URIs that resolve to documents outside of the intended sphere of control, causing the product to embed incorrect documents into its output.",
+                    "external_id": "cwe-611",
+                    "created_at": "2017-01-05T01:51:19.000Z"
+                }
+            },
+            {
+                "id": "100",
+                "type": "weakness",
+                "attributes": {
+                    "name": "XML Injection",
+                    "description": "The software does not properly neutralize special elements that are used in XML, allowing attackers to modify the syntax, content, or commands of the XML before it is processed by an end system.",
+                    "external_id": "cwe-91",
+                    "created_at": "2017-01-26T23:29:20.559Z"
+                }
+            }
+        ]
+    }
+]
