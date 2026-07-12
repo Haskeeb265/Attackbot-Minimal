@@ -5,7 +5,6 @@ CREATE TABLE bounty_master (
     id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     handle          TEXT NOT NULL UNIQUE,
     scope_count     INTEGER NOT NULL DEFAULT 0,
-    max_severity    TEXT,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     is_active       BOOLEAN NOT NULL DEFAULT TRUE
@@ -17,6 +16,7 @@ CREATE TABLE bounty_detail (
     master_id       UUID NOT NULL REFERENCES bounty_master(id) ON DELETE CASCADE,
     scope_type      TEXT NOT NULL,
     scope_identifier TEXT NOT NULL,
+    max_severity    TEXT,
     scope_instructions    TEXT,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
     updated_at      TIMESTAMPTZ NOT NULL DEFAULT now(),

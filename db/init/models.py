@@ -18,16 +18,20 @@ class BountyMaster(TimestampMixin, Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     handle = Column(Text, nullable=False, unique=True)
     scope_count = Column(Integer, nullable=False, default=0)
-    max_severity = Column(Text)
 
 
 class BountyDetail(TimestampMixin, Base):
     __tablename__ = "bounty_detail"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
+    master_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("bounty_master.id", ondelete="CASCADE"),
+        nullable=False)
+    
     scope_type = Column(Text, nullable=False)
     scope_identifier = Column(Text, nullable=False)
+    max_severity = Column(Text)
     scope_instructions = Column(Text)
 
     __table_args__ = (

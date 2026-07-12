@@ -15,10 +15,10 @@ import sys
 import traceback
 
 import shared.db as db
-from db.queries import bounty_master as master_q
-from db.queries import bounty_detail as detail_q
-from db.queries import bounty_weaknesses as weakness_q
-from db.queries import bounty_exclusions as exclusion_q
+from db.repos import bounty_master as master_q
+from db.repos import bounty_detail as detail_q
+from db.repos import bounty_weaknesses as weakness_q
+from db.repos import bounty_exclusions as exclusion_q
 
 PASS = []
 FAIL = []
