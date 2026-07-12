@@ -133,6 +133,15 @@ class ProgramDetailScraper:
         ]
         log.success(f"Finished LOW priority scraping — {len(results)} programs")
         return results
+    
+    
+    @staticmethod
+    def fetch_program(handle: str) -> dict:
+        return {
+            **ProgramDetailScraper._fetch_handle_scopes(handle),
+            "scope_exclusions": ProgramDetailScraper.get_scope_exclusions(handle),
+            "weaknesses": ProgramDetailScraper.get_weaknesses(handle),
+    }   
 
 
 # ============================================================

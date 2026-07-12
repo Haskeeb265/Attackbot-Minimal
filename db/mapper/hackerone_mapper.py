@@ -6,7 +6,7 @@ class HackerOneMapper:
             "scopes": HackerOneMapper._map_scopes(program.get("scopes", [])),
             "weaknesses": HackerOneMapper._map_weaknesses(program.get("weaknesses", [])),
             "exclusions": HackerOneMapper._map_exclusions(
-                program.get("exclusions", [])
+                program.get("scope_exclusions", [])
             ),
         }
 
