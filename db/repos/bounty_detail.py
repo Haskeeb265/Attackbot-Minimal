@@ -148,6 +148,7 @@ def delete_scopes_for_program(conn, master_id):
 
 
 def update_scopes(conn, master_id, incoming_scopes: list[dict]):
+    
     with db.atomic(conn):
         delete_scopes_for_program(conn, master_id)
 
