@@ -1,6 +1,5 @@
 import requests
-from .. import config
-import json
+from config import HACKERONE_BASE_URL, HACKERONE_AUTH
 
 
 class SendRequest:
@@ -8,8 +7,8 @@ class SendRequest:
     @staticmethod
     def send_request(url):
         r = requests.get(
-            f"{config.BASE}{url}",
-            auth=config.AUTH
+            f"{HACKERONE_BASE_URL}{url}",
+            auth=HACKERONE_AUTH
         )
         r.raise_for_status()  # For status_code errors. If not included, program might keep running even on unauthorized request (no results)
         return r.json()

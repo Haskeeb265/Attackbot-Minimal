@@ -1,5 +1,4 @@
 import json
-from . import config
 from .program_scraper import ProgramScraper
 from .helpers.send_request import SendRequest
 from shared.colorlog import log
