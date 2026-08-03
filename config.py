@@ -3,7 +3,9 @@ import os
 from pathlib import Path
 
 # Always load the root .env regardless of the current working directory.
-load_dotenv(Path(__file__).resolve().parent / ".env")
+# override=True keeps .env authoritative so stale shell/env vars (e.g. old Aura
+# NEO4J_*) can never silently override the local-dev configuration.
+load_dotenv(Path(__file__).resolve().parent / ".env", override=True)
 
 # ---- Postgres (db layer) ----
 POSTGRES_USER = os.getenv("POSTGRES_USER")
@@ -28,8 +30,9 @@ HACKERONE_AUTH = (HACKERONE_USERNAME, HACKERONE_TOKEN)
 
 # ---- Recon graph (Neo4j) ----
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
-NEO4J_USERNAME = os.getenv("NEO4J_USERNAME", "neo4j")
+NEO4J_USERNAME = os.getenv("NEO4J_USERNAME")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD")
+NEO4J_DATABASE = os.getenv("NEO4J_DATABASE")
 
 # ---- Recon cache/queue (Redis) ----
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
