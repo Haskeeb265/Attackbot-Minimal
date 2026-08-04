@@ -25,10 +25,11 @@ CREATE TABLE bounty_detail (
 );
 
 
-CREATE TABLE program_weaknesses (
+CREATE TABLE bounty_weaknesses (
     id              UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     master_id       UUID NOT NULL REFERENCES bounty_master(id) ON DELETE CASCADE,
     weakness_id     TEXT NOT NULL,
+    hackerone_weakness_id   TEXT,
     weakness_name   TEXT,
     weakness_description    TEXT,
     created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),

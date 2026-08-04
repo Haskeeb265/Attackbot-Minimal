@@ -5,6 +5,7 @@ def add_weakness(
     conn,
     master_id,
     weakness_id: str,
+    hackerone_weakness_id: str | None = None,
     weakness_name: str | None = None,
     weakness_description: str | None = None,
 ):
@@ -15,15 +16,17 @@ def add_weakness(
             (
                 master_id,
                 weakness_id,
+                hackerone_weakness_id,
                 weakness_name,
                 weakness_description
             )
-        VALUES (%s, %s, %s, %s)
+        VALUES (%s, %s, %s, %s, %s)
         RETURNING id
         """,
         (
             master_id,
             weakness_id,
+            hackerone_weakness_id,
             weakness_name,
             weakness_description,
         ),
@@ -95,8 +98,9 @@ def replace_weaknesses(
 
     incoming_weaknesses should contain dictionaries with keys:
         - weakness_id
-        - weakness_name
-        - weakness_description
+        - hackerone_weakness_id (optional)
+        - weakness_name (optional)
+        - weakness_description (optional)
     """
     with db.atomic(conn):
         delete_weaknesses_for_program(conn, master_id)
@@ -106,6 +110,7 @@ def replace_weaknesses(
                 conn,
                 master_id,
                 weakness["weakness_id"],
+                weakness.get("hackerone_weakness_id"),
                 weakness.get("weakness_name"),
                 weakness.get("weakness_description"),
             )

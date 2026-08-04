@@ -126,20 +126,34 @@ def update_program(
 
 
 def deactivate_program(conn, master_id):
-    return db.execute(
-        conn,
-        """
-        UPDATE bounty_master
-        SET
-            is_active = FALSE,
-            updated_at = %s
-        WHERE id = %s
-        """,
-        (
-            db.now(),
-            master_id,
-        ),
-    )
+    with db.atomic(conn):
+        # Soft-delete the master program
+        db.execute(
+            conn,
+            """
+            UPDATE bounty_master
+            SET
+                is_active = FALSE,
+                updated_at = %s
+            WHERE id = %s
+            """,
+            (db.now(), master_id),
+        )
+
+        # Cascade soft-delete to child tables
+        for child_table in ("bounty_detail", "bounty_weaknesses", "bounty_exclusion"):
+            db.execute(
+                conn,
+                f"""
+                UPDATE {child_table}
+                SET
+                    is_active = FALSE,
+                    updated_at = %s
+                WHERE master_id = %s
+                  AND is_active = TRUE
+                """,
+                (db.now(), master_id),
+            )
 
 
 def delete_program(conn, master_id):

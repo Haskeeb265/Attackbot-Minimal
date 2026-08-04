@@ -39,6 +39,7 @@ class HackerOneMapper:
             mapped.append(
                 {
                     "weakness_id": weakness.get("id"),
+                    "hackerone_weakness_id": attrs.get("weakness_id"),
                     "weakness_name": attrs.get("name"),
                     "weakness_description": attrs.get("description"),
                 }

@@ -81,12 +81,12 @@ separate top-level operations with their own internal structure (or none yet).
 - **`bounty_master`** — one row per program. Unique constraint on `handle`.
 - **`bounty_detail`** — scoped assets for a program. FK to `bounty_master`.
   `UNIQUE(master_id, scope_type, scope_identifier)`.
-- **`program_weaknesses`** — persisted weakness rulesets per program. FK to
+- **`bounty_weaknesses`** — persisted weakness rulesets per program. FK to
   `bounty_master`. Uses delete-then-insert replace pattern on update.
 - **`bounty_exclusion`** — persisted exclusion rulesets per program. FK to
   `bounty_master`. Uses delete-then-insert replace pattern on update.
 
-Both `program_weaknesses` and `bounty_exclusion` are **persisted DB tables, not
+Both `bounty_weaknesses` and `bounty_exclusion` are **persisted DB tables, not
 runtime API calls**. This is a deliberate architecture decision: Stage 1 of recon
 (LLM classification) reads weaknesses and exclusions from the DB rather than
 hitting the HackerOne API live. This decouples recon from HackerOne API
@@ -161,7 +161,7 @@ rows).
 |---|---|---|
 | `bounty_master` | `INSERT ... ON CONFLICT (handle) DO UPDATE` (upsert) | Dedup falls out naturally from the unique constraint on `handle`. |
 | `bounty_detail` | `INSERT ... ON CONFLICT (master_id, scope_type, scope_identifier) DO UPDATE` (upsert) | **Not** delete-then-insert, deliberately. Downstream recon stages may hold references to specific `bounty_detail.id` values across runs. Delete-then-insert would silently invalidate those FK references on every re-scrape. Upsert preserves row identity. |
-| `program_weaknesses` | Delete-then-insert (full replace) | No historical continuity needed — only the current ruleset matters. Simpler than diffing. |
+| `bounty_weaknesses` | Delete-then-insert (full replace) | No historical continuity needed — only the current ruleset matters. Simpler than diffing. |
 | `bounty_exclusion` | Delete-then-insert (full replace) | Same reasoning as weaknesses. |
 
 ### 4.7 Index note

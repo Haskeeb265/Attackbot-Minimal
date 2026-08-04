@@ -72,7 +72,7 @@ ingest.py                   → Orchestrates scraping → mapping → persistenc
 ┌─────────────────────────────────────────────────────────────────┐
 │              PostgreSQL 16 (via Docker)                          │
 │  Tables: bounty_master, bounty_detail,                          │
-│          program_weaknesses, bounty_exclusion                    │
+│          bounty_weaknesses, bounty_exclusion                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -108,7 +108,7 @@ with db.get_conn() as conn:
 |-------|---------|--------|
 | `bounty_master` | UPSERT (ON CONFLICT DO UPDATE) | Dedup via unique constraint on `handle` |
 | `bounty_detail` | UPSERT (ON CONFLICT DO UPDATE) | Preserves row identity for downstream FK references |
-| `program_weaknesses` | DELETE-then-INSERT (full replace) | No historical continuity needed |
+| `bounty_weaknesses` | DELETE-then-INSERT (full replace) | No historical continuity needed |
 | `bounty_exclusion` | DELETE-then-INSERT (full replace) | No historical continuity needed |
 
 ### Connection Management

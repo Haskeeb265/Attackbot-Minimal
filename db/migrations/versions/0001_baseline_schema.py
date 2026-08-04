@@ -44,10 +44,11 @@ def upgrade():
     )
 
     op.create_table(
-        "program_weaknesses",
+        "bounty_weaknesses",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("uuid_generate_v4()")),
         sa.Column("master_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False),
         sa.Column("weakness_id", sa.Text, nullable=False),
+        sa.Column("hackerone_weakness_id", sa.Text),
         sa.Column("weakness_name", sa.Text),
         sa.Column("weakness_description", sa.Text),
         sa.Column("created_at", sa.TIMESTAMP(timezone=True), nullable=False, server_default=sa.text("now()")),
@@ -71,6 +72,6 @@ def upgrade():
 
 def downgrade():
     op.drop_table("bounty_exclusion")
-    op.drop_table("program_weaknesses")
+    op.drop_table("bounty_weaknesses")
     op.drop_table("bounty_detail")
     op.drop_table("bounty_master")

@@ -39,12 +39,13 @@ class BountyDetail(TimestampMixin, Base):
     )
 
 
-class ProgramWeakness(TimestampMixin, Base):
-    __tablename__ = "program_weaknesses"
+class BountyWeakness(TimestampMixin, Base):
+    __tablename__ = "bounty_weaknesses"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     master_id = Column(UUID(as_uuid=True), ForeignKey("bounty_master.id", ondelete="CASCADE"), nullable=False)
     weakness_id = Column(Text, nullable=False)
+    hackerone_weakness_id = Column(Text)
     weakness_name = Column(Text)
     weakness_description = Column(Text)
 

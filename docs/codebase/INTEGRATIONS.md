@@ -45,7 +45,7 @@
 |-------|---------|---------------|
 | `bounty_master` | One row per program | UPSERT (ON CONFLICT DO UPDATE) |
 | `bounty_detail` | Scoped assets per program | UPSERT (ON CONFLICT DO UPDATE) |
-| `program_weaknesses` | Weakness rulesets | DELETE-then-INSERT (full replace) |
+| `bounty_weaknesses` | Weakness rulesets | DELETE-then-INSERT (full replace) |
 | `bounty_exclusion` | Exclusion rulesets | DELETE-then-INSERT (full replace) |
 
 **Docker Configuration:**

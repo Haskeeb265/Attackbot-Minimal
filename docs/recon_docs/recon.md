@@ -245,5 +245,119 @@ These scenarios serve both as acceptance tests and as educational walk-throughs 
 
 ---
 
+## Appendix A — Graph Schema (Neo4j)
+
+**Source:** `service/recon-pipeline/graph/schema.py` · `service/recon-pipeline/graph/repository.py` · `docs/recon_docs/IMPLEMENTATION_PLAN.md` Stage 1
+
+### Node Labels
+
+| Constant | Label | Type | Notes |
+|----------|-------|------|-------|
+| `LABEL_ORGANIZATION` | `Organization` | Anchor | Root node for bug bounty programs. Written with `labels=["Organization"]` (no `:Asset` label). |
+| `LABEL_ASSET` | `Asset` | Base | **Every** asset node carries this base label. The identity constraint `(asset_type, canonical_value) IS UNIQUE` lives here. |
+| `LABEL_DOMAIN` | `Domain` | v1 | Domain names (e.g. `api.example.com`). |
+| `LABEL_WILDCARD` | `Wildcard` | v1 | Wildcard domains (e.g. `*.example.com`). |
+| `LABEL_URL` | `URL` | v1 | Full URLs from scope or historical data. |
+| `LABEL_IP` | `IP` | v1 | IPv4/IPv6 addresses. |
+| `LABEL_CIDR` | `CIDR` | v1 | CIDR ranges (e.g. `10.0.0.0/16`). |
+| `LABEL_ENDPOINT` | `Endpoint` | v1 | URL paths as endpoints (e.g. `/api/v1/login`). |
+| `LABEL_CERTIFICATE` | `Certificate` | v1 | TLS/SSL certificates. |
+| `LABEL_SECRET` | `Secret` | v1 | Extracted secrets (API keys, tokens, etc.). |
+| `LABEL_ASN` | `ASN` | v1 | Autonomous System Numbers. |
+| `LABEL_REPOSITORY` | `Repository` | Post-v1 | Source code repositories (GitHub, GitLab, etc.). |
+| `LABEL_BINARY` | `Binary` | Post-v1 | Executables and compiled binaries. |
+| `LABEL_MOBILE_APP` | `MobileApp` | Post-v1 | Mobile applications (Android APK, iOS IPA). |
+| `LABEL_SMART_CONTRACT` | `SmartContract` | Post-v1 | Smart contracts on blockchain. |
+| `LABEL_TECHNOLOGY` | `Technology` | Post-v1 | Detected technologies (frameworks, CMS, etc.). |
+| `LABEL_CLOUD_RESOURCE` | `CloudResource` | Post-v1 | Cloud resources (S3 buckets, Azure blobs, etc.). |
+| `LABEL_SUBDOMAIN` | `Subdomain` | Post-v1 | Optional refinement — subdomain label for mature Domain pipeline. |
+| `LABEL_OTHER` | `Other` | Fallback | Catch-all for unknown/out-of-v1 asset types (e.g. HackerOne `OTHER` scopes). Written with `labels=["Asset", "Other"]`. |
+| `LABEL_WEAKNESSES` | `Weaknesses` | Meta | Reserved for HackerOne weakness metadata. |
+| `LABEL_EXCLUSIONS` | `Exclusions` | Meta | Reserved for HackerOne scope exclusion metadata. |
+
+### Relationship Types
+
+| Constant | Type | Semantics |
+|----------|------|-----------|
+| `REL_BELONGS_TO` | `BELONGS_TO` | `(Asset)->(Organization)` — seed ownership. Also used for unknown asset types. |
+| `REL_DERIVED_FROM` | `DERIVED_FROM` | `(URL)->(Domain)` — host pivot from URL scope. |
+| `REL_RESOLVES_TO` | `RESOLVES_TO` | `(Domain)->(IP)` — DNS resolution. |
+| `REL_HAS_CERTIFICATE` | `HAS_CERTIFICATE` | `(Domain)->(Certificate)` — TLS certificate observed on domain. |
+| `REL_EXTRACTED_FROM` | `EXTRACTED_FROM` | `(Asset)->(Repository|Binary|MobileApp)` — artifact source. |
+| `REL_FOUND_IN` | `FOUND_IN` | `(Asset)->(Asset)` — generic correlation for ambiguous relationship types. |
+| `REL_POINTS_TO` | `POINTS_TO` | `(URL|Endpoint)->(Domain)` — target host. |
+| `REL_ISSUED_FOR` | `ISSUED_FOR` | Certificate → Domain subject. |
+| `REL_SHARES_CERTIFICATE_WITH` | `SHARES_CERTIFICATE_WITH` | Domain ↔ Domain sharing a certificate. |
+| `REL_BELONGS_TO_ASN` | `BELONGS_TO_ASN` | `(IP|CIDR)->(ASN)` — network ownership. |
+| `REL_OWNED_BY` | `OWNED_BY` | `(Asset)->(Organization)` — extended ownership. |
+| `REL_RELATED_TO` | `RELATED_TO` | `(Asset)->(Asset)` — cross-program correlation. |
+| `REL_USES_TECHNOLOGY` | `USES_TECHNOLOGY` | `(Asset)->(Technology)` — tech detection. |
+| `REL_HOSTS` | `HOSTS` | `(Asset)->(Asset)` — hosting relationship. |
+
+### Node Identity Properties
+
+Every asset node is idempotently `MERGE`d on:
+
+| Property | Type | Notes |
+|----------|------|-------|
+| `asset_type` | TEXT | Canonical type string (e.g. `"domain"`, `"ip"`, `"other"`). |
+| `canonical_value` | TEXT | S3-normalized value (lowercase, punycode, trailing-dot stripped, IP canonicalized). |
+
+**Unique constraint:** `(asset_type, canonical_value) IS UNIQUE` on `:Asset`.
+
+### Node Scoring Properties
+
+| Property | Type | Notes |
+|----------|------|-------|
+| `state` | TEXT | One of `ACTIVE`, `WARM`, `COLD`. |
+| `score` | FLOAT | Final score (0–100). |
+| `state_changed_at` | TIMESTAMPTZ | When the state last changed. |
+| `first_seen_at` | TIMESTAMPTZ | First observation. |
+| `last_seen_at` | TIMESTAMPTZ | Most recent observation. |
+| `content_hash` | TEXT | SHA-256 of raw artifact for dedup. |
+| `score_audit` | JSONB | Serialized S2 ScoreAudit snapshot. |
+| `eligible_for_bounty` | BOOLEAN | From HackerOne scope data. |
+| `severity` | TEXT | From HackerOne max_severity. |
+
+### Edge Provenance Properties
+
+Every relationship carries:
+
+| Property | Type | Notes |
+|----------|------|-------|
+| `source` | TEXT | Pipeline or data source (e.g. `"HackerOne"`, `"crt.sh"`). |
+| `tool` | TEXT | Specific tool/module name. |
+| `observed_at` | TIMESTAMPTZ | When the observation was made. |
+| `confidence` | FLOAT | 0.0–1.0 confidence in this edge. |
+| `signal` | TEXT | (Optional) Signal type for scoring-relevant edges. |
+
+### Organization Properties
+
+| Property | Type | Notes |
+|----------|------|-------|
+| `handle` | TEXT | **Unique** — HackerOne program handle. |
+| `name` | TEXT | (Optional) Human-readable organization name. |
+
+### Indexes & Constraints
+
+| Statement | Target | Purpose |
+|-----------|--------|---------|
+| `UNIQUE CONSTRAINT` | `:Asset(asset_type, canonical_value)` | Canonical identity — idempotency backbone. |
+| `UNIQUE CONSTRAINT` | `:Organization(handle)` | Program anchor uniqueness. |
+| `INDEX` | `:Asset(canonical_value)` | Hot lookup by value alone. |
+| `INDEX` | `:Asset(state)` | State-tier queries. |
+| `INDEX` | `:Asset(score)` | Score-range queries. |
+| `INDEX` | `:Asset(last_seen_at)` | Provenance / re-run safety. |
+| `INDEX` | `:Asset(content_hash)` | In-run evidence dedup. |
+
+### Multi-Label Write Contract
+
+All writes follow the contract defined in `docs/recon_docs/graph_crud_contract.md`:
+
+1. **`labels` is always a list** — never a bare string. Always `["Asset", "Domain"]`, never `"Domain"`.
+2. **Base label first** — `["Asset", "Domain"]` not `["Domain", "Asset"]`.
+3. **Label-set stability** — the same identity must always be written with the identical label set, or `MERGE` breaks idempotency.
+4. **Fallback for unknowns** — unknown asset types use `labels=["Asset", "Other"]` with `BELONGS_TO` for seed ownership.
+
 **Document Status:** Implementation-ready master specification  
 **Derived from:** Full multi-turn design discussion on recursive graph-backed ASM reconnaissance (July 2026)

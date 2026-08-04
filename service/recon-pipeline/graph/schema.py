@@ -71,8 +71,21 @@ v1 core graph:
 
     (:Asset:Secret) ──EXTRACTED_FROM──► (:Repository | :Binary | :MobileApp)
 
+    (:Asset:Other) ──BELONGS_TO──► (:Organization)  (fallback for unknown types)
+
 Sources: docs/recon_docs/recon.md · docs/recon_docs/IMPLEMENTATION_PLAN.md ·
 docs/codebase/CONVENTIONS.md · scope.md §4.7/§6.3
+
+> **Fallback for unknown asset types:** when an asset arrives with a type not
+> covered by the typed labels above (e.g. HackerOne ``OTHER``, or a future
+> pipeline type not yet defined), it is written as ``(:Asset:Other)`` with just
+> the base ``:Asset`` label plus the generic ``:Other`` typed label. The
+> identity constraint ``(asset_type, canonical_value)`` still fires, so
+> idempotency is preserved. The relationship to its ``:Organization`` anchor
+> uses ``BELONGS_TO`` (same as any seed), and correlations with other assets
+> use ``FOUND_IN``. This ensures no scope type is silently dropped, and the
+> typed label can be refined to a dedicated label later when a pipeline
+> arrives without breaking existing queries."
 """
 
 import logging
@@ -86,6 +99,8 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 LABEL_ORGANIZATION = "Organization"
 LABEL_ASSET = "Asset"
+LABEL_WEAKNESSES = "Weaknesses"
+LABEL_EXCLUSIONS = "Exclusions"
 
 # v1 asset type labels (IMPLEMENTATION_PLAN.md Stage 1 + Stage 4)
 LABEL_DOMAIN = "Domain"
@@ -110,6 +125,25 @@ LABEL_CLOUD_RESOURCE = "CloudResource"
 # to :Domain once the Domain pipeline is mature. v1 stores them as :Domain.
 LABEL_SUBDOMAIN = "Subdomain"
 
+# ---
+# Fallback label for unknown / out-of-v1 asset types.
+#
+# When an asset arrives with an asset_type that doesn't match any of the
+# typed labels above (e.g. HackerOne "OTHER" or a yet-unknown pipeline type),
+# it is still created as a first-class node in the graph. The node carries
+# the base :Asset label (so the identity constraint fires) and uses this
+# generic typed label so cross-type queries reflect the unknown gracefully.
+#
+# The node is written with labels=["Asset", "Other"] and connected to its
+# :Organization anchor via REL_BELONGS_TO or to related assets via
+# REL_FOUND_IN. This ensures no unknown asset type is silently dropped —
+# every scope type lands in the graph, and the typed label can be refined
+# later when a dedicated pipeline arrives.
+#
+# See: docs/recon_docs/IMPLEMENTATION_PLAN.md Stage 4 (OTHER scopes),
+#      docs/recon_docs/graph_crud_contract.md (label-set stability)
+LABEL_OTHER = "Other"
+
 
 # ---------------------------------------------------------------------------
 # Relationship types
@@ -122,6 +156,24 @@ REL_HAS_CERTIFICATE = "HAS_CERTIFICATE"   # (Domain)->(Certificate)  TLS cert ob
 REL_EXTRACTED_FROM = "EXTRACTED_FROM"     # (Asset)->(Repository|Binary|MobileApp)
 REL_FOUND_IN = "FOUND_IN"                 # (Asset)->(Asset)         correlated occurrence
 REL_POINTS_TO = "POINTS_TO"               # (URL|Endpoint)->(Domain) target host
+
+# ---
+# Generic relationships for unknown asset types.
+#
+# When an asset type doesn't match any well-known typed relationship, the
+# following generic edges are used depending on the context:
+#
+#   * BELONGS_TO — preferred for seed-ownership of unknown-type assets.
+#     Example: an "OTHER" HackerOne scope is written as:
+#       (:Asset:Other)-[:BELONGS_TO {source: "HackerOne"}]->(:Organization {handle})
+#
+#   * FOUND_IN   — reserved for correlated occurrences found during pipeline
+#     runs where the relationship type is genuinely ambiguous. Both endpoints
+#     carry :Asset, and the edge includes standard provenance properties.
+#
+# This ensures unknown assets are linkable and queryable without a schema
+# migration. The specific typed rels above are preferred when the asset types
+# are known.
 
 # Later additions (recon.md §6; added as their pipelines arrive).
 REL_ISSUED_FOR = "ISSUED_FOR"

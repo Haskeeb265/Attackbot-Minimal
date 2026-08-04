@@ -3,7 +3,7 @@
 **Status:** Settled (implemented in `service/recon-pipeline/graph/repository.py`, Stage 1)
 **Applies to:** every stage that writes or reads graph nodes — S4 (seeding), S7 (e2e pipeline), S13 (LLM enrichment). **Read this before writing S7.**
 
-The graph is multi-label by design (schema.py): every asset carries the **base `:Asset` label** plus a **typed label** (`:Domain`, `:IP`, `:URL`, …). The CRUD layer in `repository.py` enforces this via a single rule — **you pass a *list* of labels, not a string.**
+The graph is multi-label by design (schema.py): every asset carries the **base `:Asset` label** plus a **typed label** (`:Domain`, `:IP`, `:URL`, `:Other`, …). The CRUD layer in `repository.py` enforces this via a single rule — **you pass a *list* of labels, not a string.**
 
 ## The rules
 
@@ -33,6 +33,15 @@ The identity constraint lives on `:Asset` (`(asset_type, canonical_value) IS UNI
 
 This is what makes re-runs safe (S7 runs twice → identical graph). Typed labels must not drift for the same canonical value.
 
+### 4. Fallback for unknown asset types — `:Other`
+When an asset's `asset_type` doesn't match any defined typed label (e.g. HackerOne `"OTHER"` or a future pipeline type not yet added), write it with the generic fallback label:
+```python
+labels = ["Asset", "Other"]
+```
+The `:Asset` identity constraint `(asset_type, canonical_value) IS UNIQUE` still fires, so idempotency is preserved. The node is connected to its `:Organization` anchor via `BELONGS_TO` (same as any seed), and correlations with other assets use `FOUND_IN`.
+
+This ensures no scope type is silently dropped — every asset lands in the graph, and the typed label can be refined to a dedicated label later when a pipeline arrives without breaking existing queries. See `LABEL_OTHER` in `schema.py` for the full rationale.
+
 ## What S7 must do
 
 - **Every asset write:** `labels=["Asset", "<TYPE>"]` with `identity_props={"asset_type": ..., "canonical_value": ...}` — both keys are required for the constraint to fire.
@@ -45,5 +54,5 @@ This is what makes re-runs safe (S7 runs twice → identical graph). Typed label
 
 ## References
 - `service/recon-pipeline/graph/repository.py` — `_label_clause()` + the 4 CRUD methods
-- `service/recon-pipeline/graph/schema.py` — multi-label design, `:Asset` identity constraint, `LABEL_*` typed-label constants
+- `service/recon-pipeline/graph/schema.py` — multi-label design, `:Asset` identity constraint, `LABEL_OTHER` fallback, `LABEL_*` typed-label constants
 - `IMPLEMENTATION_PLAN.md` Stage 1 — "Node identity & labels" decision
