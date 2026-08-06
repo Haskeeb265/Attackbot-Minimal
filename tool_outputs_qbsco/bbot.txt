@@ -1,0 +1,367 @@
+  ______  _____   ____ _______
+ |  ___ \|  __ \ / __ \__   __|
+ | |___) | |__) | |  | | | |
+ |  ___ <|  __ <| |  | | | |
+ | |___) | |__) | |__| | | |
+ |______/|_____/ \____/  |_|
+ BIGHUGE BLS OSINT TOOL 3.0.1
+
+www.blacklanternsecurity.com/bbot
+
+[INFO] Creating BBOT config at /root/.config/bbot/bbot.yml
+[INFO] Creating BBOT secrets at /root/.config/bbot/secrets.yml
+[INFO] Scan seeded with 1 seed(s) (1 in target)
+[INFO] Installing Ansible Community General Collection
+[INFO] Successfully installed Ansible Community General Collection
+[INFO] Installing core BBOT dependencies: 7z,openssl_dev_headers
+[INFO] Installing module dependencies. Please be patient, this may take a while.
+[INFO] Running 5 Ansible tasks for dnsbrute
+[INFO] Successfully ran 5 Ansible tasks for dnsbrute
+[INFO] Installing the following pip packages: asyncpg
+[INFO] Successfully installed asyncpg-0.31.0
+[INFO] Installing the following pip packages: baddns~=2.4.0
+[INFO] Successfully installed baddns-2.4.1 colorama-0.4.6 python-dateutil-2.9.0.post0 python-whois-0.9.6 six-1.17.0
+[INFO] Installing the following pip packages: baddns~=2.4.0
+[INFO] Requirement already satisfied: certifi>=2023.5.7 in /usr/local/lib/python3.12/site-packages (from requests>=2.1.0->tldextract>=5.1.1->baddns~=2.4.0) (2026.7.22)
+[INFO] Loaded 47/47 scan modules (anubisdb,asn,azure_tenant,baddns_direct,baddns_zone,bevigil,bufferoverrun,builtwith,c99,censys_dns,certspotter,chaos,crt,crt_db,dnsbimi,dnsbrute,dnsbrute_mutations,dnscaa,dnscommonsrv,dnsdumpster,dnstlsrpt,fullhunt,github_codesearch,github_org,hackertarget,http,hunterio,ipneighbor,leakix,myssl,oauth,otx,postman,postman_download,rapiddns,securitytrails,securitytxt,shodan_dns,shodan_idb,social,sslcert,subdomaincenter,subdomainradar,trickest,urlscan,virustotal,wayback)
+[INFO] Loaded 7/7 internal modules (aggregate,cloudcheck,dnsresolve,excavate,python,speculate,unarchive)
+[INFO] Loaded 5/5 output modules, (csv,json,stdout,subdomains,txt)
+[INFO] Setup soft-failed for bevigil: No API key set
+[INFO] Setup soft-failed for bufferoverrun: No API key set
+[INFO] Setup soft-failed for builtwith: No API key set
+[INFO] Setup soft-failed for c99: No API key set
+[INFO] Setup soft-failed for censys_dns: No API key set
+[INFO] Setup soft-failed for chaos: No API key set
+[INFO] Setup soft-failed for securitytrails: No API key set
+[INFO] Setup soft-failed for fullhunt: No API key set
+[INFO] Setup soft-failed for postman_download: No API key set
+[INFO] Setup soft-failed for leakix: No API key set
+[INFO] Setup soft-failed for otx: No API key set
+[INFO] Setup soft-failed for github_codesearch: No API key set
+[INFO] Setup soft-failed for hunterio: No API key set
+[INFO] Setup soft-failed for postman: No API key set
+[INFO] Setup soft-failed for trickest: No API key set
+[INFO] Setup soft-failed for subdomainradar: No API key set
+[INFO] Setup soft-failed for shodan_dns: No API key set
+[INFO] Setup soft-failed for virustotal: No API key set
+[INFO] internal.speculate: No portscanner enabled. Assuming open ports: 80, 443
+[INFO] Setup soft-failed for github_org: Error with API ({
+  "message": "Bad credentials",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+})
+[SUCC] Setup succeeded for 40/59 modules.
+[SUCC] Starting scan wicked_dominic
+[SCAN]              	wicked_dominic (SCAN:c0867a3b90ee244d27a0def37c8f868ec3c9bd0c)	SEED
+[DNS_NAME]          	qbsco.net	SEED	(a-record, cloud, cloudflare, domain, google, in-scope, mx-record, ns-record, seed, soa-record, target, txt-record, waf)
+[INFO] dnsbrute: Brute-forcing 5,000 subdomains for qbsco.net (source: qbsco.net)
+[ORG_STUB]          	qbsco	speculate
+[DNS_NAME]          	jason.ns.cloudflare.com	NS	(a-record, affiliate, cloud, cloudflare, distance-1, google, subdomain, waf)
+[DNS_NAME]          	jason.ns.cloudflare.com	SOA	(a-record, affiliate, cloud, cloudflare, distance-1, google, subdomain, waf)
+[DNS_NAME]          	mina.ns.cloudflare.com	NS	(a-record, affiliate, cloud, cloudflare, distance-1, google, subdomain, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2053	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2052	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[URL]               	[301] http://qbsco.net/ -> https://qbsco.net/	http	(cloud, cloudflare, dir, google, in-scope, status-301, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2095	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:8080	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[TECHNOLOGY]        	cpe:/a:cloudflare:cloudflare	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[DNS_NAME]          	qbsco-net.mail.protection.outlook.com	MX	(a-record, affiliate, cdn, cloud, distance-1, github, microsoft, microsoft365, subdomain)
+[OPEN_TCP_PORT]     	qbsco.net:2096	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2082	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:80	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2083	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:8880	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2087	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:80	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:8443	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2086	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:443	shodan_idb	(cloud, cloudflare, google, in-scope, waf)
+[DNS_NAME]          	ocac.qbsco.net	subdomaincenter	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[INFO] crt: Error parsing results for query "qbsco.net" (status code 400)
+[DNS_NAME]          	mail.qbsco.net	subdomaincenter	(a-record, in-scope, subdomain)
+[DNS_NAME]          	www.qbsco.net	subdomaincenter	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	ocac.qbsco.net	subdomaincenter->speculate	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	mail.qbsco.net	subdomaincenter->speculate	(a-record, in-scope, subdomain)
+[DNS_NAME]          	qbsco.net	speculate	(a-record, cloud, cloudflare, domain, google, in-scope, mx-record, ns-record, soa-record, txt-record, waf)
+[DNS_NAME]          	autodiscover.qbsco.net	subdomaincenter	(a-record, cdn, cloud, cname-record, github, in-scope, microsoft, microsoft365, mx-record, ns-record, soa-record, srv-record, subdomain, txt-record)
+[DNS_NAME]          	acdcatm.autodiscover.mira.tm.svc.cloud.microsoft	CNAME	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	autodiscover.outlook.com	CNAME	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[FINDING]           	Severity: [INFO] Confidence: [HIGH] OpenID Connect Endpoint (domain: qbsco.net) found at https://login.windows.net/qbsco.net/.well-known/openid-configuration	oauth	(cloud, cloudflare, confidence-high, google, in-scope, severity-info, waf)
+[DNS_NAME]          	autodiscover.outlook.cloud.microsoft	CNAME	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	autod.ms-acdc-autod.office.com	CNAME	(a-record, affiliate, cdn, cloud, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	app.qbsco.net	subdomaincenter	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	login.windows.net	oauth->host	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	www.qbsco.net	hackertarget	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	www.qbsco.net	rapiddns	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	app.qbsco.net	rapiddns	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	mail.qbsco.net	rapiddns	(a-record, in-scope, subdomain)
+[DNS_NAME]          	mail.qbsco.net	hackertarget	(a-record, in-scope, subdomain)
+[DNS_NAME]          	app.qbsco.net	hackertarget	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	app.qbsco.net	subdomaincenter->speculate	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	sts.windows.net	oauth->host	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	pas.windows.net	oauth->host	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	mail.qbsco.net	dnsdumpster	(a-record, in-scope, subdomain)
+[DNS_NAME]          	app.qbsco.net	dnsdumpster	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	www.qbsco.net	dnsdumpster	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[URL]               	[200] https://qbsco.net/ - [QBS - Let&#x27;s get better!]	http	(cloud, cloudflare, dir, google, in-scope, status-200, waf)
+[FINDING]           	Severity: [INFO] Confidence: [LOW] Potentially Sprayable OAUTH Endpoint (domain: qbsco.net) at https://login.windows.net/9b6ba3ca-c8c5-4037-a110-911005437f93/oauth2/token	oauth->oauth	(affiliate, cdn, cloud, confidence-low, distance-1, github, microsoft, microsoft365, severity-info)
+[ASN]               	AS13335	asn
+[DNS_NAME]          	ocac.qbsco.net	urlscan	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[OPEN_TCP_PORT]     	qbsco.net:443	speculate	(cloud, cloudflare, google, in-scope, waf)
+[DNS_NAME]          	urlscan.io	http->sslcert	(a-record, affiliate, cdn, cloud, cname-error, distance-1, domain, hetzner, quiccloud)
+[DNS_NAME]          	urlscan.net	http->sslcert	(a-record, affiliate, cloud, cname-error, distance-1, domain, hetzner)
+[ASN]               	AS8075	asn
+[ASN]               	AS58895	asn
+[URL]               	[400] http://qbsco.net:8443/ - [400 The plain HTTP request was sent to HTTPS port]	http	(cloud, cloudflare, dir, google, in-scope, status-400, waf)
+[URL]               	[400] http://qbsco.net:2096/ - [400 The plain HTTP request was sent to HTTPS port]	http	(cloud, cloudflare, dir, google, in-scope, status-400, waf)
+[URL]               	[400] http://qbsco.net:2087/ - [400 The plain HTTP request was sent to HTTPS port]	http	(cloud, cloudflare, dir, google, in-scope, status-400, waf)
+[URL]               	[400] http://qbsco.net:2083/ - [400 The plain HTTP request was sent to HTTPS port]	http	(cloud, cloudflare, dir, google, in-scope, status-400, waf)
+[URL]               	[400] http://qbsco.net:2053/ - [400 The plain HTTP request was sent to HTTPS port]	http	(cloud, cloudflare, dir, google, in-scope, status-400, waf)
+[SOCIAL]            	facebook: qbscopvtltd (https://facebook.com/qbscopvtltd)	http->excavate->social	(distance-2)
+[OPEN_TCP_PORT]     	qbsco.net:2083	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2096	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2053	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:2087	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	qbsco.net:8443	speculate	(cloud, cloudflare, google, in-scope, waf)
+[SOCIAL]            	instagram: qbscoltd (https://instagram.com/qbscoltd)	http->excavate->social	(distance-2)
+[AZURE_TENANT]      	(9b6ba3ca-c8c5-4037-a110-911005437f93)	azure_tenant
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) http(80:7:0), wayback(62:1:0), crt_db(55:1:0), dnsbrute(55:1:0), dnsresolve(0:9:0), baddns_direct(0:5:0), baddns_zone(0:1:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 33, OPEN_TCP_PORT: 20, URL: 7, ASN: 3, IP_ADDRESS: 3, FINDING: 2 (2 INFO), SOCIAL: 2, SCAN: 1, ORG_STUB: 1, TECHNOLOGY: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (2,632 processed in the past 15 seconds)
+[URL]               	[523] http://ocac.qbsco.net/	http	(cloud, cloudflare, dir, google, in-scope, status-523, waf)
+[URL]               	[523] https://ocac.qbsco.net/	http	(cloud, cloudflare, dir, google, in-scope, status-523, waf)
+[OPEN_TCP_PORT]     	ocac.qbsco.net:80	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	ocac.qbsco.net:443	speculate	(cloud, cloudflare, google, in-scope, waf)
+[DNS_NAME]          	qbsco.net	http->sslcert	(a-record, cloud, cloudflare, domain, google, in-scope, mx-record, ns-record, soa-record, txt-record, waf)
+[URL]               	[301] http://autodiscover.qbsco.net/ -> https://autodiscover.qbsco.net/	http	(cdn, cloud, dir, github, in-scope, microsoft, microsoft365, status-301)
+[OPEN_TCP_PORT]     	autodiscover.qbsco.net:80	speculate	(cdn, cloud, github, in-scope, microsoft, microsoft365)
+[DNS_NAME]          	login.microsoftonline.com	http->sslcert	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	atm.autodiscover.mira.tm.svc.cloud.microsoft	CNAME	(a-record, affiliate, cdn, cloud, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	login.microsoftonline-p.com	http->sslcert	(affiliate, cloud, cname-record, distance-1, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	stamp2.login.microsoftonline-int.com	http->sslcert	(affiliate, cname-record, distance-1, subdomain)
+[URL]               	[200] https://www.qbsco.net/ - [QBS - Let&#x27;s get better!]	http	(cloud, cloudflare, dir, google, in-scope, status-200, waf)
+[URL]               	[301] http://www.qbsco.net/ -> https://www.qbsco.net/	http	(cloud, cloudflare, dir, google, in-scope, status-301, waf)
+[OPEN_TCP_PORT]     	www.qbsco.net:443	speculate	(cloud, cloudflare, google, in-scope, waf)
+[OPEN_TCP_PORT]     	www.qbsco.net:80	speculate	(cloud, cloudflare, google, in-scope, waf)
+[SOCIAL]            	linkedin: qbscopvtltd (https://linkedin.com/company/qbscopvtltd)	http->excavate->social	(cloud, distance-2, google)
+[DNS_NAME]          	loginex.microsoftonline.com	http->sslcert	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	autodiscover.qbsco.net	dnsbrute	(a-record, cdn, cloud, cname-record, github, in-scope, microsoft, microsoft365, mx-record, ns-record, soa-record, srv-record, subdomain, txt-record)
+[DNS_NAME]          	app.qbsco.net	dnsbrute	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	www.qbsco.net	dnsbrute	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	mail.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[DNS_NAME]          	development.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[DNS_NAME]          	newmail.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[OPEN_TCP_PORT]     	autodiscover.qbsco.net:80	shodan_idb	(cdn, cloud, github, in-scope, microsoft, microsoft365)
+[URL]               	[200] http://development.qbsco.net/ - [WEB]	http	(dir, in-scope, status-200)
+[OPEN_TCP_PORT]     	development.qbsco.net:80	speculate	(in-scope)
+[ASN]               	AS135407	asn
+[DNS_NAME]          	login.microsoftonline-int.com	http->sslcert	(a-record, affiliate, cdn, cloud, cname-record, distance-1, github, microsoft, microsoft365, subdomain)
+[DNS_NAME]          	loginex.microsoftonline-int.com	http->sslcert	(affiliate, cname-record, distance-1, subdomain)
+[TECHNOLOGY]        	cpe:/a:prototypejs:prototype	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	development.qbsco.net:8686	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	development.qbsco.net:554	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	development.qbsco.net:80	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	development.qbsco.net:443	shodan_idb	(in-scope)
+[DNS_NAME]          	app.qbsco.net	crt_db	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[OPEN_TCP_PORT]     	development.qbsco.net:123	shodan_idb	(in-scope)
+[DNS_NAME]          	autodiscover.qbsco.net	crt_db	(a-record, cdn, cloud, cname-record, github, in-scope, microsoft, microsoft365, mx-record, ns-record, soa-record, srv-record, subdomain, txt-record)
+[DNS_NAME]          	www.qbsco.net	crt_db	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	ocac.qbsco.net	crt_db	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	mail.qbsco.net	crt_db	(a-record, in-scope, subdomain)
+[URL]               	[200] https://development.qbsco.net/ - [WEB]	http	(dir, in-scope, status-200)
+[URL]               	[301] http://newmail.qbsco.net/ -> https://search.cercle.one/	http	(dir, in-scope, status-301)
+[OPEN_TCP_PORT]     	newmail.qbsco.net:80	speculate	(in-scope)
+[OPEN_TCP_PORT]     	development.qbsco.net:443	speculate	(in-scope)
+[IP_ADDRESS]        	127.0.0.1	http->sslcert	(affiliate, distance-1, ipv4, private-ip)
+[IP_ADDRESS]        	::1	http->sslcert	(affiliate, distance-1, ipv6, private-ip)
+[IP_ADDRESS]        	192.168.18.100	http->sslcert	(affiliate, distance-1, ipv4, private-ip)
+[DNS_NAME]          	search.cercle.one	http->excavate->host	(a-record, affiliate, cloud, cloudflare, distance-1, google, subdomain, waf)
+[DNS_NAME]          	ns3.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[TECHNOLOGY]        	cpe:/a:f5:nginx	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:redislabs:redis:8.2.2	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	newmail.qbsco.net:6379	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	newmail.qbsco.net:80	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	newmail.qbsco.net:9200	shodan_idb	(in-scope)
+[ASN]               	AS51167	asn
+[TECHNOLOGY]        	cpe:/a:nodejs:nodejs	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:443	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:22	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:apache:http_server:2.4.62	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/o:canonical:ubuntu_linux	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8081	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8083	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:3000	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:f5:nginx:1.18.0	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8000	shodan_idb	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:80	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:nodejs:node.js	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:n8n:n8n	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/o:linux:linux_kernel	shodan_idb	(in-scope)
+[TECHNOLOGY]        	cpe:/a:openbsd:openssh:8.9p1	shodan_idb	(in-scope)
+[DNS_NAME]          	ns1.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[DNS_NAME]          	ns2.qbsco.net	dnsbrute	(a-record, in-scope, subdomain)
+[FINDING]           	Severity: [INFO] Confidence: [LOW] Shodan reported possible vulnerabilities for ns3.qbsco.net (45.136.18.42): CVE-2026-28780 [CRITICAL, 9.8], CVE-2026-29167 [CRITICAL, 9.8], CVE-2026-44631 [CRITICAL, 9.8], CVE-2025-23048 [CRITICAL, 9.1], CVE-2026-42535 [CRITICAL, 9.1], CVE-2026-24072 [HIGH, 8.8], CVE-2025-58098 [HIGH, 8.3], CVE-2021-23017 [HIGH, 7.7], CVE-2007-4723 [HIGH, 7.5], CVE-2011-2688 [HIGH, 7.5], CVE-2013-4365 [HIGH, 7.5], CVE-2023-44487 [HIGH, 7.5], CVE-2024-42516 [HIGH, 7.5], CVE-2024-43204 [HIGH, 7.5], CVE-2024-43394 [HIGH, 7.5], CVE-2024-47252 [HIGH, 7.5], CVE-2025-49630 [HIGH, 7.5], CVE-2025-53020 [HIGH, 7.5], CVE-2025-55753 [HIGH, 7.5], CVE-2025-59775 [HIGH, 7.5], CVE-2026-29169 [HIGH, 7.5], CVE-2026-34059 [HIGH, 7.5], CVE-2026-34355 [HIGH, 7.5], CVE-2026-34356 [HIGH, 7.5], CVE-2026-42536 [HIGH, 7.5], CVE-2026-49975 [HIGH, 7.5], CVE-2021-3618 [HIGH, 7.4], CVE-2025-49812 [HIGH, 7.4], CVE-2026-29168 [HIGH, 7.3], CVE-2026-44185 [HIGH, 7.3], CVE-2026-44186 [HIGH, 7.3], CVE-2026-48913 [HIGH, 7.3], CVE-2025-65082 [MEDIUM, 6.5], CVE-2026-33523 [MEDIUM, 6.5], CVE-2026-43951 [MEDIUM, 6.5], CVE-2026-29170 [MEDIUM, 6.1], CVE-2026-44119 [MEDIUM, 5.5], CVE-2025-66200 [MEDIUM, 5.4], CVE-2026-33007 [MEDIUM, 5.3], CVE-2026-33857 [MEDIUM, 5.3], CVE-2026-34032 [MEDIUM, 5.3], CVE-2009-2299 [MEDIUM, 5.0], CVE-2012-3526 [MEDIUM, 5.0], CVE-2012-4001 [MEDIUM, 5.0], CVE-2013-2765 [MEDIUM, 5.0], CVE-2026-33006 [MEDIUM, 4.8], CVE-2011-1176 [MEDIUM, 4.3], CVE-2012-4360 [MEDIUM, 4.3], CVE-2013-0942 [MEDIUM, 4.3], CVE-2025-23419 [MEDIUM, 4.3], CVE-2009-0796 [LOW, 2.6], CVE-2013-0941 [LOW, 2.1] [CVE-2026-28780, CVE-2025-65082, CVE-2025-58098, CVE-2026-49975, CVE-2012-4360, CVE-2025-55753, CVE-2026-48913, CVE-2025-49630, CVE-2026-44119, CVE-2026-24072, CVE-2025-23419, CVE-2009-0796, CVE-2025-66200, CVE-2025-59775, CVE-2025-23048, CVE-2021-23017, CVE-2026-44185, CVE-2026-34356, CVE-2026-34032, CVE-2024-47252, CVE-2026-42536, CVE-2025-53020, CVE-2024-43204, CVE-2013-2765, CVE-2024-42516, CVE-2012-3526, CVE-2013-4365, CVE-2026-29167, CVE-2011-2688, CVE-2026-34355, CVE-2013-0941, CVE-2026-33007, CVE-2011-1176, CVE-2026-29169, CVE-2026-33857, CVE-2026-44186, CVE-2013-0942, CVE-2023-44487, CVE-2026-42535, CVE-2026-33523, CVE-2007-4723, CVE-2026-44631, CVE-2026-29170, CVE-2021-3618, CVE-2026-43951, CVE-2009-2299, CVE-2012-4001, CVE-2026-33006, CVE-2026-29168, CVE-2026-34059, CVE-2024-43394, CVE-2025-49812]	shodan_idb	(confidence-low, in-scope, severity-info)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) wayback(101:1:0), http(78:3:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 56, OPEN_TCP_PORT: 44, URL: 15, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (3,314 processed in the past 15 seconds)
+[DNS_NAME]          	www.qbsco.net	wayback	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[DNS_NAME]          	app.qbsco.net	wayback	(a-record, cloud, cloudflare, google, in-scope, subdomain, waf)
+[URL]               	[302] http://ns3.qbsco.net:8081/ -> /s/dashboard	http	(dir, in-scope, status-302)
+[URL]               	[404] http://ns3.qbsco.net:8083/ - [Error]	http	(dir, in-scope, status-404)
+[URL]               	[404] http://ns3.qbsco.net:3000/	http	(dir, in-scope, status-404)
+[URL]               	[200] http://ns3.qbsco.net/ - [Welcome to nginx!]	http	(dir, in-scope, status-200)
+[URL]               	[404] http://ns3.qbsco.net:8000/	http	(dir, in-scope, status-404)
+[URL]               	[200] https://ns3.qbsco.net/ - [n8n.io - Workflow Automation]	http	(dir, in-scope, status-200)
+[URL]               	[401] https://newmail.qbsco.net:9200/	http	(dir, in-scope, status-401)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:80	speculate	(in-scope)
+[DNS_NAME]          	shodan.io	http->sslcert	(a-record, affiliate, cloudflare, distance-1, domain, waf)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:443	speculate	(in-scope)
+[DNS_NAME]          	agents.zeniqle.com	http->sslcert	(a-record, affiliate, cloud, distance-1, ovh, subdomain)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8000	speculate	(in-scope)
+[OPEN_TCP_PORT]     	newmail.qbsco.net:9200	speculate	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8083	speculate	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:3000	speculate	(in-scope)
+[OPEN_TCP_PORT]     	ns3.qbsco.net:8081	speculate	(in-scope)
+[URL]               	[200] http://ns1.qbsco.net/ - [Welcome to nginx!]	http	(dir, in-scope, status-200)
+[URL]               	[200] https://ns1.qbsco.net/ - [n8n.io - Workflow Automation]	http	(dir, in-scope, status-200)
+[OPEN_TCP_PORT]     	ns1.qbsco.net:80	speculate	(in-scope)
+[OPEN_TCP_PORT]     	ns1.qbsco.net:443	speculate	(in-scope)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) http(162:13:0), dnsresolve(0:5:0), excavate(0:2:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 60, OPEN_TCP_PORT: 53, URL: 24, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (984 processed in the past 15 seconds)
+[URL]               	[200] http://ns2.qbsco.net/ - [Welcome to nginx!]	http	(dir, in-scope, status-200)
+[URL]               	[200] https://ns2.qbsco.net/ - [n8n.io - Workflow Automation]	http	(dir, in-scope, status-200)
+[OPEN_TCP_PORT]     	ns2.qbsco.net:443	speculate	(in-scope)
+[OPEN_TCP_PORT]     	ns2.qbsco.net:80	speculate	(in-scope)
+[URL]               	[302] http://ns3.qbsco.net:8081/s/dashboard -> /s/login	http->excavate->http	(affiliate, endpoint, in-scope, status-302)
+[URL]               	[200] http://ns3.qbsco.net:8081/s/login - [Mautic]	http->excavate->http	(affiliate, endpoint, in-scope, status-200)
+[URL]               	[302] http://ns3.qbsco.net:8081/s/ -> /s/login	speculate->http	(affiliate, dir, in-scope, status-302)
+[INFO] Finishing scan
+[INFO] dnsbrute_mutations: Trying 7,703 mutations against qbsco.net (1/1)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) dnsbrute_mutations(0:1:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 60, OPEN_TCP_PORT: 55, URL: 29, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (1,355 processed in the past 15 seconds)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) dnsbrute_mutations(0:1:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 60, OPEN_TCP_PORT: 55, URL: 29, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (0 processed in the past 15 seconds)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) dnsresolve(9:25:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 60, OPEN_TCP_PORT: 55, URL: 29, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (69 processed in the past 15 seconds)
+[DNS_NAME]          	newmail.qbsco.net	dnsbrute_mutations	(a-record, in-scope, mutation-1, subdomain)
+[DNS_NAME]          	ns3.qbsco.net	dnsbrute_mutations	(a-record, in-scope, mutation-1, subdomain)
+[DNS_NAME]          	ns2.qbsco.net	dnsbrute_mutations	(a-record, in-scope, mutation-1, subdomain)
+[DNS_NAME]          	ns1.qbsco.net	dnsbrute_mutations	(a-record, in-scope, mutation-1, subdomain)
+[INFO] wicked_dominic: Modules running (incoming:processing:outgoing) dnsresolve(0:7:0)
+[INFO] wicked_dominic: Events produced so far: DNS_NAME: 64, OPEN_TCP_PORT: 55, URL: 29, TECHNOLOGY: 12, IP_ADDRESS: 8, ASN: 5, FINDING: 3 (3 INFO), SOCIAL: 3, SCAN: 1, ORG_STUB: 1, AZURE_TENANT: 1
+[INFO] wicked_dominic: No events in queue (79 processed in the past 15 seconds)
+[INFO] Finishing scan
+[SCAN]              	wicked_dominic (SCAN:c0867a3b90ee244d27a0def37c8f868ec3c9bd0c)	SEED
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] asn: | ASN      | Subnet Count   | Name                        | Description                     | Country   |
+[INFO] asn: +==========+================+=============================+=================================+===========+
+[INFO] asn: | AS8075   | 1,285          | MICROSOFT-CORP-MSN-AS-BLOCK | Microsoft Corporation           | US        |
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] asn: | AS13335  | 5,134          | CLOUDFLARENET               | Cloudflare, Inc.                | US        |
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] asn: | AS51167  | 573            | CONTABO                     | Contabo GmbH                    | DE        |
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] asn: | AS58895  | 165            | EBONE1-PK                   | E Bone Network (Pvt.) Limited   | PK        |
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] asn: | AS135407 | 76             | TES-PL-AS-AP                | Trans World Enterprise Services | PK        |
+[INFO] asn: |          |                |                             | (Private) Limited               |           |
+[INFO] asn: +----------+----------------+-----------------------------+---------------------------------+-----------+
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | Module             | Produced                            | Consumed                                |
+[INFO] aggregate: +====================+=====================================+=========================================+
+[INFO] aggregate: | shodan_idb         | 42 (1 FINDING, 29 OPEN_TCP_PORT, 12 | 7 (7 DNS_NAME)                          |
+[INFO] aggregate: |                    | TECHNOLOGY)                         |                                         |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | speculate          | 31 (4 DNS_NAME, 26 OPEN_TCP_PORT, 1 | 347 (1 AZURE_TENANT, 49 DNS_NAME, 26    |
+[INFO] aggregate: |                    | ORG_STUB)                           | DNS_NAME_UNRESOLVED, 29 HTTP_RESPONSE,  |
+[INFO] aggregate: |                    |                                     | 21 IP_ADDRESS, 29 URL, 192              |
+[INFO] aggregate: |                    |                                     | URL_UNVERIFIED)                         |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | http               | 27 (27 URL)                         | 46 (43 OPEN_TCP_PORT, 3 URL_UNVERIFIED) |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | sslcert            | 14 (11 DNS_NAME, 3 IP_ADDRESS)      | 29 (29 HTTP_RESPONSE)                   |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnsbrute           | 9 (9 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | crt_db             | 5 (5 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | subdomaincenter    | 5 (5 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | CNAME              | 5 (5 DNS_NAME)                      | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnsbrute_mutations | 4 (4 DNS_NAME)                      | 11 (11 DNS_NAME)                        |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | host               | 4 (4 DNS_NAME)                      | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | A                  | 4 (4 IP_ADDRESS)                    | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnsdumpster        | 3 (3 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | hackertarget       | 3 (3 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | rapiddns           | 3 (3 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | social             | 3 (3 SOCIAL)                        | 192 (192 URL_UNVERIFIED)                |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | oauth              | 2 (2 FINDING)                       | 19 (9 DNS_NAME, 10 URL_UNVERIFIED)      |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | wayback            | 2 (2 DNS_NAME)                      | 30 (1 DNS_NAME, 29 URL)                 |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | NS                 | 2 (2 DNS_NAME)                      | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | excavate           | 2 (2 URL)                           | 28 (28 HTTP_RESPONSE)                   |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | azure_tenant       | 1 (1 AZURE_TENANT)                  | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | urlscan            | 1 (1 DNS_NAME)                      | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | SOA                | 1 (1 DNS_NAME)                      | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | MX                 | 1 (1 DNS_NAME)                      | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | TXT                | 1 (1 IP_ADDRESS)                    | 0                                       |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnsresolve         | 0                                   | 1,425 (177 DNS_NAME, 3 FINDING, 29      |
+[INFO] aggregate: |                    |                                     | HTTP_RESPONSE, 342 IP_ADDRESS, 205      |
+[INFO] aggregate: |                    |                                     | OPEN_TCP_PORT, 3 SOCIAL, 12 TECHNOLOGY, |
+[INFO] aggregate: |                    |                                     | 29 URL, 625 URL_UNVERIFIED)             |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | cloudcheck         | 0                                   | 1,425 (100 DNS_NAME, 77                 |
+[INFO] aggregate: |                    |                                     | DNS_NAME_UNRESOLVED, 3 FINDING, 29      |
+[INFO] aggregate: |                    |                                     | HTTP_RESPONSE, 342 IP_ADDRESS, 205      |
+[INFO] aggregate: |                    |                                     | OPEN_TCP_PORT, 3 SOCIAL, 12 TECHNOLOGY, |
+[INFO] aggregate: |                    |                                     | 29 URL, 625 URL_UNVERIFIED)             |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | baddns_zone        | 0                                   | 11 (11 DNS_NAME)                        |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnsbimi            | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnscaa             | 0                                   | 11 (11 DNS_NAME)                        |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnscommonsrv       | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | dnstlsrpt          | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | securitytxt        | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | anubisdb           | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | certspotter        | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | crt                | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | myssl              | 0                                   | 1 (1 DNS_NAME)                          |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | ipneighbor         | 0                                   | 21 (21 IP_ADDRESS)                      |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] aggregate: | baddns_direct      | 0                                   | 7 (7 URL)                               |
+[INFO] aggregate: +--------------------+-------------------------------------+-----------------------------------------+
+[INFO] output.csv: Saved CSV output to /root/.bbot/scans/wicked_dominic/output.csv
+[INFO] output.json: Saved JSON output to /root/.bbot/scans/wicked_dominic/output.json
+[INFO] output.subdomains: Saved 11 subdomains to /root/.bbot/scans/wicked_dominic/subdomains.txt
+[INFO] output.txt: Saved TXT output to /root/.bbot/scans/wicked_dominic/output.txt
+[SUCC] Scan wicked_dominic completed in 1 minute, 51 seconds with status FINISHING

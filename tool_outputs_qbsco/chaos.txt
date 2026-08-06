@@ -1,0 +1,1 @@
+[[1;31mFTL[0m] PDCP_API_KEY not specified

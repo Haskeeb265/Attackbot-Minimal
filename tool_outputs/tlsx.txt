@@ -1,0 +1,94 @@
+  
+
+  _____ _    _____  __
+ |_   _| |  / __\ \/ /
+   | | | |__\__ \>  < 
+   |_| |____|___/_/\_\	v1.2.2
+
+		projectdiscovery.io
+
+[[34mINF[0m] Current tlsx version v1.2.2 ([91moutdated[0m)
+google.com:443 [[36myoutube.com[0m]
+google.com:443 [[36mgoogle.es[0m]
+google.com:443 [[36mgooglecommerce.com[0m]
+google.com:443 [[36mmusic.youtube.com[0m]
+google.com:443 [[36myoutubekids.com[0m]
+google.com:443 [[36morigin-test.bdn.dev[0m]
+google.com:443 [[36mgstatic.com[0m]
+google.com:443 [[36mmetric.gstatic.com[0m]
+google.com:443 [[36murl.google.com[0m]
+google.com:443 [[36myoutubeeducation.com[0m]
+google.com:443 [[36mandroid.clients.google.com[0m]
+google.com:443 [[36mgoogle.com[0m]
+google.com:443 [[36mdatacompute.google.com[0m]
+google.com:443 [[36mgoogle.cl[0m]
+google.com:443 [[36mgoogle.fr[0m]
+google.com:443 [[36maistudio.google.com[0m]
+google.com:443 [[36mgoogle.com.co[0m]
+google.com:443 [[36mgoogle.de[0m]
+google.com:443 [[36mg.co[0m]
+google.com:443 [[36mgoo.gl[0m]
+google.com:443 [[36mgoogle-analytics.com[0m]
+google.com:443 [[36myoutu.be[0m]
+google.com:443 [[36myt.be[0m]
+google.com:443 [[36mgoogle.ca[0m]
+google.com:443 [[36mgoogle.co.in[0m]
+google.com:443 [[36mgoogle.co.jp[0m]
+google.com:443 [[36mgoogle.com.br[0m]
+google.com:443 [[36mgoogle.com.vn[0m]
+google.com:443 [[36mgoogle.it[0m]
+google.com:443 [[36mgemini.cloud.google.com[0m]
+google.com:443 [[36mai.android[0m]
+google.com:443 [[36mgoogle.co.uk[0m]
+google.com:443 [[36mgoogle.com.tr[0m]
+google.com:443 [[36mgoogle.pl[0m]
+google.com:443 [[36mgcpcdn.gvt1.com[0m]
+google.com:443 [[36mytimg.com[0m]
+google.com:443 [[36mandroid.com[0m]
+google.com:443 [[36mflash.android.com[0m]
+google.com:443 [[36mwww.goo.gl[0m]
+google.com:443 [[36mbdn.dev[0m]
+google.com:443 [[36mcrowdsource.google.com[0m]
+google.com:443 [[36mgoogle.com.ar[0m]
+google.com:443 [[36mgoogle.com.au[0m]
+google.com:443 [[36mgoogle.com.mx[0m]
+google.com:443 [[36mgoogle.pt[0m]
+google.com:443 [[36mgvt1.com[0m]
+google.com:443 [[36mgvt2.com[0m]
+google.com:443 [[36mappengine.google.com[0m]
+google.com:443 [[36mcloud.google.com[0m]
+google.com:443 [[36mgoogle.hu[0m]
+google.com:443 [[36mgoogle.nl[0m]
+google.com:443 [[36mgcp.gvt2.com[0m]
+google.com:443 [[36myoutube-nocookie.com[0m]
+google.com:443 [[36murchin.com[0m]
+[[34mINF[0m] Connections made using crypto/tls: 1, zcrypto/tls: 0, openssl: 0
+[tlsx san exit: 0]
+
+  
+
+  _____ _    _____  __
+ |_   _| |  / __\ \/ /
+   | | | |__\__ \>  < 
+   |_| |____|___/_/\_\	v1.2.2
+
+		projectdiscovery.io
+
+[[34mINF[0m] Current tlsx version v1.2.2 ([91moutdated[0m)
+google.com:443 [[36mgoogle.com[0m]
+[[34mINF[0m] Connections made using crypto/tls: 1, zcrypto/tls: 0, openssl: 0
+[tlsx cn exit: 0]
+
+  
+
+  _____ _    _____  __
+ |_   _| |  / __\ \/ /
+   | | | |__\__ \>  < 
+   |_| |____|___/_/\_\	v1.2.2
+
+		projectdiscovery.io
+
+[[34mINF[0m] Current tlsx version v1.2.2 ([91moutdated[0m)
+google.com:443 [[34mTLS13[0m]
+[[34mINF[0m] Connections made using crypto/tls: 1, zcrypto/tls: 0, openssl: 0
+[tlsx so exit: 0]

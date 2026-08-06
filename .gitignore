@@ -219,3 +219,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+Qwen3-8B-Base
+test_qbsco.sh
+test_tools.sh
