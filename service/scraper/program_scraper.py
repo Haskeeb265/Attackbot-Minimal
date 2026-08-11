@@ -1,34 +1,21 @@
-import json
-from .helpers.send_request import SendRequest
 from shared.colorlog import log
+from shared.connectors.base import BaseConnector
+from shared.connectors.hackerone_client import HackerOneConnector
 
 
 class ProgramScraper:
     MAX_PAGES = 100
     PAGE_SIZE = 100
 
-    @staticmethod
-    def _fetch_all_programs():
-        all_programs = []
-        page = 1
-        while True:
-            url = f"hackers/programs?page[number]={page}&page[size]={ProgramScraper.PAGE_SIZE}"
-            log.process(f"Fetching programs page {page}...")
-            data = SendRequest.send_request(url)
-            if not data or "data" not in data:
-                log.failed(f"Programs page {page} returned no usable data")
-                break
-            programs = data["data"]
-            if not programs:
-                break
-            all_programs.extend(programs)
-            links = data.get("links", {})
-            if not links.get("next"):
-                break
-            page += 1
-            if page > ProgramScraper.MAX_PAGES:
-                log.failed(f"Hit MAX_PAGES limit ({ProgramScraper.MAX_PAGES}) fetching programs")
-                break
+    def __init__(self, connector: BaseConnector | None = None):
+        self.connector = connector or HackerOneConnector()
+
+    def _fetch_all_programs(self):
+        log.process("Fetching programs...")
+        all_programs = self.connector.fetch_programs(
+            page_size=self.PAGE_SIZE,
+            max_pages=self.MAX_PAGES,
+        )
         log.success(f"Total programs fetched: {len(all_programs)}")
         return all_programs
 

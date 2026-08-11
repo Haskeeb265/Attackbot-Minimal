@@ -1,16 +1,27 @@
 import json
-from .program_scraper import ProgramScraper
-from .helpers.send_request import SendRequest
+
 from shared.colorlog import log
+from shared.connectors.base import BaseConnector
+from shared.connectors.hackerone_client import HackerOneConnector
+
+from .program_scraper import ProgramScraper
 
 
 class ProgramDetailScraper:
+    """
+    Fetches full detail for one program handle at a time.
+
+    All data comes from a :class:`BaseConnector` source (HackerOne today);
+    this class never issues platform-specific HTTP calls itself.
+    """
 
     MAX_PAGES = 100
     PAGE_SIZE = 100
 
-    @staticmethod
-    def _flatten_scope(scope):
+    def __init__(self, connector: BaseConnector | None = None):
+        self.connector = connector or HackerOneConnector()
+
+    def _flatten_scope(self, scope):
         attrs = scope.get('attributes', {})
         return {
             'id': scope.get('id'),
@@ -27,120 +38,60 @@ class ProgramDetailScraper:
             'updated_at': attrs.get('updated_at'),
         }
 
-    @staticmethod
-    def _fetch_handle_scopes(handle):
+    def _fetch_handle_scopes(self, handle):
         log.process(f"[{handle}] Fetching structured scopes...")
-        all_scopes = []
-        page = 1
-
-        while True:
-            url = f"hackers/programs/{handle}/structured_scopes?page[number]={page}&page[size]={ProgramDetailScraper.PAGE_SIZE}"
-            data = SendRequest.send_request(url)
-
-            if data is None:
-                log.failed(f"[{handle}] Request failed on scopes page {page}")
-                break
-
-            scopes = data.get('data', [])
-            if not scopes:
-                break
-
-            all_scopes.extend(scopes)
-            log.process(f"[{handle}] Page {page} — {len(scopes)} scopes fetched")
-
-            links = data.get('links', {})
-            if links.get('next'):
-                page += 1
-            else:
-                break
-
-            if page > ProgramDetailScraper.MAX_PAGES:
-                log.failed(f"[{handle}] Hit MAX_PAGES limit ({ProgramDetailScraper.MAX_PAGES}) on scopes")
-                break
-
+        all_scopes = self.connector.fetch_program_scopes(
+            handle,
+            page_size=self.PAGE_SIZE,
+            max_pages=self.MAX_PAGES,
+        )
         log.success(f"[{handle}] {len(all_scopes)} total scopes fetched")
 
         return {
             'handle': handle,
             'scope_count': len(all_scopes),
-            'scopes': [ProgramDetailScraper._flatten_scope(scope) for scope in all_scopes]
+            'scopes': [self._flatten_scope(scope) for scope in all_scopes]
         }
 
-    @staticmethod
-    def get_scope_exclusions(handle: str) -> list[dict]:
+    def get_scope_exclusions(self, handle: str) -> list[dict]:
         log.process(f"[{handle}] Fetching scope exclusions...")
-        url = f"hackers/programs/{handle}/scope_exclusions"
-        response = SendRequest.send_request(url)
-        if response is None or "data" not in response:
-            log.failed(f"[{handle}] Scope exclusions request failed or malformed")
-            return []
-        log.success(f"[{handle}] {len(response['data'])} scope exclusions fetched")
-        return response["data"]
+        exclusions = self.connector.fetch_program_scope_exclusions(handle)
+        log.success(f"[{handle}] {len(exclusions)} scope exclusions fetched")
+        return exclusions
 
-    @staticmethod
-    def get_weaknesses(handle: str) -> list[dict]:
+    def get_weaknesses(self, handle: str) -> list[dict]:
         log.process(f"[{handle}] Fetching weaknesses...")
-        all_weaknesses = []
-        page = 1
-
-        while True:
-            url = f"hackers/programs/{handle}/weaknesses?page[number]={page}&page[size]={ProgramDetailScraper.PAGE_SIZE}"
-            response = SendRequest.send_request(url)
-            if response is None or not response.get("data"):
-                if response is None:
-                    log.failed(f"[{handle}] Request failed on weaknesses page {page}")
-                break
-            all_weaknesses.extend(response["data"])
-            if not response.get("links", {}).get("next"):
-                break
-            page += 1
-            if page > ProgramDetailScraper.MAX_PAGES:
-                log.failed(f"[{handle}] Hit MAX_PAGES limit ({ProgramDetailScraper.MAX_PAGES}) on weaknesses")
-                break
-
+        all_weaknesses = self.connector.fetch_program_weaknesses(
+            handle,
+            page_size=self.PAGE_SIZE,
+            max_pages=self.MAX_PAGES,
+        )
         log.success(f"[{handle}] {len(all_weaknesses)} total weaknesses fetched")
         return all_weaknesses
 
-    @staticmethod
-    def high_priority_handle_detail_scraping():
+    def high_priority_handle_detail_scraping(self):
         log.process("Starting HIGH priority handle detail scraping...")
-        scraper = ProgramScraper()
+        scraper = ProgramScraper(self.connector)
         handles = scraper.high_priority_handle_scraping()
-        results = [
-            {
-                **ProgramDetailScraper._fetch_handle_scopes(handle),
-                "scope_exclusions": ProgramDetailScraper.get_scope_exclusions(handle),
-                "weaknesses": ProgramDetailScraper.get_weaknesses(handle),
-            }
-            for handle in handles
-        ]
+        results = [self.fetch_program(handle) for handle in handles]
         log.success(f"Finished HIGH priority scraping — {len(results)} programs")
         return results
 
-    @staticmethod
-    def low_priority_handle_detail_scraping():
+    def low_priority_handle_detail_scraping(self):
         log.process("Starting LOW priority handle detail scraping...")
-        scraper = ProgramScraper()
+        scraper = ProgramScraper(self.connector)
         handles = scraper.low_priority_handle_scraping()
-        results = [
-            {
-                **ProgramDetailScraper._fetch_handle_scopes(handle),
-                "scope_exclusions": ProgramDetailScraper.get_scope_exclusions(handle),
-                "weaknesses": ProgramDetailScraper.get_weaknesses(handle),
-            }
-            for handle in handles
-        ]
+        results = [self.fetch_program(handle) for handle in handles]
         log.success(f"Finished LOW priority scraping — {len(results)} programs")
         return results
     
     
-    @staticmethod
-    def fetch_program(handle: str) -> dict:
+    def fetch_program(self, handle: str) -> dict:
         return {
-            **ProgramDetailScraper._fetch_handle_scopes(handle),
-            "scope_exclusions": ProgramDetailScraper.get_scope_exclusions(handle),
-            "weaknesses": ProgramDetailScraper.get_weaknesses(handle),
-    }   
+            **self._fetch_handle_scopes(handle),
+            "scope_exclusions": self.get_scope_exclusions(handle),
+            "weaknesses": self.get_weaknesses(handle),
+        }
 
 
 # ============================================================
@@ -148,8 +99,9 @@ class ProgramDetailScraper:
 # ============================================================
 if __name__ == "__main__":
     try:
-        high_function = ProgramDetailScraper.high_priority_handle_detail_scraping()
-        low_function = ProgramDetailScraper.low_priority_handle_detail_scraping()
+        detail_scraper = ProgramDetailScraper()
+        high_function = detail_scraper.high_priority_handle_detail_scraping()
+        low_function = detail_scraper.low_priority_handle_detail_scraping()
 
         with open("high_priority_details.json", "w") as f:
             json.dump(high_function, f, indent=4)

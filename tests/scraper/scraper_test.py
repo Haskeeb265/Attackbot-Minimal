@@ -34,15 +34,12 @@ def scrape_handles(handles: list[str]) -> list[dict]:
     high_priority_handle_detail_scraping()/low_priority_handle_detail_scraping(),
     but against a caller-supplied handle list instead of a scraped one.
     """
+    detail_scraper = ProgramDetailScraper()
     results = []
     for handle in handles:
         log.process(f"=== Testing handle: {handle} ===")
         try:
-            record = {
-                **ProgramDetailScraper._fetch_handle_scopes(handle),
-                "scope_exclusions": ProgramDetailScraper.get_scope_exclusions(handle),
-                "weaknesses": ProgramDetailScraper.get_weaknesses(handle),
-            }
+            record = detail_scraper.fetch_program(handle)
             results.append(record)
             log.success(f"[{handle}] Done — "
                         f"{record['scope_count']} scopes, "
@@ -61,12 +58,13 @@ def scrape_single_component(handle: str, component: str):
     you only want to debug e.g. get_weaknesses() without re-fetching scopes.
     component: "scopes" | "exclusions" | "weaknesses"
     """
+    detail_scraper = ProgramDetailScraper()
     if component == "scopes":
-        return ProgramDetailScraper._fetch_handle_scopes(handle)
+        return detail_scraper._fetch_handle_scopes(handle)
     elif component == "exclusions":
-        return ProgramDetailScraper.get_scope_exclusions(handle)
+        return detail_scraper.get_scope_exclusions(handle)
     elif component == "weaknesses":
-        return ProgramDetailScraper.get_weaknesses(handle)
+        return detail_scraper.get_weaknesses(handle)
     else:
         raise ValueError(f"Unknown component: {component}")
 

@@ -22,6 +22,12 @@ program_detail_scraper.py   → Takes handles one at a time, fetches full detail
 ingest.py                   → Orchestrates scraping → mapping → persistence
 ```
 
+All program data is fetched through a `BaseConnector` source
+(`shared/connectors/`) — the scrapers depend only on that interface, never on
+platform-specific URLs/auth. `HackerOneConnector` is the current
+implementation; Bugcrowd and other platforms plug in as new connector
+subclasses.
+
 ### Data Flow
 
 ```
@@ -42,7 +48,7 @@ ingest.py                   → Orchestrates scraping → mapping → persistenc
 │          └── ingest_program(conn, handle)  [ONE atomic per prog] │
 │                ├── bounty_master.upsert_program                  │
 │                ├── bounty_detail.upsert_scope (looped)           │
-│                ├── bounty_weaknesses.update_weaknesses           │
+│                ├── bounty_weaknesses.replace_weaknesses         │
 │                └── bounty_exclusions.update_exclusions           │
 └─────────────────────────────────────────────────────────────────┘
                               │

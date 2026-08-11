@@ -17,10 +17,12 @@ def main():
     print("SCRAPING PROGRAM")
     print("=" * 80)
 
-    program = ProgramDetailScraper._fetch_handle_scopes("cloudflare")
+    detail_scraper = ProgramDetailScraper()
 
-    program["weaknesses"] = ProgramDetailScraper.get_weaknesses("cloudflare")
-    program["exclusions"] = ProgramDetailScraper.get_scope_exclusions("cloudflare")
+    program = detail_scraper._fetch_handle_scopes("cloudflare")
+
+    program["weaknesses"] = detail_scraper.get_weaknesses("cloudflare")
+    program["exclusions"] = detail_scraper.get_scope_exclusions("cloudflare")
 
     mapped = HackerOneMapper.map_program(program)
 

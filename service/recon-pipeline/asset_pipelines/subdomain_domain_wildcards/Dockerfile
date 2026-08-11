@@ -22,7 +22,7 @@ ENV PATH="/usr/local/go/bin:/root/go/bin:${PATH}"
 
 RUN pip install --no-cache-dir bbot
 RUN go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-RUN go install github.com/owasp-amass/amass/v5/...@latest
+RUN go install github.com/owasp-amass/amass/v5/cmd/amass@latest
 RUN go install github.com/projectdiscovery/chaos-client/cmd/chaos@latest
 RUN go install github.com/projectdiscovery/tlsx/cmd/tlsx@latest
 RUN go install github.com/gwen001/github-subdomains@latest

@@ -15,19 +15,18 @@ Attackbot-Minimal/
 ├── shared/                     # Cross-cutting utilities
 │   ├── db.py                   # Database connection pool & query primitives
 │   ├── colorlog.py             # Colored logging utilities
-│   └── connectors/             # External API clients
-│       ├── base.py             # Base connector class
-│       └── hackerone_client.py # HackerOne API client
+│   └── connectors/             # External API clients (bug bounty sources)
+│       ├── base.py             # BaseConnector — platform-agnostic source interface
+│       └── hackerone_client.py # HackerOneConnector — HackerOne API v1 client
 │
 ├── service/                    # Business logic services
 │   └── scraper/                # Data ingestion from HackerOne
 │       ├── config.py           # Scraper-specific configuration
 │       ├── ingest.py           # Ingestion orchestrator
-│       ├── program_scraper.py  # Fetches program handles
-│       ├── program_detail_scraper.py  # Fetches program details
+│       ├── program_scraper.py  # Fetches program handles (via connector)
+│       ├── program_detail_scraper.py  # Fetches program details (via connector)
 │       ├── __init__.py
 │       └── helpers/
-│           ├── send_request.py # HTTP request utilities
 │           └── __init__.py
 │
 ├── db/                         # Database layer
@@ -89,6 +88,8 @@ Attackbot-Minimal/
 - **`service/scraper/ingest.py`** - Orchestrates ingestion job (main workflow)
 - **`service/scraper/program_scraper.py`** - Fetches and filters program handles
 - **`service/scraper/program_detail_scraper.py`** - Fetches full program details per handle
+- **`shared/connectors/base.py`** - `BaseConnector` abstract source interface; the scraper depends only on this, never on platform specifics
+- **`shared/connectors/hackerone_client.py`** - `HackerOneConnector` — HackerOne API v1 implementation of `BaseConnector`
 
 ### Database Layer
 - **`db/repos/*.py`** - Query modules (one per table): `bounty_master`, `bounty_detail`, `bounty_weaknesses`, `bounty_exclusions`

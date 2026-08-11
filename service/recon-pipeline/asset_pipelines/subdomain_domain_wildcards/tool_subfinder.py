@@ -1,19 +1,20 @@
-import subprocess
-import json
+"""subfinder — fast passive subdomain enumeration (ProjectDiscovery)."""
 
-process = subprocess.Popen(
-    [
-        "subfinder",
-        "-d",
-        "google.com",
-        "-json",
-        "-silent",
-    ],
-    stdout=subprocess.PIPE,
-    text=True,
-)
+import sys
 
-for line in process.stdout:
-    item = json.loads(line)
+from runner import run_in_docker
 
-    print(item)
+
+def run(target: str, timeout: int | None = None, output=None) -> int:
+    return run_in_docker(
+        ["subfinder", "-d", target, "-silent"],
+        timeout=timeout,
+        output=output,
+    )
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python tool_subfinder.py <target-domain>")
+        sys.exit(2)
+    sys.exit(run(sys.argv[1]))

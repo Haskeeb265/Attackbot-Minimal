@@ -15,8 +15,9 @@
 | `/{handle}/weaknesses` | Fetch program weaknesses | General read limit |
 
 **Client Implementation:**
-- `shared/connectors/hackerone_client.py` - HackerOne API client
-- `service/scraper/helpers/send_request.py` - HTTP request utilities
+- `shared/connectors/base.py` - `BaseConnector` — platform-agnostic source interface (HTTP, auth, pagination plumbing)
+- `shared/connectors/hackerone_client.py` - `HackerOneConnector` — HackerOne API v1 implementation
+- `service/scraper/` - consumes any `BaseConnector`; never issues platform-specific calls itself (Bugcrowd + other platforms plug in as new connector subclasses)
 
 **Important Notes:**
 - `/hackers/programs` requires explicit `page[number]` / `links.next` pagination handling
@@ -136,8 +137,8 @@ healthcheck:
 **Status:** Deliberately deferred - not being built now.
 
 ## Evidence
+- `shared/connectors/base.py` - BaseConnector abstract source interface
 - `shared/connectors/hackerone_client.py` - HackerOne API client
-- `service/scraper/helpers/send_request.py` - HTTP request utilities
 - `docker-compose.yml` - PostgreSQL service definition
 - `config.py` - environment variable loading
 - `scope.md` - integration decisions and rate limit notes

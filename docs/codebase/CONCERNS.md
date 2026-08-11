@@ -33,10 +33,10 @@
 ## Known Bugs (from scope.md §8)
 
 ### 1. `weakness_id` Sourced from Wrong Field
-**Status:** Documented, may still exist  
-**Issue:** Using `attributes.external_id` instead of top-level `id` for weakness_id.  
-**Impact:** Silently corrupts `weakness_id` column (external_id is frequently null).  
-**Reference:** `scope.md` §8.1
+**Status:** ✅ Resolved  
+**Issue:** Previously used `attributes.external_id` instead of the top-level `id` for `weakness_id`.  
+**Fix:** `db/mapper/hackerone_mapper.py` → `_map_weaknesses` now stores the HackerOne API **top-level `id`** in `weakness_id`; the CWE identifier from `attributes.weakness_id` is stored in the nullable `hackerone_weakness_id` column (added by migration `0003` and present in the baseline schema/migration `0001`). Verified consistent across `001_schema.sql`, `db/init/models.py`, `db/repos/bounty_weaknesses.py`, and the smoke test (`tests/scraper/smoke_test_db.py` asserts the `CWE-79` round-trip).  
+**Reference:** `docs/scaper_docs/schema.md` (Table: `bounty_weaknesses`)
 
 ### 2. `max_severity` Reduction Using Equality
 **Status:** Documented, may still exist  
