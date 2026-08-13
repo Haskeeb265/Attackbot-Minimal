@@ -1,0 +1,118 @@
+# =============================================================================
+# subdomain_domain_wildcards_image — run commands for every bundled tool
+# =============================================================================
+#
+# Image:  subdomain_domain_wildcards_image
+# Build:  docker build -t subdomain_domain_wildcards_image \
+#           service/recon-pipeline/asset_pipelines/subdomain_domain_wildcards/
+#
+# Replace `example.com` with your target. Tools that read from stdin need
+# `docker run -i ...` and a pipe (`cat file | ...`).
+#
+# Persisting output on your host — mount your cwd:
+#   docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+#     subfinder -d example.com -silent > subfinder.txt
+#
+# Windows / Git Bash notes:
+#   - If `-v "$PWD:/workspace"` fails to mount (path conversion), use
+#     `-v "$(pwd -W):/workspace"` instead.
+#   - For absolute Windows paths, export MSYS_NO_PATHCONV=1 first so Git Bash
+#     stops mangling `/workspace` into `C:/Program Files/Git/...`.
+#   - Long-running tools can be capped with `timeout 600 docker run ...`
+#     (amass has its own `-timeout N`, in minutes).
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# PASSIVE — subdomain enumeration from OSINT / certificate transparency
+# -----------------------------------------------------------------------------
+
+# amass (passive) — CT logs + OSINT sources (passive is the default mode).
+#
+# The image bundles amass v4.2.0, which STREAMS the asset graph to stdout as
+# it is built — one relation per line, e.g.:
+#   qbsco.net (FQDN) --> a_record --> 104.21.81.2 (IPAddress)
+#   qbsco.net (FQDN) --> ns_record --> jason.ns.cloudflare.com (FQDN)
+#   13335 (ASN) --> announces --> 172.64.0.0/18 (Netblock)
+#
+# This "graph relations" output was removed in amass v5 (results go to a
+# SQLite asset.db and nothing prints to stdout), which is why this image pins
+# v4.2.0. Add `-timeout N` (minutes) to cap the run; first relations usually
+# appear after ~2-4 minutes of source setup. `-v` prints which sources are
+# being queried (helpful when the output looks thin).
+docker run --rm subdomain_domain_wildcards_image amass enum -d example.com -timeout 15
+
+# Save the graph relations to a file on your host:
+docker run --rm subdomain_domain_wildcards_image amass enum -d example.com -timeout 15 > amass-graph.txt
+
+# ...or reduce the graph to a plain, deduped subdomain list:
+docker run --rm subdomain_domain_wildcards_image amass enum -d example.com -timeout 15 \
+  | grep -oE '[a-z0-9.-]+\.example\.com' | sort -u > amass-subdomains.txt
+
+# assetfinder — cert transparency + web sources (--subs-only prints subdomains)
+docker run --rm subdomain_domain_wildcards_image assetfinder --subs-only example.com
+
+# chaos — ProjectDiscovery Chaos dataset. Requires a ProjectDiscovery key:
+# the chaos-client binary reads PDCP_API_KEY; your key lives in the repo root
+# `.env` as CHAOS_API_KEY. Load it from there:
+#   KEY=$(grep '^CHAOS_API_KEY=' .env | head -1 | cut -d= -f2- | tr -d '"' | tr -d '\r')
+#   docker run --rm -e PDCP_API_KEY=$KEY subdomain_domain_wildcards_image chaos -d example.com -silent
+#
+# NOTE: not every domain is in the Chaos dataset — qbsco.net returned nothing
+# even with a valid key (verified against hackerone.com, which did return data).
+
+# findomain — 30+ passive sources (CT, GitHub, etc.)
+docker run --rm subdomain_domain_wildcards_image findomain -t example.com -q
+
+# subfinder — 30+ passive sources, the workhorse
+docker run --rm subdomain_domain_wildcards_image subfinder -d example.com -silent
+
+# -----------------------------------------------------------------------------
+# MERGE — combine passive results into one deduped working list
+# -----------------------------------------------------------------------------
+cat findomain.txt assetfinder.txt subfinder.txt 2>/dev/null | sort -u > subdomains.txt
+
+# -----------------------------------------------------------------------------
+# ACTIVE — DNS resolution / brute force (sends DNS queries)
+# -----------------------------------------------------------------------------
+
+# amass (active) — zone transfers + cert name grabs (`-active`; DNS brute
+# forcing is a separate flag: `-brute`). Same graph-relations stdout output.
+docker run --rm subdomain_domain_wildcards_image amass enum -d example.com -active -timeout 15
+
+# dnsx — probe a list of hostnames for live A/AAAA records (reads stdin)
+cat subdomains.txt | docker run --rm -i subdomain_domain_wildcards_image dnsx -silent -a -resp
+
+# massdns — high-speed bulk DNS resolution (wordlist / file of names)
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+  massdns -r /usr/local/share/massdns/resolvers.txt -t A -o S -w /workspace/massdns.txt /workspace/subdomains.txt
+
+# puredns resolve — mass-resolve a list with wildcard filtering
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+  puredns resolve /workspace/subdomains.txt -r /usr/local/share/massdns/resolvers.txt
+
+# puredns bruteforce — wordlist brute force against a domain
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+  puredns bruteforce /workspace/wordlist.txt -d example.com -r /usr/local/share/massdns/resolvers.txt
+
+# shuffledns — massdns wrapper: wordlist brute force + resolve
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+  shuffledns -d example.com -r /usr/local/share/massdns/resolvers.txt -w /workspace/wordlist.txt -o /workspace/shuffledns.txt
+
+# -----------------------------------------------------------------------------
+# PERMUTATION — generate new candidate subdomains from known names
+# -----------------------------------------------------------------------------
+
+# dnsgen — read known subdomains from stdin, print permutations
+cat subdomains.txt | docker run --rm -i subdomain_domain_wildcards_image dnsgen -
+
+# dnsgen — or pass a file directly
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image dnsgen /workspace/subdomains.txt
+
+# -----------------------------------------------------------------------------
+# ONE-LINER CHAIN — passive -> permutations -> live host resolution
+# -----------------------------------------------------------------------------
+
+# subfinder -> dnsgen -> dnsx -> live subdomains.txt
+docker run --rm subdomain_domain_wildcards_image subfinder -d example.com -silent \
+  | docker run --rm -i subdomain_domain_wildcards_image dnsgen - \
+  | docker run --rm -i subdomain_domain_wildcards_image dnsx -silent -a -resp > live-subs.txt

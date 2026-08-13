@@ -1,9 +1,0 @@
-time="2026-08-05T16:22:59Z" level=warning msg="error reading config: Config file /root/.gau.toml not found, using default config"
-http://google.com:80/
-http://www.google.com/
-http://google.com/
-http://www.google.com/
-http://www.google.com/
-https://google.com/
-https://google.com/
-[gau exit: 0]
