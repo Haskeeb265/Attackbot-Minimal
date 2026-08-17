@@ -108,6 +108,14 @@ cat subdomains.txt | docker run --rm -i subdomain_domain_wildcards_image dnsgen 
 # dnsgen — or pass a file directly
 docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image dnsgen /workspace/subdomains.txt
 
+# gotator — deeper permutations than dnsgen (word splicing, numbers, depth).
+# Reads FILES, not stdin, so mount your cwd. `-sub` is the known-subdomain
+# list; `-perm` is the wordlist of tokens to splice in (reuse the subdomain
+# list itself as a quick keyword source). `-depth 1 -numbers 3` bounds the
+# blow-up; `-mindup` drops repeats and `-adl` adds per-level permutations.
+docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
+  gotator -sub /workspace/subdomains.txt -perm /workspace/subdomains.txt -depth 1 -numbers 3 -mindup -adl -silent
+
 # -----------------------------------------------------------------------------
 # ONE-LINER CHAIN — passive -> permutations -> live host resolution
 # -----------------------------------------------------------------------------

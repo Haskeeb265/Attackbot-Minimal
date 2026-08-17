@@ -6,7 +6,7 @@
 # Bundled tools (matching the stub scripts in this folder):
 #   Passive      : amass (v4.2.0 — streams graph relations), assetfinder, chaos, findomain, subfinder
 #   Active       : amass, dnsx, massdns, puredns, shuffledns
-#   Permutation  : dnsgen
+#   Permutation  : dnsgen, gotator
 #
 # amass is pinned to v4.2.0 on purpose: amass v5 (the 2024 rewrite) removed
 # the stdout "graph relations" output and persists results to a SQLite
@@ -32,7 +32,8 @@ RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 
     && go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest \
     && go install -v github.com/projectdiscovery/chaos-client/cmd/chaos@latest \
     && go install github.com/tomnomnom/assetfinder@latest \
-    && go install github.com/d3mondev/puredns/v2@latest
+    && go install github.com/d3mondev/puredns/v2@latest \
+    && go install github.com/Josue87/gotator@latest
 
 # ------------------------- Stage 2: massdns (C) ----------------------------
 FROM debian:bookworm-slim AS massdns-builder
@@ -64,7 +65,7 @@ RUN apt-get update \
         dnsutils \
     && rm -rf /var/lib/apt/lists/*
 
-# Go binaries (subfinder, dnsx, shuffledns, chaos, assetfinder, puredns)
+# Go binaries (subfinder, dnsx, shuffledns, chaos, assetfinder, puredns, gotator)
 COPY --from=go-builder /go/bin/ /usr/local/bin/
 
 # massdns binary + bundled resolver lists (used by shuffledns/puredns too)
@@ -93,7 +94,7 @@ RUN pip install --no-cache-dir dnsgen
 # Build-time smoke test — fail fast if any tool is missing or broken
 # -----------------------------------------------------------------------------
 RUN for tool in amass subfinder dnsx shuffledns chaos assetfinder puredns \
-         massdns findomain dnsgen; do \
+         massdns findomain dnsgen gotator; do \
         command -v "$tool" > /dev/null || { echo "MISSING: $tool"; exit 1; }; \
     done \
     && echo example.com | dnsgen - > /dev/null \
