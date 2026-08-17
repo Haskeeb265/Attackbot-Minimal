@@ -124,3 +124,21 @@ docker run --rm -v "$PWD:/workspace" subdomain_domain_wildcards_image \
 docker run --rm subdomain_domain_wildcards_image subfinder -d example.com -silent \
   | docker run --rm -i subdomain_domain_wildcards_image dnsgen - \
   | docker run --rm -i subdomain_domain_wildcards_image dnsx -silent -a -resp > live-subs.txt
+
+# -----------------------------------------------------------------------------
+# ORCHESTRATED PIPELINE (main.py) — runs the whole chain and writes the Neo4j
+# graph (Organization + :Asset:Domain + RESOLVES_TO :IP, with provenance).
+# The tool wrappers live in passive/ active/ permutation/; main.py discovers
+# and runs them. Needs Neo4j reachable via the repo .env (NEO4J_* vars) unless
+# --no-graph is passed. Individual tool files also run standalone, e.g.:
+#   python passive/subfinder.py -d example.com
+# -----------------------------------------------------------------------------
+
+# Passive enum -> dnsx resolve -> write graph (mount the repo so .env + code are visible)
+docker run --rm -v "$PWD:/app" -w /app subdomain_domain_wildcards_image \
+  python service/recon-pipeline/asset_pipelines/subdomain_domain_wildcards/main.py example.com --org acme
+
+# Add permutations, print only (no graph), and save the live list:
+docker run --rm -v "$PWD:/app" -w /app subdomain_domain_wildcards_image \
+  python service/recon-pipeline/asset_pipelines/subdomain_domain_wildcards/main.py example.com \
+    --permute --no-graph --output live-subs.txt
