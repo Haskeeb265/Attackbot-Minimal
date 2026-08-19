@@ -1,0 +1,91 @@
+{
+  "run_id": "7578b994-003a-4729-8597-1c3673b6d311",
+  "target": "testphp.vulnweb.com",
+  "scope": [
+    "*.vulnweb.com",
+    "testphp.vulnweb.com",
+    "testasp.vulnweb.com",
+    "testaspnet.vulnweb.com"
+  ],
+  "output_dir": "C:\\Desktop\\Desktop 2\\Work\\Projects\\Attackbot\\Attackbot-Minima\\output",
+  "subdomains": [],
+  "stage_results": {},
+  "started_at": "2026-06-07T12:07:18.301927Z",
+  "completed_at": "2026-06-07T12:07:18.349055Z",
+  "completed_stages": [],
+  "skipped_stages": [],
+  "stage_stats": {
+    "subdomain_enum": {
+      "stage": "subdomain_enum",
+      "started_at": "2026-06-07T12:07:18.301927Z",
+      "completed_at": "2026-06-07T12:07:18.334445Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [
+        "AmassTool",
+        "AssetfinderTool",
+        "GotatorTool",
+        "SubfinderTool"
+      ],
+      "items_in": 1,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "dns_resolution": {
+      "stage": "dns_resolution",
+      "started_at": "2026-06-07T12:07:18.337338Z",
+      "completed_at": "2026-06-07T12:07:18.337338Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "http_probe": {
+      "stage": "http_probe",
+      "started_at": "2026-06-07T12:07:18.339299Z",
+      "completed_at": "2026-06-07T12:07:18.340266Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "port_scan": {
+      "stage": "port_scan",
+      "started_at": "2026-06-07T12:07:18.342221Z",
+      "completed_at": "2026-06-07T12:07:18.342221Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "url_discovery": {
+      "stage": "url_discovery",
+      "started_at": "2026-06-07T12:07:18.344174Z",
+      "completed_at": "2026-06-07T12:07:18.344174Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "fingerprint": {
+      "stage": "fingerprint",
+      "started_at": "2026-06-07T12:07:18.347102Z",
+      "completed_at": "2026-06-07T12:07:18.347102Z",
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    }
+  },
+  "scoped_out_targets": []
+}

@@ -1,0 +1,80 @@
+{
+  "run_id": "7578b994-003a-4729-8597-1c3673b6d311",
+  "target": "testphp.vulnweb.com",
+  "scope": [
+    "*.vulnweb.com",
+    "testphp.vulnweb.com",
+    "testasp.vulnweb.com",
+    "testaspnet.vulnweb.com"
+  ],
+  "started_at": "2026-06-07T12:07:18.301927+00:00",
+  "completed_at": "2026-06-07T12:07:18.349055+00:00",
+  "completed_stages": [],
+  "skipped_stages": [],
+  "total_subdomains": 0,
+  "live_subdomains": 0,
+  "scoped_out_targets": 0,
+  "total_urls": 0,
+  "total_ports": 0,
+  "stage_stats": {
+    "subdomain_enum": {
+      "duration_seconds": 0.032518,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [
+        "AmassTool",
+        "AssetfinderTool",
+        "GotatorTool",
+        "SubfinderTool"
+      ],
+      "items_in": 1,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "dns_resolution": {
+      "duration_seconds": 0.0,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "http_probe": {
+      "duration_seconds": 0.000967,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "port_scan": {
+      "duration_seconds": 0.0,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "url_discovery": {
+      "duration_seconds": 0.0,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    },
+    "fingerprint": {
+      "duration_seconds": 0.0,
+      "tools_run": [],
+      "tools_failed": [],
+      "tools_skipped": [],
+      "items_in": 0,
+      "items_out": 0,
+      "items_scoped_out": 0
+    }
+  }
+}

@@ -1,0 +1,40 @@
+# ---------------------------------------------------------------------------
+# Attackbot-Minima — Default Pipeline Configuration
+# ---------------------------------------------------------------------------
+
+# Root output directory.  Per-target subdirectories are created automatically.
+output_dir: "./output"
+
+# Pipeline stages — set to false to skip.
+stages:
+  subdomain_enum: true
+  dns_resolution: true
+  http_probe: true
+  port_scan: true
+  url_discovery: true
+  fingerprint: true
+
+# Rate limiting and concurrency
+rate_limit:
+  concurrent_tools: 3      # max tools running in parallel per stage
+
+# Per-tool overrides — set to false to skip specific tools even if installed.
+# Key = exact class name of the tool.
+tools: {}
+  # SubfinderTool: true
+  # AssetfinderTool: true
+  # AmassTool: true
+  # GotatorTool: true
+  # PurednsTool: true
+  # DnsxTool: true
+  # HttpxTool: true
+  # NaabuTool: true
+  # NmapTool: true
+  # GauTool: true
+  # WaybackurlsTool: true
+  # KatanaTool: true
+  # GowitnessTool: true
+  # NucleiReconTool: true
+
+# SQLite database path (relative to output_dir)
+database: "recon.db"

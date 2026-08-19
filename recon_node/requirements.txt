@@ -1,0 +1,20 @@
+# Core framework
+pydantic>=2.7,<3.0          # Data models, validation, JSON serialization
+
+# Async I/O (stdlib — listed for documentation)
+# asyncio is part of the Python standard library (3.11+)
+
+# CLI & terminal output
+rich>=13.7,<15.0             # Structured logging, pretty terminal output
+click>=8.1,<9.0              # CLI interface (used in main.py)
+
+# Config loading
+pyyaml>=6.0,<7.0             # config.yaml parsing
+
+# Output / storage
+sqlmodel>=0.0.18,<1.0        # SQLite ORM (wraps SQLAlchemy + Pydantic)
+sqlalchemy>=2.0,<3.0         # Required by SQLModel
+
+# Utility
+python-dateutil>=2.9,<3.0   # Robust datetime parsing
+aiofiles>=23.0,<25.0         # Async file I/O for output writers
