@@ -1,9 +1,6 @@
 import subprocess
 from pathlib import Path
-
-TARGET = "example.com"
-OUTPUT_DIR = Path(r"C:\Users\Home\Desktop\Projects\Attackbot-Minima\service\recon-pipeline\asset_pipelines\subdomain_domain_wildcards\output")
-OUTPUT_FILE = OUTPUT_DIR / "subfinder.txt"
+from service.recon_pipeline.asset_pipelines.subdomain_domain_wildcards.config import TARGET, OUTPUT_DIR, OUTPUT_FILE
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
