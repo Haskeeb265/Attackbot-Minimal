@@ -7,4 +7,5 @@ load_dotenv(Path(__file__).resolve().parent.parent.parent.parent.parent / ".env"
 
 TARGET = os.getenv("TARGET", "qbsco.net")
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIRPC"))
-OUTPUT_FILE = OUTPUT_DIR / "subfinder.txt"
+OUTPUT_FILESUB = OUTPUT_DIR / "subfinder.txt"
+OUTPUT_FILEAMASS = OUTPUT_DIR / "amass.txt"

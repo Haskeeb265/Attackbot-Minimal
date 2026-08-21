@@ -1,10 +1,10 @@
 cpcalendars.qbsco.net
-webdisk.qbsco.net
-mail.qbsco.net
-www.qbsco.net
-cpanel.qbsco.net
-cpcontacts.qbsco.net
-webmail.qbsco.net
-app.qbsco.net
 ocac.qbsco.net
 server.qbsco.net
+webdisk.qbsco.net
+webmail.qbsco.net
+app.qbsco.net
+mail.qbsco.net
+www.qbsco.net
+cpcontacts.qbsco.net
+cpanel.qbsco.net
