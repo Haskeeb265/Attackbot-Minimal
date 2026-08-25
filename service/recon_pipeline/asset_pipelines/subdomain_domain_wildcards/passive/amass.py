@@ -1,50 +1,56 @@
+
 import subprocess
-import uuid
 from pathlib import Path
-from service.recon_pipeline.asset_pipelines.subdomain_domain_wildcards.config import TARGET, OUTPUT_DIR
+import shared.colorlog as colorlog
 
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-host_output_dir = OUTPUT_DIR.resolve()
+AMASS_IMAGE = "caffix/amass"
+OUTPUT_DIR = Path("output/amass").resolve()
+CONFIG_DIR = Path("config/amass").resolve()  # holds config.yaml + datasources.yaml (API keys)
 
-AMASS_IMAGE = "jauderho/amass:v4.0.2"
+def run_amass_passive(domain: str) -> Path:
 
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    out_file = OUTPUT_DIR / f"{domain}_passive.txt"
+    log_file = OUTPUT_DIR / f"{domain}_passive.log"
 
-def run_amass_passive():
-    volume_name = f"amass_passive_{uuid.uuid4().hex[:8]}"
-    subprocess.run(["docker", "volume", "create", volume_name], check=True, capture_output=True)
-
-    command = [
+    cmd = [
         "docker", "run", "--rm",
-        "--dns", "8.8.8.8",
-        "--dns", "1.1.1.1",
-        "-v", f"{volume_name}:/data",
+        "-v", f"{CONFIG_DIR}:/root/.config/amass:ro",
         AMASS_IMAGE,
-        "enum",
-        "-passive",
-        "-d", TARGET,
-        "-o", "/data/passive.txt",
-        "-log", "/data/passive.log",
-        "-dir", "/data/amass_db",
+        "enum", "-passive", "-nocolor",
+        "-d", domain,
     ]
 
-    result = subprocess.run(command, capture_output=True, text=True)
-    print(f"Amass return code: {result.returncode}")
-    if result.returncode != 0:
-        print("Amass stderr:", result.stderr)
+    colorlog.log.info(f"Running amass passive enum (Docker) for {domain}")
 
-    copy_result = subprocess.run([
-        "docker", "run", "--rm",
-        "-v", f"{volume_name}:/data",
-        "-v", f"{host_output_dir}:/host",
-        "alpine",
-        "sh", "-c", "cp -a /data/. /host/",
-    ], capture_output=True, text=True)
-    if copy_result.returncode != 0:
-        print("Copy failed:", copy_result.stderr)
+    try:
 
-    subprocess.run(["docker", "volume", "rm", volume_name], check=False, capture_output=True)
-    return result
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        
+    except subprocess.CalledProcessError as e:
+
+        colorlog.log.failed(f"amass Docker run failed for {domain}: {e.stderr}")
+        raise
+
+    out_file.write_text(result.stdout, encoding="utf-8")
+    log_file.write_text(result.stderr, encoding="utf-8")
+    colorlog.log.info(f"amass passive results written to {out_file}")
+
+    return out_file
 
 
-run_amass_passive()
-print(f"amass passive results saved to: {host_output_dir / 'passive.txt'}")
+if __name__ == "__main__":
+
+    import sys
+
+    if len(sys.argv) != 2:
+        print("Usage: python amass.py qbsco.net")
+        sys.exit(1)
+
+    run_amass_passive(sys.argv[1])
