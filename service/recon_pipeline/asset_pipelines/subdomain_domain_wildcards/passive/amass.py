@@ -20,9 +20,12 @@ def run(domain: str = TARGET) -> Path:
 
     cmd = [
         "docker", "run", "--rm",
-        "-v", f"{CONFIG_DIR}:/root/.config/amass:ro",
+        "--dns", "8.8.8.8",
+        "--dns", "1.1.1.1",
+        "-v", f"{CONFIG_DIR}:/home/user/.config/amass:ro",
         AMASS_IMAGE,
-        "enum", "-passive", "-nocolor",
+        "enum", "-config", "/home/user/.config/amass/config.yaml",
+        "-passive", "-nocolor",
         "-d", domain,
     ]
 
